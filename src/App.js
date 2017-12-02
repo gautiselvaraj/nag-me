@@ -7,9 +7,8 @@ import Header from './components/Header';
 const App = styled.div`
   font-family: 'Open Sans', sans-serif;
   line-height: 1.35;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 500px;
+  min-height: 300px;
+  width: 350px;
 `;
 
 export default () => (
