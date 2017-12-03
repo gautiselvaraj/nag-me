@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Motion, spring} from 'react-motion';
 import Datetime from 'react-datetime';
 import Input from './Input';
 import Select from './Select';
@@ -10,12 +9,12 @@ import Icon from './Icon';
 import H3 from './H3';
 
 const NagFormWrap = styled.form`
-  background-color: ${props => props.theme.greyLightest};
   padding: .5rem;
 `;
 
 const NagFormHeader = styled.div`
   align-items: center;
+  background-color: ${props=> props.theme.white};
   border-bottom: 1px solid ${props=> props.theme.greyLighter};
   display: flex;
   padding: 5px;
@@ -42,7 +41,6 @@ const ButtonSpacer = styled.div`
   margin-top: 1.5rem;
 `;
 
-const nagFormSpring = {stiffness: 150, damping: 16};
 const nagRepeatOptions = {
   min: [1, 2, 3, 5, 10, 15, 20, 30, 45],
   hour: Array.from(Array(23)).map((_, i) => i + 1),

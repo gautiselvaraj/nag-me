@@ -5,7 +5,6 @@ import {StaggeredMotion, spring} from 'react-motion';
 import Nag from './Nag';
 
 const NagsUl = styled.ul`
-  background-color: ${props => props.theme.greyLightest};
   list-style-type: none;
   margin: 0;
   overflow-x: hidden;
@@ -30,6 +29,8 @@ export default class Nags extends Component {
     nags: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
+  state = {initiated: false};
+
   getInterpolatedStyles = prevInterpolatedStyles => {
     const endValue = prevInterpolatedStyles.map((_, i) => {
       return i === 0 ?
@@ -39,13 +40,27 @@ export default class Nags extends Component {
     return endValue;
   };
 
+  componentDidMount() {
+    this.timeoutTimer = setTimeout(() => this.setState({initiated: true}), 225);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutTimer);
+  }
+
   render() {
-    const nags = this.props.nags;
+    const {nags} = this.props;
+    const {initiated} = this.state;
+
+    if(!initiated) {
+      return null;
+    }
 
     return (
       <StaggeredMotion
         defaultStyles={Array.from(Array(nags.length)).map(i => ({t: 100}))}
-        styles={this.getInterpolatedStyles}>
+        styles={this.getInterpolatedStyles}
+      >
         {interpolatingStyles =>
           <NagsUl>
             {interpolatingStyles.map(({t}, i) =>

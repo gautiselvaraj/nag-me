@@ -5,6 +5,7 @@ import Select from './Select';
 
 const SearchSort = styled.div`
   align-items: center;
+  background-color: ${props=> props.theme.white};
   border-bottom: 1px solid ${props=> props.theme.greyLighter};
   display: flex;
   padding: 5px;

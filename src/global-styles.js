@@ -50,6 +50,10 @@ injectGlobal`
     font-weight: 300;
   }
 
+  body {
+    background-color: #efefef;
+  }
+
   .rdtPicker {
     td.rdtActive {
       &,
