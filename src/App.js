@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {ThemeProvider} from 'styled-components';
 import theme from './theme'
 import './global-styles';
-import Header from './components/Header';
+import Header from './containers/Header';
 import SearchSort from './components/SearchSort';
 import Nags from './components/Nags';
 import NagForm from './components/NagForm';

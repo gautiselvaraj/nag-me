@@ -24,7 +24,7 @@ const Link = styled.div`
   text-align: center;
 `;
 
-export default () => (
+export default ({switchPage}) => (
   <Header>
     <Link>
       <A href="https://www.gauti.info/nag-me" target="_blank" title="More information about Nag Me">
@@ -35,7 +35,7 @@ export default () => (
       <H1>Nag Me</H1>
     </Heading>
     <Link>
-      <Button reset title="Add new Nag">
+      <Button reset title="Add new Nag" onClick={() => switchPage('NagForm')}>
         <Icon inverse add />
       </Button>
     </Link>
