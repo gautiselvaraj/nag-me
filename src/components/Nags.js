@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {StaggeredMotion, spring} from 'react-motion';
 import Nag from './Nag';
+import Button from './Button';
+import H3 from './H3';
+
+const NoNag = styled.div`
+  margin-bottom: 50px;
+  margin-top: 50px;
+  text-align: center;
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+`
 
 const NagsUl = styled.ul`
   list-style-type: none;
@@ -26,7 +38,8 @@ const nagsSpring = {stiffness: 150, damping: 16};
 
 export default class Nags extends Component {
   static propTypes = {
-    nags: PropTypes.arrayOf(PropTypes.object).isRequired
+    nags: PropTypes.arrayOf(PropTypes.object),
+    nagNew: PropTypes.func.isRequired
   };
 
   state = {initiated: false};
@@ -49,11 +62,20 @@ export default class Nags extends Component {
   }
 
   render() {
-    const {nags} = this.props;
+    const {nags, nagNew} = this.props;
     const {initiated} = this.state;
 
     if(!initiated) {
       return null;
+    }
+
+    if(!nags.length) {
+      return (
+        <NoNag>
+          <H3>Nothing to nag about</H3>
+          <Button onClick={nagNew}>Start your first Nag</Button>
+        </NoNag>
+      );
     }
 
     return (
@@ -69,7 +91,7 @@ export default class Nags extends Component {
                   WebkitTransform: `translateY(${t}px)`,
                   transform: `translateY(${t}px)`
                 }}
-                key={nags[i].id}
+                key={nags[i].createdAt}
               >
                 <Nag nag={nags[i]} />
               </NagsLi>

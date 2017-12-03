@@ -50,19 +50,54 @@ const nagRepeatOptions = {
   year: Array.from(Array(10)).map((_, i) => i + 1)
 }
 
+const today = Datetime.moment().subtract(1, 'd');
+
 export default class NagForm extends Component {
   static propTypes = {
-    nag: PropTypes.object
+    nagIndex: PropTypes.func.isRequired,
+    nagCreate: PropTypes.func.isRequired,
+    nagUpdate: PropTypes.func.isRequired
   };
 
+  valid = current => current.isAfter(today);
+
+  handleInputChange = e => {
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleDateTimeInputChange = moment => {
+    this.setState({on: moment.valueOf()});
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    const {title, on, repeats} = this.state;
+
+    this.props.nagCreate({
+      nag: {
+        title,
+        firstNag: on,
+        nextNag: on,
+        repeats
+      }
+    })
+  }
+
   render() {
-    const {switchPage} = this.props;
+    const {nagIndex} = this.props;
 
     return (
       <div>
         <NagFormHeader>
           <BackLink>
-            <Button reset title="Add new Nag" onClick={() => switchPage('Index')}>
+            <Button reset title="Back" onClick={nagIndex}>
               <Icon back />
             </Button>
           </BackLink>
@@ -71,18 +106,20 @@ export default class NagForm extends Component {
           </Heading>
           <BackLink></BackLink>
         </NagFormHeader>
-        <NagFormWrap>
+        <NagFormWrap onSubmit={this.handleSubmit}>
           <Spacer>
-            <Input type="text" id="nag_title" label="What to Nag about?" />
+            <Input autoFocus type="text" name="title" id="nag_title" label="What to Nag about?" onChange={this.handleInputChange} />
           </Spacer>
           <Spacer>
             <Datetime
-              renderInput={props => <Input id="nag_on" {...props} readOnly label="Nag on" />}
+              renderInput={props => <Input id="nag_on" {...props} readOnly label="Nag on" name="on" />}
               dateFormat="MMM Do, YYYY"
+              isValidDate={this.valid}
+              onChange={this.handleDateTimeInputChange}
             />
           </Spacer>
           <Spacer>
-            <Select id="nag_repeat" label="Nag every" defaultValue="">
+            <Select name="repeats" id="nag_repeats" label="Nag every" defaultValue="" onChange={this.handleInputChange}>
               <option value="" disabled></option>
               {Object.keys(nagRepeatOptions).map(key =>
                 nagRepeatOptions[key].map(t =>

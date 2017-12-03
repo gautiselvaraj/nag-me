@@ -2,7 +2,6 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 
 const ButtonStyles = css`
-  color: ${props => props.theme.white};
   box-sizing: border-box;
   font-size: .85rem;
   line-height: ${props => props.small ? '1.5rem' : '2rem'};
@@ -27,6 +26,7 @@ const CircleButtonStyles = css`
 const Button = styled.button`
   background-color: ${props => props.reset ? 'transparent' : props.theme.main};
   border: ${props => props.reset ? '0' : `1px solid ${props => props.theme.mainDarken}`};
+  color: ${props => props.reset ? props.theme.main : props.theme.white};
   cursor: pointer;
   display: ${props => props.block ? 'block' : 'inline-block'};
   padding: ${props => props.reset || props.circle ? '0' : '0 .75rem'};
@@ -36,6 +36,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: ${props => props.reset ? 'transparent' : props.theme.mainLighten};
+    color: ${props => props.reset ? props.theme.mainLighten : props.theme.white};
   }
 `;
 

@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import Header from '../components/Header';
-import {switchPage} from '../actions/PageActions';
+import {nagIndex, nagNew} from '../actions/NagActions';
 
 const mapDispatchToProps = dispatch => ({
-  switchPage: page => dispatch(switchPage(page))
+  nagIndex: () => dispatch(nagIndex()),
+  nagNew: () => dispatch(nagNew())
 });
 
 export default connect(null, mapDispatchToProps)(Header);

@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import H1 from './H1';
 import Button from './Button';
 import Icon from './Icon';
 import A from './A';
 
-const Header = styled.header`
+const HeaderWrap = styled.header`
   align-items: center;
   background-color: ${props => props.theme.main};
   color: ${props => props.theme.white};
@@ -24,22 +25,29 @@ const Link = styled.div`
   text-align: center;
 `;
 
-export default ({switchPage}) => (
-  <Header>
+let Header = ({nagIndex, nagNew}) => (
+  <HeaderWrap>
     <Link>
       <A href="https://www.gauti.info/nag-me" target="_blank" title="More information about Nag Me">
         <Icon inverse question />
       </A>
     </Link>
     <Heading>
-      <Button reset title="Nags Index" onClick={() => switchPage('Index')}>
+      <Button reset title="Nags Index" onClick={() => nagIndex()}>
         <H1>Nag Me</H1>
       </Button>
     </Heading>
     <Link>
-      <Button reset title="Add new Nag" onClick={() => switchPage('NagForm')}>
+      <Button reset title="Add new Nag" onClick={() => nagNew()}>
         <Icon inverse add />
       </Button>
     </Link>
-  </Header>
+  </HeaderWrap>
 );
+
+Header.propTypes = {
+  nagIndex: PropTypes.func.isRequired,
+  nagNew: PropTypes.func.isRequired
+}
+
+export default Header;

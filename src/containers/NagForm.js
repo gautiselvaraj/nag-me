@@ -1,9 +1,11 @@
 import {connect} from 'react-redux';
 import NagForm from '../components/NagForm';
-import {switchPage} from '../actions/PageActions';
+import {nagIndex, nagCreate, nagUpdate} from '../actions/NagActions';
 
 const mapDispatchToProps = dispatch => ({
-  switchPage: page => dispatch(switchPage(page))
+  nagIndex: () => dispatch(nagIndex()),
+  nagCreate: nag => dispatch(nagCreate(nag)),
+  nagUpdate: nag => dispatch(nagUpdate(nag)),
 });
 
 export default connect(null, mapDispatchToProps)(NagForm);
