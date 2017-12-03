@@ -1,5 +1,7 @@
-import {injectGlobal} from 'styled-components';
 import 'normalize.css';
+import 'react-datetime/css/react-datetime.css';
+
+import {injectGlobal} from 'styled-components';
 import OpenSansRegularEot from './fonts/subset-OpenSans-Regular.eot';
 import OpenSansRegularTtf from './fonts/subset-OpenSans-Regular.ttf';
 import OpenSansRegularWoff from './fonts/subset-OpenSans-Regular.woff';
@@ -46,5 +48,14 @@ injectGlobal`
   ::placeholder {
     color: #a5a5a5;
     font-weight: 300;
+  }
+
+  .rdtPicker {
+    td.rdtActive {
+      &,
+      &:hover {
+        background-color: #214154;
+      }
+    }
   }
 `;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import humanizeDuration from 'humanize-duration';
 import {StaggeredMotion, spring} from 'react-motion';
-import {humanizeNextNag} from '../utils/time';
+import {humanizeNextNag, nagRepeatText} from '../utils/time';
 import Button from './Button';
 import Icon from './Icon';
 
@@ -13,6 +13,7 @@ const NagWrap = styled.div`
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, .25);
   padding: 5px;
+  user-select: none;
   will-change: transform;
 `;
 
@@ -117,7 +118,7 @@ export default class Nag extends Component {
                     <NagTimer>in {humanizeNextNag(nag.nextNag - nowTimestamp)}</NagTimer>
                     <NagRepeat>
                       {!!nag.repeats &&
-                        <span>and repeat every {humanizeDuration(nag.repeats)}</span>
+                        <span>and repeat every {nagRepeatText(nag.repeats)}</span>
                       }
                     </NagRepeat>
                   </NagWrap>

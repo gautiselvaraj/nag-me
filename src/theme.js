@@ -1,7 +1,7 @@
 export default {
   main:           '#214154',
   mainDarken:     '#08283B',
-  mainLighten:    '#547487',
+  mainLighten:    '#3B5B6E',
   black:          '#111111',
   white:          '#f6f6f6',
   greyLightest:   '#efefef',

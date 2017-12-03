@@ -5,6 +5,7 @@ import './global-styles';
 import Header from './components/Header';
 import SearchSort from './components/SearchSort';
 import Nags from './components/Nags';
+import NagForm from './components/NagForm';
 
 const App = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -17,7 +18,7 @@ const nags = [
     id: 1,
     title: 'Drink Water',
     nextNag: Date.parse(new Date('2017-12-4')),
-    repeats: 3600000,
+    repeats: '2 min',
     paused: false,
     nagCount: 0,
     createdAt: Date.parse(new Date('2017-12-2')),
@@ -26,7 +27,7 @@ const nags = [
     id: 2,
     title: 'Take a deep breath',
     nextNag: Date.parse(new Date('2017-12-5')),
-    repeats: 1800000,
+    repeats: '20 min',
     paused: false,
     nagCount: 0,
     createdAt: Date.parse(new Date('2017-12-2')),
@@ -35,7 +36,7 @@ const nags = [
     id: 3,
     title: 'Take a short walk',
     nextNag: Date.parse(new Date('2017-12-25')),
-    repeats: 10800000,
+    repeats: '5 hour',
     paused: true,
     nagCount: 0,
     createdAt: Date.parse(new Date('2017-12-2')),
@@ -44,7 +45,7 @@ const nags = [
     id: 4,
     title: 'Sleep once in a while',
     nextNag: Date.parse(new Date('2018-2-5')),
-    repeats: 0,
+    repeats: false,
     paused: false,
     nagCount: 0,
     createdAt: Date.parse(new Date('2017-12-2')),
@@ -57,6 +58,7 @@ export default () => (
       <Header />
       <SearchSort />
       <Nags nags={nags} />
+      <NagForm />
     </App>
   </ThemeProvider>
 );

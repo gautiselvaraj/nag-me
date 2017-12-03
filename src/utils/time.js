@@ -11,3 +11,8 @@ export const humanizeNextNag = timestamp => {
 
   return `${separator}${humanizeDuration(timestamp, {largest, delimiter: ' and ', round: true})}`;
 }
+
+export const nagRepeatText = nagRepeat => {
+  const [number, type] = nagRepeat.split(' ');
+  return `${number} ${type === 'min' ? 'minute' : type}${number === 1 ? '' : 's'}`;
+}

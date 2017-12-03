@@ -28,8 +28,9 @@ const Button = styled.button`
   background-color: ${props => props.reset ? 'transparent' : props.theme.main};
   border: ${props => props.reset ? '0' : `1px solid ${props => props.theme.mainDarken}`};
   cursor: pointer;
-  display: inline-block;
+  display: ${props => props.block ? 'block' : 'inline-block'};
   padding: ${props => props.reset || props.circle ? '0' : '0 .75rem'};
+  ${props => props.block ? 'width: 100%' : ''};
   ${props => props.reset ? '' : ButtonStyles};
   ${props => props.circle ? CircleButtonStyles : ''};
 
