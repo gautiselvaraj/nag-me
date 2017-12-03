@@ -3,7 +3,7 @@ import styled, {ThemeProvider} from 'styled-components';
 import theme from './theme'
 import './global-styles';
 import Header from './components/Header';
-import Actions from './components/Actions';
+import SearchSort from './components/SearchSort';
 
 const App = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -16,7 +16,7 @@ export default () => (
   <ThemeProvider theme={theme}>
     <App>
       <Header />
-      <Actions />
+      <SearchSort />
     </App>
   </ThemeProvider>
 );
