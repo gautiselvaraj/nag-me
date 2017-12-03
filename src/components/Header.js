@@ -20,7 +20,7 @@ const Heading = styled.div`
 
 const Link = styled.div`
   flex: 0 0 25px;
-  height: 20px;
+  height: 18px;
   text-align: center;
 `;
 
