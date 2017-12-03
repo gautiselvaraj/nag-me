@@ -17,11 +17,12 @@ const Icon = styled.i`
   &:before {
     content: ${props => props.edit ? '"\\e906"' :
               props.delete ? '"\\e9ac"' :
-              props.question ? '"\\ea09"' :
-              props.add ? '"\\ea0a"' :
+              props.question ? '"\\e901"' :
+              props.add ? '"\\ea09"' :
               props.resume ? '"\\ea1c"' :
               props.pause ? '"\\ea1d"' :
-              props.search ? '"\\e986"' : ''}
+              props.search ? '"\\e986"' :
+              props.back ? '"\\e900"' : ''}
   }
 `;
 

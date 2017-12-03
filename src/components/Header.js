@@ -32,7 +32,9 @@ export default ({switchPage}) => (
       </A>
     </Link>
     <Heading>
-      <H1>Nag Me</H1>
+      <Button reset title="Nags Index" onClick={() => switchPage('Index')}>
+        <H1>Nag Me</H1>
+      </Button>
     </Heading>
     <Link>
       <Button reset title="Add new Nag" onClick={() => switchPage('NagForm')}>

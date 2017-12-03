@@ -1,13 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import styled, {ThemeProvider} from 'styled-components';
 import theme from './theme'
 import './global-styles';
 import Header from './containers/Header';
 import SearchSort from './components/SearchSort';
 import Nags from './components/Nags';
-import NagForm from './components/NagForm';
+import NagForm from './containers/NagForm';
 
-const App = styled.div`
+const AppWrap = styled.div`
   font-family: 'Open Sans', sans-serif;
   line-height: 1.35;
   width: 350px;
@@ -52,13 +53,25 @@ const nags = [
   }
 ]
 
-export default () => (
+const App = ({activePage}) => (
   <ThemeProvider theme={theme}>
-    <App>
+    <AppWrap>
       <Header />
-      <SearchSort />
-      <Nags nags={nags} />
-      <NagForm />
-    </App>
+      {activePage === 'Index' &&
+        <div>
+          <SearchSort />
+          <Nags nags={nags} />
+        </div>
+      }
+      {activePage === 'NagForm' &&
+        <NagForm />
+      }
+    </AppWrap>
   </ThemeProvider>
 );
+
+const mapStateToProps = state => ({
+  activePage: state.getIn(['page', 'activePage'])
+});
+
+export default connect(mapStateToProps)(App);

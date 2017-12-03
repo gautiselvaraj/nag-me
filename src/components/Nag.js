@@ -92,7 +92,7 @@ export default class Nag extends Component {
     this.intervalTimer = setInterval(this.updateTimestamp, 1000);
   }
 
-  componentDidUnMount() {
+  componentWillUnmount() {
     clearInterval(this.intervalTimer);
   }
 
