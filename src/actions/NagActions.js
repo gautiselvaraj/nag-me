@@ -2,7 +2,8 @@ import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
 
 const dispatchNagIndex = () => ({
-  type: types.NAG_INDEX
+  type: types.NAG_INDEX,
+  nowTimestamp: Date.now()
 });
 
 const dispatchNagNew = () => ({
@@ -73,7 +74,7 @@ export const nagCreate = nag => dispatch => {
       Object.assign({}, nag, {
         id: Date.now(),
         createdAt: Date.now(),
-        paused: false,
+        status: 'LIVE',
         naggedCount: 0,
         updatedAt: null
       })

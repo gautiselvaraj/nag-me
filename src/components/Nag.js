@@ -115,7 +115,7 @@ export default class Nag extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.nag.paused) {
+    if (this.props.nag.status === 'PAUSED') {
       if (this.intervalTimer) {
         this.stopUpdateTimestamp();
       }
@@ -149,10 +149,10 @@ export default class Nag extends Component {
                       WebkitTransform: `translateX(${t}px)`,
                       transform: `translateX(${t}px)`
                     }}
-                    paused={nag.paused}
+                    paused={nag.status === 'PAUSED'}
                   >
                     <NagHeading>{nag.title}</NagHeading>
-                    {!nag.paused ? (
+                    {nag.status === 'LIVE' && (
                       <div>
                         <NagTimer>
                           in {humanizeNextNag(nag.nextNag - nowTimestamp)}
@@ -165,9 +165,8 @@ export default class Nag extends Component {
                           )}
                         </NagRepeat>
                       </div>
-                    ) : (
-                      <NagPaused>Paused</NagPaused>
                     )}
+                    {nag.status === 'PAUSED' && <NagPaused>Paused</NagPaused>}
                   </NagWrap>
                 )}
                 {i === 1 && (
@@ -209,7 +208,7 @@ export default class Nag extends Component {
                       transform: `translate(${t}px, -50%)`
                     }}
                   >
-                    {nag.paused ? (
+                    {nag.status === 'PAUSED' ? (
                       <Button
                         circle
                         title={`Resume ${nag.title} Nag`}

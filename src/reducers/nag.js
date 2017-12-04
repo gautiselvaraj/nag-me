@@ -7,7 +7,7 @@ const initialState = Map({
   visibleList: Map(),
   query: null,
   sortBy: null,
-  paused: false
+  status: null
 });
 
 export default (state = initialState, action) => {
@@ -44,7 +44,7 @@ export default (state = initialState, action) => {
                   return nextNag;
               }
             })
-            .groupBy(nag => nag.get('paused'))
+            .groupBy(nag => nag.get('status'))
         );
       });
 
@@ -72,8 +72,8 @@ export default (state = initialState, action) => {
       return state.set(
         'list',
         nagList.setIn(
-          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'],
-          true
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
+          'PAUSED'
         )
       );
 
@@ -82,8 +82,8 @@ export default (state = initialState, action) => {
       return state.set(
         'list',
         nagList.setIn(
-          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'],
-          false
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
+          'LIVE'
         )
       );
 

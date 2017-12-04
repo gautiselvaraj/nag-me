@@ -10,9 +10,12 @@ import {
 
 const mapStateToProps = state => {
   const visibleList = state.getIn(['nag', 'visibleList']).toJS();
-  let nags = visibleList.false ? visibleList.false : [];
-  if (visibleList.true) {
-    nags = [...nags, ...visibleList.true];
+  let nags = visibleList.LIVE ? visibleList.LIVE : [];
+  if (visibleList.PAUSED) {
+    nags = [...nags, ...visibleList.PAUSED];
+  }
+  if (visibleList.COMPLETED) {
+    nags = [...nags, ...visibleList.COMPLETED];
   }
 
   return { nags };
