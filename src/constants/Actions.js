@@ -1,6 +1,7 @@
 export const SWITCH_PAGE = 'SWITCH_PAGE';
 
 export const NAG_INDEX = 'NAG_INDEX';
+export const NAG_INIT = 'NAG_INIT';
 export const NAG_NEW = 'NAG_NEW';
 export const NAG_CREATE = 'NAG_CREATE';
 export const NAG_EDIT = 'NAG_EDIT';

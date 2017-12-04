@@ -15,6 +15,9 @@ export default (state = initialState, action) => {
   let nagList, nagIndex;
 
   switch (action.type) {
+    case types.NAG_INIT:
+      return fromJS(action.nag);
+
     case types.NAG_INDEX:
       const query = state.get('query');
       return state.withMutations(map => {

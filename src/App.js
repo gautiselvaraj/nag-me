@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import { TransitionMotion, spring } from 'react-motion';
@@ -8,6 +9,8 @@ import Header from './containers/Header';
 import SearchSort from './containers/SearchSort';
 import Nags from './containers/Nags';
 import NagForm from './containers/NagForm';
+import { storageGet } from './utils/storage';
+import { nagInit } from './actions/NagActions';
 
 const AppWrap = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -34,6 +37,11 @@ const AnimateChild = styled.div`
 const pagesSpring = { stiffness: 350, damping: 26 };
 
 class App extends Component {
+  static propTypes = {
+    nagInit: PropTypes.func.isRequired,
+    activePage: PropTypes.string.isRequired
+  };
+
   willLeave = ({ key }) => ({
     translateX: spring(key === 'Index' ? -350 : 350, pagesSpring)
   });
@@ -41,6 +49,10 @@ class App extends Component {
   willEnter = ({ key }) => ({
     translateX: key === 'Index' ? -350 : 350
   });
+
+  componentDidMount = () => {
+    storageGet('nag', this.props.nagInit);
+  };
 
   render() {
     const { activePage } = this.props;
@@ -94,4 +106,8 @@ const mapStateToProps = state => ({
   activePage: state.getIn(['page', 'activePage'])
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  nagInit: nag => dispatch(nagInit(nag))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

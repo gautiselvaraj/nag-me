@@ -1,5 +1,11 @@
 import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
+import { storageSet } from '../utils/storage';
+
+const dispatchNagInit = nag => ({
+  type: types.NAG_INIT,
+  nag
+});
 
 const dispatchNagIndex = () => ({
   type: types.NAG_INDEX,
@@ -60,7 +66,14 @@ const dispatchNagResets = () => ({
   type: types.NAGS_RESET
 });
 
-export const nagIndex = noReset => dispatch => {
+export const nagInit = nag => dispatch => {
+  dispatch(dispatchNagInit(nag));
+  dispatch(nagIndex());
+};
+
+export const nagIndex = noReset => (dispatch, getState) => {
+  const state = getState();
+  storageSet('nag', state.get('nag').toJS());
   if (!noReset) {
     dispatch(dispatchNagResets());
   }
