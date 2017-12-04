@@ -12,50 +12,45 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
-  let nagList, nagIndex;
+  let nagList, nagIndex, nag;
 
   switch (action.type) {
     case types.NAG_INIT:
-      return fromJS(action.nag);
+      nag = action.nag;
+      nag.list = nag.list.map(n => setNagStatus(n));
+      return fromJS(nag);
 
     case types.NAG_INDEX:
       const query = state.get('query');
-      return state.withMutations(map => {
-        map
-          .set(
-            'list',
-            map.get('list').map(nag => fromJS(setNagStatus(nag.toJS())))
+      return state.set(
+        'visibleList',
+        state
+          .get('list')
+          .filter(
+            nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
           )
-          .set(
-            'visibleList',
-            map
-              .get('list')
-              .filter(
-                nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
-              )
-              .sort((a, b) => {
-                const createdAt = a.get('createdAt') - b.get('createdAt');
-                const title = a.get('title').localeCompare(b.get('title'));
-                const nextNag = a.get('nextNag') - b.get('nextNag');
+          .sort((a, b) => {
+            const createdAt = a.get('createdAt') - b.get('createdAt');
+            const title = a.get('title').localeCompare(b.get('title'));
+            const nextNag = a.get('nextNag') - b.get('nextNag');
 
-                switch (state.get('sortBy')) {
-                  case 'latest':
-                    return -createdAt;
-                  case 'oldest':
-                    return createdAt;
-                  case 'ZA':
-                    return -title;
-                  case 'AZ':
-                    return title;
-                  case 'lastNag':
-                    return -nextNag;
-                  default:
-                    return nextNag;
-                }
-              })
-              .groupBy(nag => nag.get('status'))
-          );
-      });
+            switch (state.get('sortBy')) {
+              case 'latest':
+                return -createdAt;
+              case 'oldest':
+                return createdAt;
+              case 'ZA':
+                return -title;
+              case 'AZ':
+                return title;
+              case 'lastNag':
+                return -nextNag;
+              default:
+                return nextNag;
+            }
+          })
+          .groupBy(nag => nag.get('status'))
+      );
 
     case types.NAG_NEW:
       return state.set('editNagId', null);
@@ -67,34 +62,27 @@ export default (state = initialState, action) => {
       return state.set('editNagId', action.nagId);
 
     case types.NAG_UPDATE:
-      nagList = state.get('list');
-      return state.set(
-        'list',
-        nagList.set(
-          nagList.findIndex(nag => nag.get('id') === action.nagId),
-          fromJS(action.nag)
-        )
+      return state.setIn(
+        [
+          'list',
+          state.get('list').findIndex(nag => nag.get('id') === action.nagId)
+        ],
+        fromJS(setNagStatus(action.nag))
       );
 
     case types.NAG_PAUSE:
       nagList = state.get('list');
-      return state.set(
-        'list',
-        nagList.setIn(
-          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
-          'PAUSED'
-        )
-      );
+      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
+      nag = nagList.get(nagIndex).toJS();
+      nag.status = 'PAUSED';
+      return state.setIn(['list', nagIndex], fromJS(setNagStatus(nag)));
 
     case types.NAG_RESUME:
       nagList = state.get('list');
-      return state.set(
-        'list',
-        nagList.setIn(
-          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
-          'LIVE'
-        )
-      );
+      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
+      nag = nagList.get(nagIndex).toJS();
+      nag.status = 'LIVE';
+      return state.setIn(['list', nagIndex], fromJS(setNagStatus(nag)));
 
     case types.NAG_DELETE:
       nagList = state.get('list');
