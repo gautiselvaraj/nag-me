@@ -25,7 +25,7 @@ export default ({ children, handleChange, label, id, ...otherProps }) => (
         {label}
       </Label>
     )}
-    <Select onChange={handleChange} id={id} {...otherProps}>
+    <Select id={id} {...otherProps}>
       {children}
     </Select>
   </SelectWrap>

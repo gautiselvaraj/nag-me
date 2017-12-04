@@ -8,9 +8,15 @@ import {
   nagDelete
 } from '../actions/NagActions';
 
-const mapStateToProps = state => ({
-  nags: state.getIn(['nag', 'visibleList']).toJS()
-});
+const mapStateToProps = state => {
+  const visibleList = state.getIn(['nag', 'visibleList']).toJS();
+  let nags = visibleList.false ? visibleList.false : [];
+  if (visibleList.true) {
+    nags = [...nags, ...visibleList.true];
+  }
+
+  return { nags };
+};
 
 const mapDispatchToProps = dispatch => ({
   nagNew: () => dispatch(nagNew()),

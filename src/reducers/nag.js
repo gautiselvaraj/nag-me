@@ -4,7 +4,7 @@ import * as types from '../constants/Actions';
 const initialState = Map({
   editNagId: null,
   list: List(),
-  visibleList: List(),
+  visibleList: Map(),
   query: null,
   sortBy: null,
   paused: false
@@ -22,9 +22,7 @@ export default (state = initialState, action) => {
           state
             .get('list')
             .filter(
-              nag =>
-                state.get('paused') === nag.get('paused') &&
-                (!query || new RegExp(query, 'gi').test(nag.get('title')))
+              nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
             )
             .sort((a, b) => {
               const createdAt = a.get('createdAt') - b.get('createdAt');
@@ -46,6 +44,7 @@ export default (state = initialState, action) => {
                   return nextNag;
               }
             })
+            .groupBy(nag => nag.get('paused'))
         );
       });
 

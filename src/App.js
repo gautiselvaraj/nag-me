@@ -31,7 +31,7 @@ const AnimateChild = styled.div`
   will-change: transform;
 `;
 
-const pagesSpring = { stiffness: 250, damping: 18 };
+const pagesSpring = { stiffness: 350, damping: 26 };
 
 class App extends Component {
   willLeave = ({ key }) => ({

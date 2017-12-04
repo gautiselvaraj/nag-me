@@ -7,7 +7,8 @@ import Button from './Button';
 import Icon from './Icon';
 
 const NagWrap = styled.div`
-  background-color: #ffffff;
+  background-color: ${props =>
+    props.paused ? props.theme.greyLighter : '#ffffff'};
   border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
@@ -31,6 +32,14 @@ const NagTimer = styled.p`
 const NagRepeat = styled.p`
   color: ${props => props.theme.greyLight};
   font-size: 0.75rem;
+  margin-bottom: 0;
+  margin-top: 5px;
+`;
+
+const NagPaused = styled.p`
+  color: ${props => props.theme.greyDarker};
+  font-size: 0.85rem;
+  font-weight: bold;
   margin-bottom: 0;
   margin-top: 5px;
 `;
@@ -92,12 +101,33 @@ export default class Nag extends Component {
     this.setState({ active: !this.state.active });
   };
 
-  componentDidMount() {
+  startUpdateTimestamp = () => {
     this.intervalTimer = setInterval(this.updateTimestamp, 1000);
+  };
+
+  stopUpdateTimestamp = () => {
+    clearInterval(this.intervalTimer);
+    this.intervalTimer = null;
+  };
+
+  componentDidMount() {
+    this.startUpdateTimestamp();
+  }
+
+  componentDidUpdate() {
+    if (this.props.nag.paused) {
+      if (this.intervalTimer) {
+        this.stopUpdateTimestamp();
+      }
+    } else {
+      if (!this.intervalTimer) {
+        this.startUpdateTimestamp();
+      }
+    }
   }
 
   componentWillUnmount() {
-    clearInterval(this.intervalTimer);
+    this.stopUpdateTimestamp();
   }
 
   render() {
@@ -119,18 +149,25 @@ export default class Nag extends Component {
                       WebkitTransform: `translateX(${t}px)`,
                       transform: `translateX(${t}px)`
                     }}
+                    paused={nag.paused}
                   >
                     <NagHeading>{nag.title}</NagHeading>
-                    <NagTimer>
-                      in {humanizeNextNag(nag.nextNag - nowTimestamp)}
-                    </NagTimer>
-                    <NagRepeat>
-                      {!!nag.repeats && (
-                        <span>
-                          and repeat every {nagRepeatText(nag.repeats)}
-                        </span>
-                      )}
-                    </NagRepeat>
+                    {!nag.paused ? (
+                      <div>
+                        <NagTimer>
+                          in {humanizeNextNag(nag.nextNag - nowTimestamp)}
+                        </NagTimer>
+                        <NagRepeat>
+                          {!!nag.repeats && (
+                            <span>
+                              and repeat every {nagRepeatText(nag.repeats)}
+                            </span>
+                          )}
+                        </NagRepeat>
+                      </div>
+                    ) : (
+                      <NagPaused>Paused</NagPaused>
+                    )}
                   </NagWrap>
                 )}
                 {i === 1 && (

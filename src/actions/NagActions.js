@@ -74,7 +74,8 @@ export const nagCreate = nag => dispatch => {
         id: Date.now(),
         createdAt: Date.now(),
         paused: false,
-        naggedcount: 0
+        naggedCount: 0,
+        updatedAt: null
       })
     )
   );

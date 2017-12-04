@@ -52,6 +52,14 @@ const nagRepeatOptions = {
 
 const today = Datetime.moment().subtract(1, 'd');
 
+const getState = editNag => ({
+  title: editNag ? editNag.title : '',
+  on: editNag ? editNag.nextNag : '',
+  repeats: editNag ? editNag.repeats : '',
+  titleError: null,
+  onError: null
+});
+
 export default class NagForm extends Component {
   static propTypes = {
     nagIndex: PropTypes.func.isRequired,
@@ -61,15 +69,15 @@ export default class NagForm extends Component {
     editNag: PropTypes.object
   };
 
-  state = {
-    title: this.props.editNag ? this.props.editNag.title : null,
-    on: this.props.editNag ? this.props.editNag.nextNag : null,
-    repeats: this.props.editNag ? this.props.editNag.repeats : null,
-    titleError: null,
-    onError: null
-  };
+  state = getState(this.props.editNag);
 
   valid = current => current.isAfter(today);
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.editNagId !== this.props.editNagId) {
+      this.setState(getState(nextProps.editNag));
+    }
+  }
 
   handleInputChange = e => {
     const target = e.target;
@@ -126,7 +134,7 @@ export default class NagForm extends Component {
   };
 
   render() {
-    const { nagIndex } = this.props;
+    const { nagIndex, editNagId, editNag } = this.props;
     const { title, on, repeats, titleError, onError } = this.state;
 
     return (
@@ -138,7 +146,7 @@ export default class NagForm extends Component {
             </Button>
           </BackLink>
           <Heading>
-            <H3>Create new Nag</H3>
+            <H3>{!!editNagId ? `Edit ${editNag.title}` : 'Create new Nag'}</H3>
           </Heading>
           <BackLink />
         </NagFormHeader>
@@ -146,7 +154,7 @@ export default class NagForm extends Component {
           <Spacer>
             <Input
               autoFocus
-              defaultValue={title}
+              value={title}
               type="text"
               name="title"
               id="nag_title"
@@ -170,7 +178,7 @@ export default class NagForm extends Component {
               dateFormat="MMM Do, YYYY"
               isValidDate={this.valid}
               onChange={this.handleDateTimeInputChange}
-              defaultValue={
+              value={
                 on ? Datetime.moment(on).format('MMM Do, YYYY h:mm A') : ''
               }
             />
@@ -180,7 +188,7 @@ export default class NagForm extends Component {
               name="repeats"
               id="nag_repeats"
               label="Nag every"
-              defaultValue={repeats}
+              value={repeats}
               onChange={this.handleInputChange}
             >
               <option value="" />
