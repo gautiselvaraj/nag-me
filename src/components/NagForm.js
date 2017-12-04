@@ -56,7 +56,17 @@ export default class NagForm extends Component {
   static propTypes = {
     nagIndex: PropTypes.func.isRequired,
     nagCreate: PropTypes.func.isRequired,
-    nagUpdate: PropTypes.func.isRequired
+    nagUpdate: PropTypes.func.isRequired,
+    editNagId: PropTypes.number,
+    editNag: PropTypes.object,
+  };
+
+  state = {
+    title: this.props.editNag ? this.props.editNag.title : null,
+    on: this.props.editNag ? this.props.editNag.nextNag : null,
+    repeats: this.props.editNag ? this.props.editNag.repeats : null,
+    titleError: null,
+    onError: null
   };
 
   valid = current => current.isAfter(today);
@@ -67,31 +77,61 @@ export default class NagForm extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
+      [`${name}Error`]: !value ? `Nag ${name} is required` : null
     });
   }
 
   handleDateTimeInputChange = moment => {
-    this.setState({on: moment.valueOf()});
+    this.setState({
+      on: moment.valueOf(),
+      onError: null
+    });
   }
 
   handleSubmit = e => {
     e.preventDefault();
-
     const {title, on, repeats} = this.state;
+    const {editNagId, nagUpdate, nagCreate} = this.props;
 
-    this.props.nagCreate({
-      nag: {
+    if(!title || !on) {
+      this.setState({
+        titleError: !title ? 'Nag title is required' : null,
+        onError: !on ? 'Nag on is required' : null
+      });
+      return false;
+    }
+
+    if(on < Date.now()) {
+      this.setState({
+        onError: 'Nag on should be in future'
+      });
+      return false;
+    }
+
+    if(editNagId) {
+      nagUpdate(
+        editNagId,
+        {
+          title,
+          nextNag: on,
+          repeats
+        }
+      );
+
+    } else {
+      nagCreate({
         title,
         firstNag: on,
         nextNag: on,
         repeats
-      }
-    })
+      });
+    }
   }
 
   render() {
     const {nagIndex} = this.props;
+    const {title, on, repeats, titleError, onError} = this.state;
 
     return (
       <div>
@@ -108,19 +148,20 @@ export default class NagForm extends Component {
         </NagFormHeader>
         <NagFormWrap onSubmit={this.handleSubmit}>
           <Spacer>
-            <Input autoFocus type="text" name="title" id="nag_title" label="What to Nag about?" onChange={this.handleInputChange} />
+            <Input autoFocus defaultValue={title} type="text" name="title" id="nag_title" label="What to Nag about?" error={titleError} onChange={this.handleInputChange} />
           </Spacer>
           <Spacer>
             <Datetime
-              renderInput={props => <Input id="nag_on" {...props} readOnly label="Nag on" name="on" />}
+              renderInput={props => <Input id="nag_on" {...props} readOnly label="Nag on" name="on" error={onError} />}
               dateFormat="MMM Do, YYYY"
               isValidDate={this.valid}
               onChange={this.handleDateTimeInputChange}
+              defaultValue={on ? Datetime.moment(on).format('MMM Do, YYYY h:mm A') : ''}
             />
           </Spacer>
           <Spacer>
-            <Select name="repeats" id="nag_repeats" label="Nag every" defaultValue="" onChange={this.handleInputChange}>
-              <option value="" disabled></option>
+            <Select name="repeats" id="nag_repeats" label="Nag every" defaultValue={repeats} onChange={this.handleInputChange}>
+              <option value=""></option>
               {Object.keys(nagRepeatOptions).map(key =>
                 nagRepeatOptions[key].map(t =>
                   <option value={`${t} ${key}`} key={`${t} ${key}`}>{t} {key}{t === 1 ? '' : 's'}</option>

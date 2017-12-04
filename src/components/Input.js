@@ -7,8 +7,14 @@ const InputWrap = styled.div`
   flex-direction: ${props => props.inline ? 'row' : 'column'};
 `;
 
+const InputError = styled.div`
+  color: red;
+  font-size: .85rem;
+  margin-top: 5px;
+`;
+
 const Input = styled.input`
-  border: 1px solid ${props => props.theme.greyLighter};
+  border: 1px solid ${props => props.error ? 'red' : props.theme.greyLighter};
   border-radius: ${props => props.search ? '1rem' : '5px'};
   box-sizing: border-box;
   font-size: ${props => props.small ? '.85rem' : '1rem'};
@@ -17,11 +23,14 @@ const Input = styled.input`
   ${props => props.inline ? '' : 'width: 100%;'};
 `;
 
-export default ({label, id, ...otherProps}) => (
+export default ({label, error, id, ...otherProps}) => (
   <InputWrap {...otherProps}>
     {!!label &&
       <Label htmlFor={id} {...otherProps}>{label}</Label>
     }
-    <Input id={id} {...otherProps} />
+    <Input id={id} error={error} {...otherProps} />
+    {!!error &&
+      <InputError>{error}</InputError>
+    }
   </InputWrap>
 )

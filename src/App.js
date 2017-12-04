@@ -18,6 +18,7 @@ const AppWrap = styled.div`
 
 const AnimateParent = styled.div`
   height: 500px;
+  overflow-x: hidden;
   overflow-y: scroll;
   position: relative;
 `;

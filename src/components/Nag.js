@@ -11,7 +11,7 @@ const NagWrap = styled.div`
   border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, .25);
-  padding: 5px;
+  padding: 10px;
   user-select: none;
   will-change: transform;
 `;
@@ -60,7 +60,11 @@ const nagSpring = {stiffness: 250, damping: 22};
 
 export default class Nag extends Component {
   static propTypes = {
-    nag: PropTypes.object.isRequired
+    nag: PropTypes.object.isRequired,
+    nagEdit: PropTypes.func.isRequired,
+    nagPause: PropTypes.func.isRequired,
+    nagResume: PropTypes.func.isRequired,
+    nagDelete: PropTypes.func.isRequired
   };
 
   state = {nowTimestamp: Date.now(), active: false};
@@ -97,7 +101,7 @@ export default class Nag extends Component {
   }
 
   render() {
-    const {nag} = this.props;
+    const {nag, nagEdit, nagPause, nagResume, nagDelete} = this.props;
     const {nowTimestamp} = this.state;
 
     return (
@@ -127,7 +131,7 @@ export default class Nag extends Component {
                     WebkitTransform: `translate(${t}px, -50%)`,
                     transform: `translate(${t}px, -50%)`
                   }}>
-                    <Button circle title={`Edit ${nag.title} Nag`}>
+                    <Button circle title={`Edit ${nag.title} Nag`} onClick={() => nagEdit(nag.id)}>
                       <Icon edit />
                     </Button>
                   </NagEditLink>
@@ -137,7 +141,7 @@ export default class Nag extends Component {
                     WebkitTransform: `translate(${t}px, -50%)`,
                     transform: `translate(${t}px, -50%)`
                   }}>
-                    <Button circle title={`Delete ${nag.title} Nag`}>
+                    <Button circle title={`Delete ${nag.title} Nag`} onClick={() => nagDelete(nag.id)}>
                       <Icon delete />
                     </Button>
                   </NagDeleteLink>
@@ -148,10 +152,10 @@ export default class Nag extends Component {
                     transform: `translate(${t}px, -50%)`
                   }}>
                     {nag.paused ?
-                      <Button circle title={`Resume ${nag.title} Nag`}>
+                      <Button circle title={`Resume ${nag.title} Nag`} onClick={() => nagResume(nag.id)}>
                         <Icon resume />
                       </Button> :
-                      <Button circle title={`Pause ${nag.title} Nag`}>
+                      <Button circle title={`Pause ${nag.title} Nag`} onClick={() => nagPause(nag.id)}>
                         <Icon pause />
                       </Button>
                     }

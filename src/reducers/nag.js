@@ -7,10 +7,14 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
+  let nagList;
+
   switch (action.type) {
     case types.NAG_INDEX:
-    case types.NAG_NEW:
       return state;
+
+    case types.NAG_NEW:
+      return state.set('editNagId', null);
 
     case types.NAG_CREATE:
       return state.set('list', state.get('list').unshift(fromJS(action.nag)))
@@ -19,18 +23,20 @@ export default (state = initialState, action) => {
       return state.set('editNagId', action.nagId);
 
     case types.NAG_UPDATE:
-      return state.withMutations(map => {
-        map.set('editNagId', null);
-      });
+      nagList = state.get('list');
+      return state.set('list', nagList.set(nagList.findIndex(nag => nag.get('id') === action.nagId), fromJS(action.nag)));
 
     case types.NAG_PAUSE:
-      return state;
+      nagList = state.get('list');
+      return state.set('list', nagList.setIn([nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'], true));
 
     case types.NAG_RESUME:
-      return state;
+      nagList = state.get('list');
+      return state.set('list', nagList.setIn([nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'], false));
 
     case types.NAG_DELETE:
-      return state;
+      nagList = state.get('list');
+      return state.set('list', nagList.delete(nagList.findIndex(nag => nag.get('id') === action.nagId)));
 
     default:
       return state;

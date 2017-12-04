@@ -52,9 +52,9 @@ export const nagNew = () =>
     dispatch(switchPage('NagForm'));
   }
 
-export const nagCreate = ({nag}) =>
+export const nagCreate = nag =>
   dispatch => {
-    dispatch(dispatchNagCreate(Object.assign({}, nag, {createdAt: Date.now(), paused: false, naggedcount: 0})));
+    dispatch(dispatchNagCreate(Object.assign({}, nag, {id: Date.now(), createdAt: Date.now(), paused: false, naggedcount: 0})));
     dispatch(switchPage('Index'));
   };
 
@@ -64,9 +64,10 @@ export const nagEdit = nagId =>
     dispatch(switchPage('NagForm'));
   };
 
-export const nagUpdate = ({nagId, nag}) =>
-  dispatch => {
-    dispatch(dispatchNagUpdate(nagId, Object.assign({}, nag, {updatedAt: Date.now()})));
+export const nagUpdate = (nagId, nag) =>
+  (dispatch, getState) => {
+    const state = getState();
+    dispatch(dispatchNagUpdate(nagId, Object.assign({}, state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId).toJS(), nag, {updatedAt: Date.now()})));
     dispatch(switchPage('Index'));
   };
 

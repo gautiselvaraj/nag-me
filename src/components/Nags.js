@@ -39,7 +39,11 @@ const nagsSpring = {stiffness: 150, damping: 16};
 export default class Nags extends Component {
   static propTypes = {
     nags: PropTypes.arrayOf(PropTypes.object),
-    nagNew: PropTypes.func.isRequired
+    nagNew: PropTypes.func.isRequired,
+    nagEdit: PropTypes.func.isRequired,
+    nagPause: PropTypes.func.isRequired,
+    nagResume: PropTypes.func.isRequired,
+    nagDelete: PropTypes.func.isRequired
   };
 
   state = {initiated: false};
@@ -62,7 +66,7 @@ export default class Nags extends Component {
   }
 
   render() {
-    const {nags, nagNew} = this.props;
+    const {nags, nagNew, nagEdit, nagDelete, nagResume, nagPause} = this.props;
     const {initiated} = this.state;
 
     if(!initiated) {
@@ -86,15 +90,22 @@ export default class Nags extends Component {
         {interpolatingStyles =>
           <NagsUl>
             {interpolatingStyles.map(({t}, i) =>
-              <NagsLi
-                style={{
-                  WebkitTransform: `translateY(${t}px)`,
-                  transform: `translateY(${t}px)`
-                }}
-                key={nags[i].createdAt}
-              >
-                <Nag nag={nags[i]} />
-              </NagsLi>
+              !!nags[i] &&
+                <NagsLi
+                  style={{
+                    WebkitTransform: `translateY(${t}px)`,
+                    transform: `translateY(${t}px)`
+                  }}
+                  key={nags[i].id}
+                >
+                  <Nag
+                    nag={nags[i]}
+                    nagEdit={nagEdit}
+                    nagPause={nagPause}
+                    nagResume={nagResume}
+                    nagDelete={nagDelete}
+                  />
+                </NagsLi>
             )}
           </NagsUl>
         }
