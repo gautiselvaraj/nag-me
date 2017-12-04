@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { StaggeredMotion, spring } from 'react-motion';
-import { humanizeNextNag, nagRepeatText } from '../utils/time';
+import {
+  humanizeNextNag,
+  nagRepeatText,
+  roundedTimestamp
+} from '../utils/time';
 import Button from './Button';
 import Icon from './Icon';
 
@@ -79,10 +83,10 @@ export default class Nag extends Component {
     nagStatusUpdate: PropTypes.func.isRequired
   };
 
-  state = { nowTimestamp: Date.now(), active: false };
+  state = { nowTimestamp: roundedTimestamp(), active: false };
 
   updateTimestamp = () => {
-    this.setState({ nowTimestamp: Date.now() });
+    this.setState({ nowTimestamp: roundedTimestamp() });
   };
 
   getInterpolatedStyles = prevInterpolatedStyles => {

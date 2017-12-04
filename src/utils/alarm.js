@@ -1,12 +1,14 @@
 /*global chrome*/
 
+import { roundedTimestamp } from '../utils/time';
+
 let domTimers = {};
 
 const chromeAlarmAvailable = () =>
   typeof chrome !== 'undefined' && !!chrome.alarms;
 
 export const alarmCreate = (nagTitle, timestamp) => {
-  const timeout = timestamp - Date.now();
+  const timeout = timestamp - roundedTimestamp();
 
   if (chromeAlarmAvailable()) {
     chrome.alarms.create(nagTitle, { when: timeout });

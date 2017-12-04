@@ -1,6 +1,8 @@
 import humanizeDuration from 'humanize-duration';
 import moment from 'moment';
 
+export const roundedTimestamp = () => Math.round(Date.now() / 1000) * 1000;
+
 export const humanizeNextNag = timestamp => {
   let largest = 1;
   let separator = '~ ';
@@ -30,7 +32,7 @@ export const repeatsToMomentChar = repeatType =>
 export const updateNextNagTimestamp = (currentNextNag, repeats) => {
   const [repeatNumber, repeatType] = repeats.split(' ');
   const momentAddChar = repeatsToMomentChar(repeatType);
-  const nowTimestamp = Date.now();
+  const nowTimestamp = roundedTimestamp();
   let timestamp = moment(currentNextNag);
 
   do {
@@ -44,7 +46,7 @@ export const setNagStatus = nag => {
     return nag;
   }
 
-  if (Date.now() > nag.nextNag) {
+  if (roundedTimestamp() >= nag.nextNag) {
     if (nag.repeats) {
       return Object.assign({}, nag, {
         nextNag: updateNextNagTimestamp(nag.nextNag, nag.repeats)

@@ -7,6 +7,7 @@ import Select from './Select';
 import Button from './Button';
 import Icon from './Icon';
 import H3 from './H3';
+import { roundedTimestamp } from '../utils/time';
 
 const NagFormWrap = styled.form`
   padding: 0.5rem;
@@ -110,7 +111,7 @@ export default class NagForm extends Component {
       return false;
     }
 
-    if (on < Date.now()) {
+    if (on < roundedTimestamp()) {
       this.setState({
         onError: 'Nag on should be in future'
       });
