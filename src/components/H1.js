@@ -8,4 +8,4 @@ const Heading = styled.h1`
   margin-bottom: 0;
 `;
 
-export default ({children}) => <Heading>{children}</Heading>
+export default ({ children }) => <Heading>{children}</Heading>;

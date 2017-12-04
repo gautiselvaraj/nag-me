@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Datetime from 'react-datetime';
@@ -9,13 +9,13 @@ import Icon from './Icon';
 import H3 from './H3';
 
 const NagFormWrap = styled.form`
-  padding: .5rem;
+  padding: 0.5rem;
 `;
 
 const NagFormHeader = styled.div`
   align-items: center;
-  background-color: ${props=> props.theme.white};
-  border-bottom: 1px solid ${props=> props.theme.greyLighter};
+  background-color: ${props => props.theme.white};
+  border-bottom: 1px solid ${props => props.theme.greyLighter};
   display: flex;
   padding: 5px;
   justify-content: space-between;
@@ -33,11 +33,11 @@ const Heading = styled.div`
 `;
 
 const Spacer = styled.div`
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 `;
 
 const ButtonSpacer = styled.div`
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   margin-top: 1.5rem;
 `;
 
@@ -48,7 +48,7 @@ const nagRepeatOptions = {
   week: Array.from(Array(10)).map((_, i) => i + 1),
   month: Array.from(Array(11)).map((_, i) => i + 1),
   year: Array.from(Array(10)).map((_, i) => i + 1)
-}
+};
 
 const today = Datetime.moment().subtract(1, 'd');
 
@@ -58,7 +58,7 @@ export default class NagForm extends Component {
     nagCreate: PropTypes.func.isRequired,
     nagUpdate: PropTypes.func.isRequired,
     editNagId: PropTypes.number,
-    editNag: PropTypes.object,
+    editNag: PropTypes.object
   };
 
   state = {
@@ -80,21 +80,21 @@ export default class NagForm extends Component {
       [name]: value,
       [`${name}Error`]: !value ? `Nag ${name} is required` : null
     });
-  }
+  };
 
   handleDateTimeInputChange = moment => {
     this.setState({
       on: moment.valueOf(),
       onError: null
     });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    const {title, on, repeats} = this.state;
-    const {editNagId, nagUpdate, nagCreate} = this.props;
+    const { title, on, repeats } = this.state;
+    const { editNagId, nagUpdate, nagCreate } = this.props;
 
-    if(!title || !on) {
+    if (!title || !on) {
       this.setState({
         titleError: !title ? 'Nag title is required' : null,
         onError: !on ? 'Nag on is required' : null
@@ -102,23 +102,19 @@ export default class NagForm extends Component {
       return false;
     }
 
-    if(on < Date.now()) {
+    if (on < Date.now()) {
       this.setState({
         onError: 'Nag on should be in future'
       });
       return false;
     }
 
-    if(editNagId) {
-      nagUpdate(
-        editNagId,
-        {
-          title,
-          nextNag: on,
-          repeats
-        }
-      );
-
+    if (editNagId) {
+      nagUpdate(editNagId, {
+        title,
+        nextNag: on,
+        repeats
+      });
     } else {
       nagCreate({
         title,
@@ -127,11 +123,11 @@ export default class NagForm extends Component {
         repeats
       });
     }
-  }
+  };
 
   render() {
-    const {nagIndex} = this.props;
-    const {title, on, repeats, titleError, onError} = this.state;
+    const { nagIndex } = this.props;
+    const { title, on, repeats, titleError, onError } = this.state;
 
     return (
       <div>
@@ -144,36 +140,67 @@ export default class NagForm extends Component {
           <Heading>
             <H3>Create new Nag</H3>
           </Heading>
-          <BackLink></BackLink>
+          <BackLink />
         </NagFormHeader>
         <NagFormWrap onSubmit={this.handleSubmit}>
           <Spacer>
-            <Input autoFocus defaultValue={title} type="text" name="title" id="nag_title" label="What to Nag about?" error={titleError} onChange={this.handleInputChange} />
-          </Spacer>
-          <Spacer>
-            <Datetime
-              renderInput={props => <Input id="nag_on" {...props} readOnly label="Nag on" name="on" error={onError} />}
-              dateFormat="MMM Do, YYYY"
-              isValidDate={this.valid}
-              onChange={this.handleDateTimeInputChange}
-              defaultValue={on ? Datetime.moment(on).format('MMM Do, YYYY h:mm A') : ''}
+            <Input
+              autoFocus
+              defaultValue={title}
+              type="text"
+              name="title"
+              id="nag_title"
+              label="What to Nag about?"
+              error={titleError}
+              onChange={this.handleInputChange}
             />
           </Spacer>
           <Spacer>
-            <Select name="repeats" id="nag_repeats" label="Nag every" defaultValue={repeats} onChange={this.handleInputChange}>
-              <option value=""></option>
+            <Datetime
+              renderInput={props => (
+                <Input
+                  id="nag_on"
+                  {...props}
+                  readOnly
+                  label="Nag on"
+                  name="on"
+                  error={onError}
+                />
+              )}
+              dateFormat="MMM Do, YYYY"
+              isValidDate={this.valid}
+              onChange={this.handleDateTimeInputChange}
+              defaultValue={
+                on ? Datetime.moment(on).format('MMM Do, YYYY h:mm A') : ''
+              }
+            />
+          </Spacer>
+          <Spacer>
+            <Select
+              name="repeats"
+              id="nag_repeats"
+              label="Nag every"
+              defaultValue={repeats}
+              onChange={this.handleInputChange}
+            >
+              <option value="" />
               {Object.keys(nagRepeatOptions).map(key =>
-                nagRepeatOptions[key].map(t =>
-                  <option value={`${t} ${key}`} key={`${t} ${key}`}>{t} {key}{t === 1 ? '' : 's'}</option>
-                )
+                nagRepeatOptions[key].map(t => (
+                  <option value={`${t} ${key}`} key={`${t} ${key}`}>
+                    {t} {key}
+                    {t === 1 ? '' : 's'}
+                  </option>
+                ))
               )}
             </Select>
           </Spacer>
           <ButtonSpacer>
-            <Button block type="submit">Start Nagging</Button>
+            <Button block type="submit">
+              Start Nagging
+            </Button>
           </ButtonSpacer>
         </NagFormWrap>
       </div>
-    )
+    );
   }
 }

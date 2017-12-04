@@ -1,7 +1,7 @@
 import 'normalize.css';
 import 'react-datetime/css/react-datetime.css';
 
-import {injectGlobal} from 'styled-components';
+import { injectGlobal } from 'styled-components';
 import OpenSansRegularEot from './fonts/subset-OpenSans-Regular.eot';
 import OpenSansRegularTtf from './fonts/subset-OpenSans-Regular.ttf';
 import OpenSansRegularWoff from './fonts/subset-OpenSans-Regular.woff';

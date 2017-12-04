@@ -13,15 +13,21 @@ const Search = styled.div`
     color: ${props => props.theme.greyLight};
     content: '\\e986';
     font-family: icons;
-    font-size: .5rem;
+    font-size: 0.5rem;
     left: 7px;
     position: absolute;
     top: 7px;
   }
 `;
 
-export default ({handleKeyup}) => (
+export default ({ handleKeyup }) => (
   <Search>
-    <Input type="search" small search placeholder="Search" onKeyUp={handleKeyup} />
+    <Input
+      type="search"
+      small
+      search
+      placeholder="Search"
+      onKeyUp={handleKeyup}
+    />
   </Search>
 );

@@ -1,5 +1,5 @@
 import * as types from '../constants/Actions';
-import {switchPage} from  './PageActions';
+import { switchPage } from './PageActions';
 
 const dispatchNagIndex = () => ({
   type: types.NAG_INDEX
@@ -52,68 +52,80 @@ const dispatchNagsSort = sortBy => ({
 
 const dispatchNagResets = () => ({
   type: types.NAGS_RESET
-})
+});
 
-export const nagIndex = noReset =>
-  dispatch => {
-    if(!noReset) {
-      dispatch(dispatchNagResets());
-    }
-    dispatch(dispatchNagIndex());
-    dispatch(switchPage('Index'));
+export const nagIndex = noReset => dispatch => {
+  if (!noReset) {
+    dispatch(dispatchNagResets());
   }
+  dispatch(dispatchNagIndex());
+  dispatch(switchPage('Index'));
+};
 
-export const nagNew = () =>
-  dispatch => {
-    dispatch(dispatchNagNew());
-    dispatch(switchPage('NagForm'));
-  }
+export const nagNew = () => dispatch => {
+  dispatch(dispatchNagNew());
+  dispatch(switchPage('NagForm'));
+};
 
-export const nagCreate = nag =>
-  dispatch => {
-    dispatch(dispatchNagCreate(Object.assign({}, nag, {id: Date.now(), createdAt: Date.now(), paused: false, naggedcount: 0})));
-    dispatch(nagIndex());
-  };
+export const nagCreate = nag => dispatch => {
+  dispatch(
+    dispatchNagCreate(
+      Object.assign({}, nag, {
+        id: Date.now(),
+        createdAt: Date.now(),
+        paused: false,
+        naggedcount: 0
+      })
+    )
+  );
+  dispatch(nagIndex());
+};
 
-export const nagEdit = nagId =>
-  dispatch => {
-    dispatch(dispatchNagEdit(nagId));
-    dispatch(switchPage('NagForm'));
-  };
+export const nagEdit = nagId => dispatch => {
+  dispatch(dispatchNagEdit(nagId));
+  dispatch(switchPage('NagForm'));
+};
 
-export const nagUpdate = (nagId, nag) =>
-  (dispatch, getState) => {
-    const state = getState();
-    dispatch(dispatchNagUpdate(nagId, Object.assign({}, state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId).toJS(), nag, {updatedAt: Date.now()})));
-    dispatch(nagIndex());
-  };
+export const nagUpdate = (nagId, nag) => (dispatch, getState) => {
+  const state = getState();
+  dispatch(
+    dispatchNagUpdate(
+      nagId,
+      Object.assign(
+        {},
+        state
+          .getIn(['nag', 'list'])
+          .find(nag => nag.get('id') === nagId)
+          .toJS(),
+        nag,
+        { updatedAt: Date.now() }
+      )
+    )
+  );
+  dispatch(nagIndex());
+};
 
-export const nagPause = nagId =>
-  dispatch => {
-    dispatch(dispatchNagPause(nagId));
-    dispatch(nagIndex(true));
-  }
+export const nagPause = nagId => dispatch => {
+  dispatch(dispatchNagPause(nagId));
+  dispatch(nagIndex(true));
+};
 
-export const nagResume = nagId =>
-  dispatch => {
-    dispatch(dispatchNagResume(nagId));
-    dispatch(nagIndex(true));
-  }
+export const nagResume = nagId => dispatch => {
+  dispatch(dispatchNagResume(nagId));
+  dispatch(nagIndex(true));
+};
 
-export const nagDelete = nagId =>
-  dispatch => {
-    dispatch(dispatchNagDelete(nagId));
-    dispatch(nagIndex(true));
-  }
+export const nagDelete = nagId => dispatch => {
+  dispatch(dispatchNagDelete(nagId));
+  dispatch(nagIndex(true));
+};
 
-export const nagsSearch = query =>
-  dispatch => {
-    dispatch(dispatchNagsSearch(query));
-    dispatch(nagIndex(true));
-  }
+export const nagsSearch = query => dispatch => {
+  dispatch(dispatchNagsSearch(query));
+  dispatch(nagIndex(true));
+};
 
-export const nagsSort = sortBy =>
-  dispatch => {
-    dispatch(dispatchNagsSort(sortBy));
-    dispatch(nagIndex(true));
-  }
+export const nagsSort = sortBy => dispatch => {
+  dispatch(dispatchNagsSort(sortBy));
+  dispatch(nagIndex(true));
+};

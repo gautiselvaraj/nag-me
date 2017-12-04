@@ -1,4 +1,4 @@
-import {Map, List, fromJS} from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import * as types from '../constants/Actions';
 
 const initialState = Map({
@@ -17,56 +17,83 @@ export default (state = initialState, action) => {
     case types.NAG_INDEX:
       const query = state.get('query');
       return state.withMutations(map => {
-        map.set('visibleList', state.get('list').filter(nag =>
-                    state.get('paused') === nag.get('paused') &&
-                    (!query || (new RegExp(query, 'gi')).test(nag.get('title')))
-                  ).sort((a, b) => {
-                    const createdAt = a.get('createdAt') - b.get('createdAt');
-                    const title = a.get('title').localeCompare(b.get('title'));
-                    const nextNag = a.get('nextNag') - b.get('nextNag');
+        map.set(
+          'visibleList',
+          state
+            .get('list')
+            .filter(
+              nag =>
+                state.get('paused') === nag.get('paused') &&
+                (!query || new RegExp(query, 'gi').test(nag.get('title')))
+            )
+            .sort((a, b) => {
+              const createdAt = a.get('createdAt') - b.get('createdAt');
+              const title = a.get('title').localeCompare(b.get('title'));
+              const nextNag = a.get('nextNag') - b.get('nextNag');
 
-                    switch(state.get('sortBy')) {
-                      case 'latest':
-                        return -createdAt;
-                      case 'oldest':
-                        return createdAt;
-                      case 'ZA':
-                        return -title;
-                      case 'AZ':
-                        return title;
-                      case 'lastNag':
-                        return -nextNag;
-                      default:
-                        return nextNag;
-                    }
-                  })
-                )
+              switch (state.get('sortBy')) {
+                case 'latest':
+                  return -createdAt;
+                case 'oldest':
+                  return createdAt;
+                case 'ZA':
+                  return -title;
+                case 'AZ':
+                  return title;
+                case 'lastNag':
+                  return -nextNag;
+                default:
+                  return nextNag;
+              }
+            })
+        );
       });
 
     case types.NAG_NEW:
       return state.set('editNagId', null);
 
     case types.NAG_CREATE:
-      return state.set('list', state.get('list').unshift(fromJS(action.nag)))
+      return state.set('list', state.get('list').unshift(fromJS(action.nag)));
 
     case types.NAG_EDIT:
       return state.set('editNagId', action.nagId);
 
     case types.NAG_UPDATE:
       nagList = state.get('list');
-      return state.set('list', nagList.set(nagList.findIndex(nag => nag.get('id') === action.nagId), fromJS(action.nag)));
+      return state.set(
+        'list',
+        nagList.set(
+          nagList.findIndex(nag => nag.get('id') === action.nagId),
+          fromJS(action.nag)
+        )
+      );
 
     case types.NAG_PAUSE:
       nagList = state.get('list');
-      return state.set('list', nagList.setIn([nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'], true));
+      return state.set(
+        'list',
+        nagList.setIn(
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'],
+          true
+        )
+      );
 
     case types.NAG_RESUME:
       nagList = state.get('list');
-      return state.set('list', nagList.setIn([nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'], false));
+      return state.set(
+        'list',
+        nagList.setIn(
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'paused'],
+          false
+        )
+      );
 
     case types.NAG_DELETE:
       nagList = state.get('list');
-      return state.set('list', nagList.delete(nagList.findIndex(nag => nag.get('id') === action.nagId)));
+      return state.set(
+        'list',
+        nagList.delete(nagList.findIndex(nag => nag.get('id') === action.nagId))
+      );
 
     case types.NAGS_SEARCH:
       return state.set('query', action.query);
@@ -82,4 +109,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};

@@ -6,8 +6,8 @@ import Select from './Select';
 
 const SearchSortWrap = styled.div`
   align-items: center;
-  background-color: ${props=> props.theme.white};
-  border-bottom: 1px solid ${props=> props.theme.greyLighter};
+  background-color: ${props => props.theme.white};
+  border-bottom: 1px solid ${props => props.theme.greyLighter};
   display: flex;
   padding: 5px;
   justify-content: space-between;
@@ -22,13 +22,19 @@ const SortWrap = styled.div`
   margin-left: 10px;
 `;
 
-let SearchSort = ({nagsSearch, nagsSort}) => (
+let SearchSort = ({ nagsSearch, nagsSort }) => (
   <SearchSortWrap>
     <SearchWrap>
       <Search handleKeyup={e => nagsSearch(e.target.value)} />
     </SearchWrap>
     <SortWrap>
-      <Select small inline id="nags_sort" label="Sort By" handleChange={e => nagsSort(e.target.value)}>
+      <Select
+        small
+        inline
+        id="nags_sort"
+        label="Sort By"
+        handleChange={e => nagsSort(e.target.value)}
+      >
         <option value="nextNag">Next Nag</option>
         <option value="lastNag">Last Nag</option>
         <option value="AZ">A-Z</option>
@@ -43,6 +49,6 @@ let SearchSort = ({nagsSearch, nagsSort}) => (
 SearchSort.propTypes = {
   nagsSearch: PropTypes.func.isRequired,
   nagsSort: PropTypes.func.isRequired
-}
+};
 
 export default SearchSort;

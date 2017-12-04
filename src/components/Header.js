@@ -25,10 +25,14 @@ const Link = styled.div`
   text-align: center;
 `;
 
-let Header = ({nagIndex, nagNew}) => (
+let Header = ({ nagIndex, nagNew }) => (
   <HeaderWrap>
     <Link>
-      <A href="https://www.gauti.info/nag-me" target="_blank" title="More information about Nag Me">
+      <A
+        href="https://www.gauti.info/nag-me"
+        target="_blank"
+        title="More information about Nag Me"
+      >
         <Icon inverse question />
       </A>
     </Link>
@@ -48,6 +52,6 @@ let Header = ({nagIndex, nagNew}) => (
 Header.propTypes = {
   nagIndex: PropTypes.func.isRequired,
   nagNew: PropTypes.func.isRequired
-}
+};
 
 export default Header;

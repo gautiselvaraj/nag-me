@@ -4,27 +4,29 @@ import Label from './Label';
 
 const SelectWrap = styled.div`
   display: flex;
-  flex-direction: ${props => props.inline ? 'row' : 'column'};
+  flex-direction: ${props => (props.inline ? 'row' : 'column')};
 `;
 
 const Select = styled.select`
   border: 1px solid ${props => props.theme.greyLighter};
   border-radius: '5px';
   box-sizing: border-box;
-  font-size: ${props => props.small ? '.85rem' : '1rem'};
-  height: ${props => props.small ? '1.5rem' : '2rem'};
+  font-size: ${props => (props.small ? '.85rem' : '1rem')};
+  height: ${props => (props.small ? '1.5rem' : '2rem')};
   margin-top: 0;
   margin-bottom: 0;
-  ${props => props.inline ? '' : 'width: 100%;'};
+  ${props => (props.inline ? '' : 'width: 100%;')};
 `;
 
-export default ({children, handleChange, label, id, ...otherProps}) => (
+export default ({ children, handleChange, label, id, ...otherProps }) => (
   <SelectWrap {...otherProps}>
-    {!!label &&
-      <Label htmlFor={id} {...otherProps}>{label}</Label>
-    }
+    {!!label && (
+      <Label htmlFor={id} {...otherProps}>
+        {label}
+      </Label>
+    )}
     <Select onChange={handleChange} id={id} {...otherProps}>
       {children}
     </Select>
   </SelectWrap>
-)
+);

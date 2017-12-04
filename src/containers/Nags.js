@@ -1,6 +1,12 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Nags from '../components/Nags';
-import {nagNew, nagEdit, nagPause, nagResume, nagDelete} from '../actions/NagActions';
+import {
+  nagNew,
+  nagEdit,
+  nagPause,
+  nagResume,
+  nagDelete
+} from '../actions/NagActions';
 
 const mapStateToProps = state => ({
   nags: state.getIn(['nag', 'visibleList']).toJS()

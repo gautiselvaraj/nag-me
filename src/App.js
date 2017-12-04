@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import styled, {ThemeProvider} from 'styled-components';
-import {TransitionMotion, spring} from 'react-motion';
-import theme from './theme'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled, { ThemeProvider } from 'styled-components';
+import { TransitionMotion, spring } from 'react-motion';
+import theme from './theme';
 import './global-styles';
 import Header from './containers/Header';
 import SearchSort from './containers/SearchSort';
@@ -31,34 +31,40 @@ const AnimateChild = styled.div`
   will-change: transform;
 `;
 
-const pagesSpring = {stiffness: 250, damping: 18};
+const pagesSpring = { stiffness: 250, damping: 18 };
 
 class App extends Component {
-  willLeave = ({key}) => ({
+  willLeave = ({ key }) => ({
     translateX: spring(key === 'Index' ? -350 : 350, pagesSpring)
-  })
+  });
 
-  willEnter = ({key}) => ({
+  willEnter = ({ key }) => ({
     translateX: key === 'Index' ? -350 : 350
-  })
+  });
 
   render() {
-    const {activePage} = this.props;
-    const styles = [{
-      key: activePage,
-      style: {
-        translateX: spring(0, pagesSpring)
+    const { activePage } = this.props;
+    const styles = [
+      {
+        key: activePage,
+        style: {
+          translateX: spring(0, pagesSpring)
+        }
       }
-    }];
+    ];
 
     return (
       <ThemeProvider theme={theme}>
         <AppWrap>
           <Header />
-          <TransitionMotion willLeave={this.willLeave} willEnter={this.willEnter} styles={styles}>
-            {interpolated =>
+          <TransitionMotion
+            willLeave={this.willLeave}
+            willEnter={this.willEnter}
+            styles={styles}
+          >
+            {interpolated => (
               <AnimateParent datapage={activePage}>
-                {interpolated.map(({key, style}) =>
+                {interpolated.map(({ key, style }) => (
                   <AnimateChild
                     style={{
                       WebkitTransform: `translateX(${style.translateX}px)`,
@@ -66,19 +72,17 @@ class App extends Component {
                     }}
                     key={key}
                   >
-                    {key === 'Index' &&
+                    {key === 'Index' && (
                       <div>
                         <SearchSort />
                         <Nags />
                       </div>
-                    }
-                    {key === 'NagForm' &&
-                      <NagForm />
-                    }
+                    )}
+                    {key === 'NagForm' && <NagForm />}
                   </AnimateChild>
-                )}
+                ))}
               </AnimateParent>
-            }
+            )}
           </TransitionMotion>
         </AppWrap>
       </ThemeProvider>

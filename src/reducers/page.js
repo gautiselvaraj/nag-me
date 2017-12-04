@@ -1,4 +1,4 @@
-import {Map} from 'immutable';
+import { Map } from 'immutable';
 import * as types from '../constants/Actions';
 
 const initialState = Map({
@@ -15,4 +15,4 @@ export default (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
