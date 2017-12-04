@@ -8,7 +8,9 @@ import Icon from './Icon';
 
 const NagWrap = styled.div`
   background-color: ${props =>
-    props.paused ? props.theme.greyLighter : '#ffffff'};
+    props.paused
+      ? props.theme.greyLighter
+      : props.completed ? props.theme.greyLight : '#ffffff'};
   border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
@@ -36,7 +38,7 @@ const NagRepeat = styled.p`
   margin-top: 5px;
 `;
 
-const NagPaused = styled.p`
+const NagStatus = styled.p`
   color: ${props => props.theme.greyDarker};
   font-size: 0.85rem;
   font-weight: bold;
@@ -73,7 +75,8 @@ export default class Nag extends Component {
     nagEdit: PropTypes.func.isRequired,
     nagPause: PropTypes.func.isRequired,
     nagResume: PropTypes.func.isRequired,
-    nagDelete: PropTypes.func.isRequired
+    nagDelete: PropTypes.func.isRequired,
+    nagStatusUpdate: PropTypes.func.isRequired
   };
 
   state = { nowTimestamp: Date.now(), active: false };
@@ -115,7 +118,9 @@ export default class Nag extends Component {
   }
 
   componentDidUpdate() {
-    if (this.props.nag.status === 'PAUSED') {
+    const { nag, nagStatusUpdate } = this.props;
+
+    if (nag.status === 'PAUSED') {
       if (this.intervalTimer) {
         this.stopUpdateTimestamp();
       }
@@ -123,6 +128,10 @@ export default class Nag extends Component {
       if (!this.intervalTimer) {
         this.startUpdateTimestamp();
       }
+    }
+
+    if (nag.status === 'LIVE' && this.state.nowTimestamp >= nag.nextNag) {
+      nagStatusUpdate(nag.id);
     }
   }
 
@@ -150,6 +159,7 @@ export default class Nag extends Component {
                       transform: `translateX(${t}px)`
                     }}
                     paused={nag.status === 'PAUSED'}
+                    completed={nag.status === 'COMPLETED'}
                   >
                     <NagHeading>{nag.title}</NagHeading>
                     {nag.status === 'LIVE' && (
@@ -166,7 +176,10 @@ export default class Nag extends Component {
                         </NagRepeat>
                       </div>
                     )}
-                    {nag.status === 'PAUSED' && <NagPaused>Paused</NagPaused>}
+                    {nag.status === 'PAUSED' && <NagStatus>Paused</NagStatus>}
+                    {nag.status === 'COMPLETED' && (
+                      <NagStatus>Completed</NagStatus>
+                    )}
                   </NagWrap>
                 )}
                 {i === 1 && (
@@ -208,7 +221,11 @@ export default class Nag extends Component {
                       transform: `translate(${t}px, -50%)`
                     }}
                   >
-                    {nag.status === 'PAUSED' ? (
+                    {nag.status === 'COMPLETED' ? (
+                      <Button circle title={`Restart ${nag.title} Nag`}>
+                        <Icon resume />
+                      </Button>
+                    ) : nag.status === 'PAUSED' ? (
                       <Button
                         circle
                         title={`Resume ${nag.title} Nag`}

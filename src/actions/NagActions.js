@@ -41,6 +41,11 @@ const dispatchNagDelete = nagId => ({
   nagId
 });
 
+const dispatchNagStatusUpdate = nagId => ({
+  type: types.NAG_STATUS_UPDATE,
+  nagId
+});
+
 const dispatchNagsSearch = query => ({
   type: types.NAGS_SEARCH,
   query
@@ -109,16 +114,23 @@ export const nagUpdate = (nagId, nag) => (dispatch, getState) => {
 
 export const nagPause = nagId => dispatch => {
   dispatch(dispatchNagPause(nagId));
+  dispatch(dispatchNagStatusUpdate(nagId));
   dispatch(nagIndex(true));
 };
 
 export const nagResume = nagId => dispatch => {
   dispatch(dispatchNagResume(nagId));
+  dispatch(dispatchNagStatusUpdate(nagId));
   dispatch(nagIndex(true));
 };
 
 export const nagDelete = nagId => dispatch => {
   dispatch(dispatchNagDelete(nagId));
+  dispatch(nagIndex(true));
+};
+
+export const nagStatusUpdate = nagId => dispatch => {
+  dispatch(dispatchNagStatusUpdate(nagId));
   dispatch(nagIndex(true));
 };
 

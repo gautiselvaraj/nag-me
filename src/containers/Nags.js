@@ -5,7 +5,8 @@ import {
   nagEdit,
   nagPause,
   nagResume,
-  nagDelete
+  nagDelete,
+  nagStatusUpdate
 } from '../actions/NagActions';
 
 const mapStateToProps = state => {
@@ -14,9 +15,10 @@ const mapStateToProps = state => {
   if (visibleList.PAUSED) {
     nags = [...nags, ...visibleList.PAUSED];
   }
-  if (visibleList.COMPLETED) {
-    nags = [...nags, ...visibleList.COMPLETED];
-  }
+  // Hide Completed Nags
+  // if (visibleList.COMPLETED) {
+  //   nags = [...nags, ...visibleList.COMPLETED];
+  // }
 
   return { nags };
 };
@@ -26,7 +28,8 @@ const mapDispatchToProps = dispatch => ({
   nagEdit: nagId => dispatch(nagEdit(nagId)),
   nagPause: nagId => dispatch(nagPause(nagId)),
   nagResume: nagId => dispatch(nagResume(nagId)),
-  nagDelete: nagId => dispatch(nagDelete(nagId))
+  nagDelete: nagId => dispatch(nagDelete(nagId)),
+  nagStatusUpdate: nagId => dispatch(nagStatusUpdate(nagId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nags);

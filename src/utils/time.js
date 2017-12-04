@@ -1,4 +1,5 @@
 import humanizeDuration from 'humanize-duration';
+import moment from 'moment';
 
 export const humanizeNextNag = timestamp => {
   let largest = 1;
@@ -21,4 +22,37 @@ export const nagRepeatText = nagRepeat => {
   return `${number} ${type === 'min' ? 'minute' : type}${
     number === 1 ? '' : 's'
   }`;
+};
+
+export const repeatsToMomentChar = repeatType =>
+  repeatType === 'month' ? 'M' : repeatType[0];
+
+export const updateNextNagTimestamp = (currentNextNag, repeats) => {
+  const [repeatNumber, repeatType] = repeats.split(' ');
+  const momentAddChar = repeatsToMomentChar(repeatType);
+  const nowTimestamp = Date.now();
+  let timestamp = moment(currentNextNag);
+
+  do {
+    timestamp.add(repeatNumber, momentAddChar);
+  } while (timestamp.valueOf() < nowTimestamp);
+  return timestamp.valueOf();
+};
+
+export const setNagStatus = nag => {
+  if (nag.status === 'PAUSED' || nag.status === 'COMPLETED') {
+    return nag;
+  }
+
+  if (Date.now() > nag.nextNag) {
+    if (nag.repeats) {
+      return Object.assign({}, nag, {
+        nextNag: updateNextNagTimestamp(nag.nextNag, nag.repeats)
+      });
+    } else {
+      return Object.assign({}, nag, { status: 'COMPLETED' });
+    }
+  } else {
+    return nag;
+  }
 };

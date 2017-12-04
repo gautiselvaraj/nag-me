@@ -1,5 +1,6 @@
 import { Map, List, fromJS } from 'immutable';
 import * as types from '../constants/Actions';
+import { setNagStatus } from '../utils/time';
 
 const initialState = Map({
   editNagId: null,
@@ -11,7 +12,7 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
-  let nagList;
+  let nagList, nagIndex;
 
   switch (action.type) {
     case types.NAG_INDEX:
@@ -21,6 +22,7 @@ export default (state = initialState, action) => {
           'visibleList',
           state
             .get('list')
+            .map(nag => fromJS(setNagStatus(nag.toJS())))
             .filter(
               nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
             )
@@ -92,6 +94,14 @@ export default (state = initialState, action) => {
       return state.set(
         'list',
         nagList.delete(nagList.findIndex(nag => nag.get('id') === action.nagId))
+      );
+
+    case types.NAG_STATUS_UPDATE:
+      nagList = state.get('list');
+      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
+      return state.setIn(
+        ['list', nagIndex],
+        fromJS(setNagStatus(nagList.get(nagIndex).toJS()))
       );
 
     case types.NAGS_SEARCH:

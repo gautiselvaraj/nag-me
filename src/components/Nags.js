@@ -75,7 +75,8 @@ export default class Nags extends Component {
       nagEdit,
       nagDelete,
       nagResume,
-      nagPause
+      nagPause,
+      nagStatusUpdate
     } = this.props;
     const { initiated } = this.state;
 
@@ -115,6 +116,7 @@ export default class Nags extends Component {
                       nagPause={nagPause}
                       nagResume={nagResume}
                       nagDelete={nagDelete}
+                      nagStatusUpdate={nagStatusUpdate}
                     />
                   </NagsLi>
                 )
