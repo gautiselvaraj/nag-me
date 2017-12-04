@@ -9,9 +9,10 @@ const chromeAlarmAvailable = () =>
 
 export const alarmCreate = (nagTitle, timestamp) => {
   const timeout = timestamp - roundedTimestamp();
+  const delayInMinutes = Math.ceil(timeout / 60000);
 
   if (chromeAlarmAvailable()) {
-    chrome.alarms.create(nagTitle, { when: timeout });
+    chrome.alarms.create(nagTitle, { delayInMinutes });
   } else {
     console.log(
       `No chrome alarm available, using setTimeout and logging for ${nagTitle}`

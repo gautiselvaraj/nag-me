@@ -15,10 +15,16 @@ export const storageSet = (label, value) => {
 
 export const storageGet = (label, callback) => {
   if (chromeStorageAvailable()) {
-    return chrome.storage.sync.get([label], item =>
-      callback(JSON.parse(item[label]))
-    );
+    return chrome.storage.sync.get([label], item => {
+      const nagsFromStorage = item[label];
+      if (nagsFromStorage) {
+        return callback(JSON.parse(nagsFromStorage));
+      }
+    });
   } else if (localStorageAvailable) {
-    return callback(JSON.parse(localStorage.getItem(label)));
+    const nagsFromStorage = localStorage.getItem(label);
+    if (nagsFromStorage) {
+      return callback(JSON.parse(nagsFromStorage));
+    }
   }
 };
