@@ -18,12 +18,12 @@ const Select = styled.select`
   ${props => props.inline ? '' : 'width: 100%;'};
 `;
 
-export default ({children, label, id, ...otherProps}) => (
+export default ({children, handleChange, label, id, ...otherProps}) => (
   <SelectWrap {...otherProps}>
     {!!label &&
       <Label htmlFor={id} {...otherProps}>{label}</Label>
     }
-    <Select id={id} {...otherProps}>
+    <Select onChange={handleChange} id={id} {...otherProps}>
       {children}
     </Select>
   </SelectWrap>

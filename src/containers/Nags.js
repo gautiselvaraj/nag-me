@@ -3,7 +3,7 @@ import Nags from '../components/Nags';
 import {nagNew, nagEdit, nagPause, nagResume, nagDelete} from '../actions/NagActions';
 
 const mapStateToProps = state => ({
-  nags: state.getIn(['nag', 'list']).toJS()
+  nags: state.getIn(['nag', 'visibleList']).toJS()
 });
 
 const mapDispatchToProps = dispatch => ({

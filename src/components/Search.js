@@ -20,8 +20,8 @@ const Search = styled.div`
   }
 `;
 
-export default () => (
+export default ({handleKeyup}) => (
   <Search>
-    <Input type="search" small search placeholder="Search" />
+    <Input type="search" small search placeholder="Search" onKeyUp={handleKeyup} />
   </Search>
 );

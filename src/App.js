@@ -5,7 +5,7 @@ import {TransitionMotion, spring} from 'react-motion';
 import theme from './theme'
 import './global-styles';
 import Header from './containers/Header';
-import SearchSort from './components/SearchSort';
+import SearchSort from './containers/SearchSort';
 import Nags from './containers/Nags';
 import NagForm from './containers/NagForm';
 

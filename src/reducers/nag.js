@@ -3,7 +3,11 @@ import * as types from '../constants/Actions';
 
 const initialState = Map({
   editNagId: null,
-  list: List()
+  list: List(),
+  visibleList: List(),
+  query: null,
+  sortBy: null,
+  paused: false
 });
 
 export default (state = initialState, action) => {
@@ -11,7 +15,33 @@ export default (state = initialState, action) => {
 
   switch (action.type) {
     case types.NAG_INDEX:
-      return state;
+      const query = state.get('query');
+      return state.withMutations(map => {
+        map.set('visibleList', state.get('list').filter(nag =>
+                    state.get('paused') === nag.get('paused') &&
+                    (!query || (new RegExp(query, 'gi')).test(nag.get('title')))
+                  ).sort((a, b) => {
+                    const createdAt = a.get('createdAt') - b.get('createdAt');
+                    const title = a.get('title').localeCompare(b.get('title'));
+                    const nextNag = a.get('nextNag') - b.get('nextNag');
+
+                    switch(state.get('sortBy')) {
+                      case 'latest':
+                        return -createdAt;
+                      case 'oldest':
+                        return createdAt;
+                      case 'ZA':
+                        return -title;
+                      case 'AZ':
+                        return title;
+                      case 'lastNag':
+                        return -nextNag;
+                      default:
+                        return nextNag;
+                    }
+                  })
+                )
+      });
 
     case types.NAG_NEW:
       return state.set('editNagId', null);
@@ -37,6 +67,17 @@ export default (state = initialState, action) => {
     case types.NAG_DELETE:
       nagList = state.get('list');
       return state.set('list', nagList.delete(nagList.findIndex(nag => nag.get('id') === action.nagId)));
+
+    case types.NAGS_SEARCH:
+      return state.set('query', action.query);
+
+    case types.NAGS_SORT:
+      return state.set('sortBy', action.sortBy);
+
+    case types.NAGS_RESET:
+      return state.withMutations(map => {
+        map.set('query', null).set('sortBy', null);
+      });
 
     default:
       return state;

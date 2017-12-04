@@ -40,8 +40,25 @@ const dispatchNagDelete = nagId => ({
   nagId
 });
 
-export const nagIndex = () =>
+const dispatchNagsSearch = query => ({
+  type: types.NAGS_SEARCH,
+  query
+});
+
+const dispatchNagsSort = sortBy => ({
+  type: types.NAGS_SORT,
+  sortBy
+});
+
+const dispatchNagResets = () => ({
+  type: types.NAGS_RESET
+})
+
+export const nagIndex = noReset =>
   dispatch => {
+    if(!noReset) {
+      dispatch(dispatchNagResets());
+    }
     dispatch(dispatchNagIndex());
     dispatch(switchPage('Index'));
   }
@@ -55,7 +72,7 @@ export const nagNew = () =>
 export const nagCreate = nag =>
   dispatch => {
     dispatch(dispatchNagCreate(Object.assign({}, nag, {id: Date.now(), createdAt: Date.now(), paused: false, naggedcount: 0})));
-    dispatch(switchPage('Index'));
+    dispatch(nagIndex());
   };
 
 export const nagEdit = nagId =>
@@ -68,14 +85,35 @@ export const nagUpdate = (nagId, nag) =>
   (dispatch, getState) => {
     const state = getState();
     dispatch(dispatchNagUpdate(nagId, Object.assign({}, state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId).toJS(), nag, {updatedAt: Date.now()})));
-    dispatch(switchPage('Index'));
+    dispatch(nagIndex());
   };
 
 export const nagPause = nagId =>
-  dispatch => dispatch(dispatchNagPause(nagId));
+  dispatch => {
+    dispatch(dispatchNagPause(nagId));
+    dispatch(nagIndex(true));
+  }
 
 export const nagResume = nagId =>
-  dispatch => dispatch(dispatchNagResume(nagId));
+  dispatch => {
+    dispatch(dispatchNagResume(nagId));
+    dispatch(nagIndex(true));
+  }
 
 export const nagDelete = nagId =>
-  dispatch => dispatch(dispatchNagDelete(nagId));
+  dispatch => {
+    dispatch(dispatchNagDelete(nagId));
+    dispatch(nagIndex(true));
+  }
+
+export const nagsSearch = query =>
+  dispatch => {
+    dispatch(dispatchNagsSearch(query));
+    dispatch(nagIndex(true));
+  }
+
+export const nagsSort = sortBy =>
+  dispatch => {
+    dispatch(dispatchNagsSort(sortBy));
+    dispatch(nagIndex(true));
+  }
