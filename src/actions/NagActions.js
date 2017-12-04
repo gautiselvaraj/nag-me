@@ -66,11 +66,6 @@ const dispatchNagResets = () => ({
   type: types.NAGS_RESET
 });
 
-export const nagInit = nag => dispatch => {
-  dispatch(dispatchNagInit(nag));
-  dispatch(nagIndex());
-};
-
 export const nagIndex = noReset => (dispatch, getState) => {
   const state = getState();
   storageSet('nag', state.get('nag').toJS());
@@ -79,6 +74,11 @@ export const nagIndex = noReset => (dispatch, getState) => {
   }
   dispatch(dispatchNagIndex());
   dispatch(switchPage('Index'));
+};
+
+export const nagInit = nag => dispatch => {
+  dispatch(dispatchNagInit(nag));
+  dispatch(nagIndex());
 };
 
 export const nagNew = () => dispatch => {

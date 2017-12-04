@@ -21,36 +21,40 @@ export default (state = initialState, action) => {
     case types.NAG_INDEX:
       const query = state.get('query');
       return state.withMutations(map => {
-        map.set(
-          'visibleList',
-          state
-            .get('list')
-            .map(nag => fromJS(setNagStatus(nag.toJS())))
-            .filter(
-              nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
-            )
-            .sort((a, b) => {
-              const createdAt = a.get('createdAt') - b.get('createdAt');
-              const title = a.get('title').localeCompare(b.get('title'));
-              const nextNag = a.get('nextNag') - b.get('nextNag');
+        map
+          .set(
+            'list',
+            map.get('list').map(nag => fromJS(setNagStatus(nag.toJS())))
+          )
+          .set(
+            'visibleList',
+            map
+              .get('list')
+              .filter(
+                nag => !query || new RegExp(query, 'gi').test(nag.get('title'))
+              )
+              .sort((a, b) => {
+                const createdAt = a.get('createdAt') - b.get('createdAt');
+                const title = a.get('title').localeCompare(b.get('title'));
+                const nextNag = a.get('nextNag') - b.get('nextNag');
 
-              switch (state.get('sortBy')) {
-                case 'latest':
-                  return -createdAt;
-                case 'oldest':
-                  return createdAt;
-                case 'ZA':
-                  return -title;
-                case 'AZ':
-                  return title;
-                case 'lastNag':
-                  return -nextNag;
-                default:
-                  return nextNag;
-              }
-            })
-            .groupBy(nag => nag.get('status'))
-        );
+                switch (state.get('sortBy')) {
+                  case 'latest':
+                    return -createdAt;
+                  case 'oldest':
+                    return createdAt;
+                  case 'ZA':
+                    return -title;
+                  case 'AZ':
+                    return title;
+                  case 'lastNag':
+                    return -nextNag;
+                  default:
+                    return nextNag;
+                }
+              })
+              .groupBy(nag => nag.get('status'))
+          );
       });
 
     case types.NAG_NEW:
