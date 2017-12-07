@@ -7,32 +7,32 @@ let domTimers = {};
 const chromeAlarmAvailable = () =>
   typeof chrome !== 'undefined' && !!chrome.alarms;
 
-export const alarmCreate = (nagTitle, timestamp) => {
+const alarmCreate = (nagId, timestamp) => {
   const timeout = timestamp - roundedTimestamp();
   const delayInMinutes = Math.ceil(timeout / 60000);
 
   if (chromeAlarmAvailable()) {
-    chrome.alarms.create(nagTitle, { delayInMinutes });
+    chrome.alarms.create(nagId.toString(), { delayInMinutes });
   } else {
     console.log(
-      `No chrome alarm available, using setTimeout and logging for ${nagTitle}`
+      `No chrome alarm available, using setTimeout and logging for ${nagId}`
     );
     if (timeout < 2147483647) {
       let timer = setTimeout(() => {
-        console.log(`Timeout Fired for ${nagTitle}`);
+        console.log(`Timeout Fired for ${nagId}`);
       }, timeout);
-      domTimers[nagTitle] = timer;
+      domTimers[nagId] = timer;
     }
   }
 };
 
-export const alarmClear = nagTitle => {
+const alarmClear = nagId => {
   if (chromeAlarmAvailable()) {
-    chrome.alarms.clear(nagTitle);
+    chrome.alarms.clear(nagId);
   } else {
-    console.log(`No chrome alarm available, clearing timeout for ${nagTitle}`);
-    clearTimeout(domTimers[nagTitle]);
-    delete domTimers[nagTitle];
+    console.log(`No chrome alarm available, clearing timeout for ${nagId}`);
+    clearTimeout(domTimers[nagId]);
+    delete domTimers[nagId];
   }
 };
 
@@ -45,3 +45,14 @@ export const alarmClearAll = () => {
     domTimers = {};
   }
 };
+
+export const clearAndSetAllAlarm = nagList => {
+  alarmClearAll();
+  nagList
+    .filter(nag => nag.status === 'LIVE')
+    .forEach(nag => alarmCreate(nag.id, nag.nextNag));
+};
+
+export const setAlarm = nag => alarmCreate(nag.id, nag.nextNag);
+
+export const clearAlarm = nag => alarmClear(nag.id);

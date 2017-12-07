@@ -1,12 +1,11 @@
 import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
 import { storageSet } from '../utils/storage';
-import { alarmCreate, alarmClear, alarmClearAll } from '../utils/alarm';
 import { roundedTimestamp } from '../utils/time';
 
-const dispatchNagInit = nag => ({
+const dispatchNagInit = nags => ({
   type: types.NAG_INIT,
-  nag
+  nags
 });
 
 const dispatchNagIndex = () => ({
@@ -68,28 +67,6 @@ const dispatchNagResets = () => ({
   type: types.NAGS_RESET
 });
 
-const clearAndSetAllAlarm = state => {
-  alarmClearAll();
-  state
-    .getIn(['nag', 'list'])
-    .toJS()
-    .filter(nag => nag.status === 'LIVE')
-    .forEach(nag => alarmCreate(nag.title, nag.nextNag));
-};
-
-const setAlarmForId = (nagId, state) => {
-  const nag = state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId);
-  alarmCreate(nag.get('title'), nag.get('nextNag'));
-};
-
-const clearAlarmForId = (nagId, state) =>
-  alarmClear(
-    state
-      .getIn(['nag', 'list'])
-      .find(nag => nag.get('id') === nagId)
-      .get('title')
-  );
-
 export const nagIndex = noReset => (dispatch, getState) => {
   const state = getState();
   storageSet('nag', state.get('nag').toJS());
@@ -100,10 +77,9 @@ export const nagIndex = noReset => (dispatch, getState) => {
   dispatch(switchPage('Index'));
 };
 
-export const nagInit = nag => (dispatch, getState) => {
-  dispatch(dispatchNagInit(nag));
+export const nagInit = nags => dispatch => {
+  dispatch(dispatchNagInit(nags));
   dispatch(nagIndex());
-  clearAndSetAllAlarm(getState());
 };
 
 export const nagNew = () => dispatch => {
@@ -111,7 +87,7 @@ export const nagNew = () => dispatch => {
   dispatch(switchPage('NagForm'));
 };
 
-export const nagCreate = nag => (dispatch, getState) => {
+export const nagCreate = nag => dispatch => {
   const timestamp = roundedTimestamp();
 
   dispatch(
@@ -126,7 +102,6 @@ export const nagCreate = nag => (dispatch, getState) => {
     )
   );
   dispatch(nagIndex());
-  setAlarmForId(timestamp, getState());
 };
 
 export const nagEdit = nagId => dispatch => {
@@ -151,39 +126,26 @@ export const nagUpdate = (nagId, nag) => (dispatch, getState) => {
     )
   );
   dispatch(nagIndex());
-
-  state = getState();
-  clearAlarmForId(nagId, state);
-  setAlarmForId(nagId, state);
 };
 
-export const nagPause = nagId => (dispatch, getState) => {
+export const nagPause = nagId => dispatch => {
   dispatch(dispatchNagPause(nagId));
   dispatch(nagIndex(true));
-  clearAlarmForId(nagId, getState());
 };
 
-export const nagResume = nagId => (dispatch, getState) => {
+export const nagResume = nagId => dispatch => {
   dispatch(dispatchNagResume(nagId));
   dispatch(nagIndex(true));
-  setAlarmForId(nagId, getState());
 };
 
-export const nagDelete = nagId => (dispatch, getState) => {
-  clearAlarmForId(nagId, getState());
+export const nagDelete = nagId => dispatch => {
   dispatch(dispatchNagDelete(nagId));
   dispatch(nagIndex(true));
 };
 
-export const nagStatusUpdate = nagId => (dispatch, getState) => {
+export const nagStatusUpdate = nagId => dispatch => {
   dispatch(dispatchNagStatusUpdate(nagId));
   dispatch(nagIndex(true));
-
-  setTimeout(() => {
-    const state = getState();
-    clearAlarmForId(nagId, state);
-    setAlarmForId(nagId, state);
-  });
 };
 
 export const nagsSearch = query => dispatch => {
