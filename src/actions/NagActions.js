@@ -3,9 +3,9 @@ import { switchPage } from './PageActions';
 import { storageSet } from '../utils/storage';
 import { roundedTimestamp } from '../utils/time';
 
-const dispatchNagInit = nags => ({
+const dispatchNagInit = nag => ({
   type: types.NAG_INIT,
-  nags
+  nag
 });
 
 const dispatchNagIndex = () => ({
@@ -77,8 +77,8 @@ export const nagIndex = noReset => (dispatch, getState) => {
   dispatch(switchPage('Index'));
 };
 
-export const nagInit = nags => dispatch => {
-  dispatch(dispatchNagInit(nags));
+export const nagInit = nag => dispatch => {
+  dispatch(dispatchNagInit(nag));
   dispatch(nagIndex());
 };
 

@@ -1,5 +1,5 @@
 import { setNagStatus } from './utils/time';
-import { clearAndSetAllAlarm, setAlarm } from './utils/alarm';
+import { clearAndSetAllAlarms, setAlarm } from './utils/alarm';
 import { storageGet, storageSet } from './utils/storage';
 
 const getStoredNagList = callback => {
@@ -11,7 +11,7 @@ const setAllAlarms = () => {
     if (nag.list.length) {
       nag.list = nag.list.map(n => setNagStatus(n));
       storageSet('nag', nag);
-      clearAndSetAllAlarm(nag.list);
+      clearAndSetAllAlarms(nag.list);
     }
   });
 };

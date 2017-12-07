@@ -11,12 +11,12 @@ const alarmClear = nagId => {
   chrome.alarms.clear(nagId);
 };
 
-export const alarmClearAll = () => {
+export const clearAllAlarms = () => {
   chrome.alarms.clearAll();
 };
 
-export const clearAndSetAllAlarm = nagList => {
-  alarmClearAll();
+export const clearAndSetAllAlarms = nagList => {
+  clearAllAlarms();
   nagList
     .filter(nag => nag.status === 'LIVE')
     .forEach(nag => alarmCreate(nag.id, nag.nextNag));
