@@ -1,6 +1,5 @@
 import { Map, List, fromJS } from 'immutable';
 import * as types from '../constants/Actions';
-import { setNagStatus } from '../utils/time';
 
 const initialState = Map({
   editNagId: null,
@@ -12,13 +11,11 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
-  let nagList, nagIndex, nag;
+  let nagList, nagIndex;
 
   switch (action.type) {
     case types.NAG_INIT:
-      nag = action.nag;
-      nag.list = nag.list.map(n => setNagStatus(n));
-      return fromJS(nag);
+      return fromJS(action.nag);
 
     case types.NAG_INDEX:
       const query = state.get('query');
@@ -67,22 +64,28 @@ export default (state = initialState, action) => {
           'list',
           state.get('list').findIndex(nag => nag.get('id') === action.nagId)
         ],
-        fromJS(setNagStatus(action.nag))
+        fromJS(action.nag)
       );
 
     case types.NAG_PAUSE:
       nagList = state.get('list');
-      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
-      nag = nagList.get(nagIndex).toJS();
-      nag.status = 'PAUSED';
-      return state.setIn(['list', nagIndex], fromJS(setNagStatus(nag)));
+      return state.set(
+        'list',
+        nagList.setIn(
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
+          'PAUSED'
+        )
+      );
 
     case types.NAG_RESUME:
       nagList = state.get('list');
-      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
-      nag = nagList.get(nagIndex).toJS();
-      nag.status = 'LIVE';
-      return state.setIn(['list', nagIndex], fromJS(setNagStatus(nag)));
+      return state.set(
+        'list',
+        nagList.setIn(
+          [nagList.findIndex(nag => nag.get('id') === action.nagId), 'status'],
+          'LIVE'
+        )
+      );
 
     case types.NAG_DELETE:
       nagList = state.get('list');
@@ -92,11 +95,12 @@ export default (state = initialState, action) => {
       );
 
     case types.NAG_STATUS_UPDATE:
-      nagList = state.get('list');
-      nagIndex = nagList.findIndex(nag => nag.get('id') === action.nagId);
       return state.setIn(
-        ['list', nagIndex],
-        fromJS(setNagStatus(nagList.get(nagIndex).toJS()))
+        [
+          'list',
+          state.get('list').findIndex(nag => nag.get('id') === action.nag.id)
+        ],
+        fromJS(action.nag)
       );
 
     case types.NAGS_SEARCH:

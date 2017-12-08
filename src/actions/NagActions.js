@@ -1,7 +1,7 @@
 import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
 import { storageSet } from '../utils/storage';
-import { roundedTimestamp } from '../utils/time';
+import { roundedTimestamp, setNagStatus } from '../utils/time';
 
 const dispatchNagInit = nag => ({
   type: types.NAG_INIT,
@@ -48,9 +48,9 @@ const dispatchNagDelete = nagId => ({
   nagId
 });
 
-const dispatchNagStatusUpdate = nagId => ({
+const dispatchNagStatusUpdate = nag => ({
   type: types.NAG_STATUS_UPDATE,
-  nagId
+  nag
 });
 
 const dispatchNagsSearch = query => ({
@@ -78,6 +78,7 @@ export const nagIndex = noReset => (dispatch, getState) => {
 };
 
 export const nagInit = nag => dispatch => {
+  nag.list = nag.list.map(n => setNagStatus(n));
   dispatch(dispatchNagInit(nag));
   dispatch(nagIndex());
 };
@@ -110,44 +111,55 @@ export const nagEdit = nagId => dispatch => {
 };
 
 export const nagUpdate = (nagId, nag) => (dispatch, getState) => {
-  let state = getState();
+  const state = getState();
   dispatch(
     dispatchNagUpdate(
       nagId,
-      Object.assign(
-        {},
-        state
-          .getIn(['nag', 'list'])
-          .find(nag => nag.get('id') === nagId)
-          .toJS(),
-        nag,
-        { updatedAt: roundedTimestamp() }
+      setNagStatus(
+        Object.assign(
+          {},
+          state
+            .getIn(['nag', 'list'])
+            .find(nag => nag.get('id') === nagId)
+            .toJS(),
+          nag,
+          { updatedAt: roundedTimestamp() }
+        )
       )
     )
   );
   dispatch(nagIndex());
 };
 
+export const nagStatusUpdate = nagId => (dispatch, getState) => {
+  const state = getState();
+  dispatch(
+    dispatchNagStatusUpdate(
+      setNagStatus(
+        state
+          .getIn(['nag', 'list'])
+          .find(nag => nag.get('id') === nagId)
+          .toJS()
+      )
+    )
+  );
+  dispatch(nagIndex(true));
+};
+
 export const nagPause = nagId => dispatch => {
   dispatch(dispatchNagPause(nagId));
-  dispatch(nagIndex(true));
+  dispatch(nagStatusUpdate(nagId));
 };
 
 export const nagResume = nagId => dispatch => {
   dispatch(dispatchNagResume(nagId));
-  dispatch(nagIndex(true));
+  dispatch(nagStatusUpdate(nagId));
 };
 
 export const nagDelete = nagId => dispatch => {
   dispatch(dispatchNagDelete(nagId));
   dispatch(nagIndex(true));
 };
-
-export const nagStatusUpdate = nagId => dispatch => {
-  dispatch(dispatchNagStatusUpdate(nagId));
-  dispatch(nagIndex(true));
-};
-
 export const nagsSearch = query => dispatch => {
   dispatch(dispatchNagsSearch(query));
   dispatch(nagIndex(true));
