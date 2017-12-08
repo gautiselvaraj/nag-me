@@ -11,7 +11,7 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
-  let nagList, nagIndex;
+  let nagList;
 
   switch (action.type) {
     case types.NAG_INIT:

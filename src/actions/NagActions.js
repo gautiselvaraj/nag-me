@@ -1,3 +1,5 @@
+/*global chrome*/
+
 import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
 import { storageSet } from '../utils/storage';
@@ -67,6 +69,14 @@ const dispatchNagResets = () => ({
   type: types.NAGS_RESET
 });
 
+const updateBackground = (nagId, state) =>
+  chrome.runtime.sendMessage({
+    nag: state
+      .getIn(['nag', 'list'])
+      .find(nag => nag.get('id') === nagId)
+      .toJS()
+  });
+
 export const nagIndex = noReset => (dispatch, getState) => {
   const state = getState();
   storageSet('nag', state.get('nag').toJS());
@@ -88,7 +98,7 @@ export const nagNew = () => dispatch => {
   dispatch(switchPage('NagForm'));
 };
 
-export const nagCreate = nag => dispatch => {
+export const nagCreate = nag => (dispatch, getState) => {
   const timestamp = roundedTimestamp();
 
   dispatch(
@@ -98,11 +108,12 @@ export const nagCreate = nag => dispatch => {
         createdAt: timestamp,
         status: 'LIVE',
         naggedCount: 0,
-        updatedAt: null
+        updatedAt: timestamp
       })
     )
   );
   dispatch(nagIndex());
+  updateBackground(timestamp, getState());
 };
 
 export const nagEdit = nagId => dispatch => {
@@ -129,6 +140,7 @@ export const nagUpdate = (nagId, nag) => (dispatch, getState) => {
     )
   );
   dispatch(nagIndex());
+  updateBackground(nagId, getState());
 };
 
 export const nagStatusUpdate = nagId => (dispatch, getState) => {
@@ -136,30 +148,38 @@ export const nagStatusUpdate = nagId => (dispatch, getState) => {
   dispatch(
     dispatchNagStatusUpdate(
       setNagStatus(
-        state
-          .getIn(['nag', 'list'])
-          .find(nag => nag.get('id') === nagId)
-          .toJS()
+        Object.assign(
+          {},
+          state
+            .getIn(['nag', 'list'])
+            .find(nag => nag.get('id') === nagId)
+            .toJS(),
+          { updatedAt: roundedTimestamp() }
+        )
       )
     )
   );
   dispatch(nagIndex(true));
 };
 
-export const nagPause = nagId => dispatch => {
+export const nagPause = nagId => (dispatch, getState) => {
   dispatch(dispatchNagPause(nagId));
   dispatch(nagStatusUpdate(nagId));
+  updateBackground(nagId, getState());
 };
 
-export const nagResume = nagId => dispatch => {
+export const nagResume = nagId => (dispatch, getState) => {
   dispatch(dispatchNagResume(nagId));
   dispatch(nagStatusUpdate(nagId));
+  updateBackground(nagId, getState());
 };
 
-export const nagDelete = nagId => dispatch => {
+export const nagDelete = nagId => (dispatch, getState) => {
   dispatch(dispatchNagDelete(nagId));
   dispatch(nagIndex(true));
+  chrome.runtime.sendMessage({ nagDeleted: true, nagId });
 };
+
 export const nagsSearch = query => dispatch => {
   dispatch(dispatchNagsSearch(query));
   dispatch(nagIndex(true));
