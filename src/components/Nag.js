@@ -5,7 +5,8 @@ import { StaggeredMotion, spring } from 'react-motion';
 import {
   humanizeNextNag,
   nagRepeatText,
-  roundedTimestamp
+  roundedTimestamp,
+  progressCheck
 } from '../utils/time';
 import Button from './Button';
 import Icon from './Icon';
@@ -15,21 +16,22 @@ const NagWrap = styled.div`
     props.paused
       ? props.theme.greyLighter
       : props.completed ? props.theme.greyLight : '#ffffff'};
-  border: 2px solid transparent;
   border-radius: 4px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
   padding: 10px;
+  position: relative;
   user-select: none;
   will-change: transform;
 `;
 
 const NagHeading = styled.h3`
-  font-size: 1.15rem;
+  color: ${props => props.theme.main};
+  font-size: 1.2rem;
   margin: 0;
 `;
 
 const NagTimer = styled.p`
-  color: ${props => props.theme.greyDarker};
+  color: ${props => props.theme.greyDarkest};
   font-size: 0.85rem;
   margin-bottom: 0;
   margin-top: 5px;
@@ -48,6 +50,16 @@ const NagStatus = styled.p`
   font-weight: bold;
   margin-bottom: 0;
   margin-top: 5px;
+`;
+
+const NagProgress = styled.div`
+  background-color: ${props => props.theme.mainLighten};
+  bottom: 0;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  transition: width 1s;
+  will-change: width;
 `;
 
 const NagEditLink = styled.div`
@@ -183,6 +195,9 @@ export default class Nag extends Component {
                     {nag.status === 'PAUSED' && <NagStatus>Paused</NagStatus>}
                     {nag.status === 'COMPLETED' && (
                       <NagStatus>Completed</NagStatus>
+                    )}
+                    {nag.status === 'LIVE' && (
+                      <NagProgress style={{ width: progressCheck(nag) }} />
                     )}
                   </NagWrap>
                 )}

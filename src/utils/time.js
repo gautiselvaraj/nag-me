@@ -22,14 +22,14 @@ export const humanizeNextNag = timestamp => {
 export const nagRepeatText = nagRepeat => {
   const [number, type] = nagRepeat.split(' ');
   return `${number} ${type === 'min' ? 'minute' : type}${
-    number === 1 ? '' : 's'
+    parseInt(number, 10) === 1 ? '' : 's'
   }`;
 };
 
 export const repeatsToMomentChar = repeatType =>
   repeatType === 'month' ? 'M' : repeatType[0];
 
-export const updateNextNagTimestamp = (currentNextNag, repeats) => {
+export const nextNagTimestamp = (currentNextNag, repeats) => {
   const [repeatNumber, repeatType] = repeats.split(' ');
   const momentAddChar = repeatsToMomentChar(repeatType);
   const nowTimestamp = roundedTimestamp();
@@ -41,6 +41,15 @@ export const updateNextNagTimestamp = (currentNextNag, repeats) => {
   return timestamp.valueOf();
 };
 
+export const previousNagTimestamp = (nextNag, repeats) => {
+  const [repeatNumber, repeatType] = repeats.split(' ');
+  const momentAddChar = repeatsToMomentChar(repeatType);
+
+  return moment(nextNag)
+    .subtract(repeatNumber, momentAddChar)
+    .valueOf();
+};
+
 export const setNagStatus = nag => {
   if (nag.status === 'PAUSED' || nag.status === 'COMPLETED') {
     return nag;
@@ -49,7 +58,7 @@ export const setNagStatus = nag => {
   if (roundedTimestamp() >= nag.nextNag) {
     if (nag.repeats) {
       return Object.assign({}, nag, {
-        nextNag: updateNextNagTimestamp(nag.nextNag, nag.repeats)
+        nextNag: nextNagTimestamp(nag.nextNag, nag.repeats)
       });
     } else {
       return Object.assign({}, nag, { status: 'COMPLETED' });
@@ -57,4 +66,13 @@ export const setNagStatus = nag => {
   } else {
     return nag;
   }
+};
+
+export const progressCheck = nag => {
+  const previousNag = nag.repeats
+    ? previousNagTimestamp(nag.nextNag, nag.repeats)
+    : nag.firstNag;
+  const total = nag.nextNag - previousNag;
+  const part = roundedTimestamp() - previousNag;
+  return `${part / total * 100}%`;
 };
