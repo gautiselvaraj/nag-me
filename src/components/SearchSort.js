@@ -19,7 +19,7 @@ const SearchWrap = styled.div`
 
 const SortWrap = styled.div`
   color: ${props => props.theme.greyDark};
-  margin-left: 10px;
+  margin-left: 5px;
 `;
 
 export default class SearchSort extends Component {

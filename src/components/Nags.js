@@ -19,7 +19,7 @@ const NoNag = styled.div`
 const NagsUl = styled.ul`
   list-style-type: none;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 0.5rem;
   will-change: transform;
 `;

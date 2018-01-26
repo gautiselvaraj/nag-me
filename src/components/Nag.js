@@ -53,9 +53,9 @@ const NagStatus = styled.p`
 `;
 
 const NagProgress = styled.div`
-  background-color: ${props => props.theme.mainLighten};
+  border-top: 3px solid ${props => props.theme.mainLighten};
+  border-radius: 0 0 3px 3px;
   bottom: 0;
-  height: 3px;
   left: 0;
   position: absolute;
   transition: width 1s;
