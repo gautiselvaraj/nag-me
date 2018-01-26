@@ -7,6 +7,7 @@ import Select from './Select';
 import Button from './Button';
 import Icon from './Icon';
 import H3 from './H3';
+import NagSuggest from '../containers/NagSuggest';
 import { roundedTimestamp } from '../utils/time';
 
 const NagFormWrap = styled.form`
@@ -208,6 +209,7 @@ export default class NagForm extends Component {
               Start Nagging
             </Button>
           </ButtonSpacer>
+          <NagSuggest title="Or choose from nags below" />
         </NagFormWrap>
       </div>
     );

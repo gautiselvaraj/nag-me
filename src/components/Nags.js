@@ -5,10 +5,11 @@ import { StaggeredMotion, spring } from 'react-motion';
 import Nag from './Nag';
 import Button from './Button';
 import H3 from './H3';
+import NagSuggest from '../containers/NagSuggest';
 
 const NoNag = styled.div`
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   text-align: center;
 
   h3 {
@@ -89,6 +90,7 @@ export default class Nags extends Component {
         <NoNag>
           <H3>Nothing to nag about</H3>
           <Button onClick={nagNew}>Start your first Nag</Button>
+          <NagSuggest />
         </NoNag>
       );
     }

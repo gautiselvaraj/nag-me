@@ -42,7 +42,7 @@ let Header = ({ nagIndex, nagNew }) => (
       </Button>
     </Heading>
     <Link>
-      <Button reset title="Add new Nag" onClick={() => nagNew()}>
+      <Button reset title="Add new nag" onClick={() => nagNew()}>
         <Icon inverse add />
       </Button>
     </Link>
