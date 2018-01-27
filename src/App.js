@@ -6,7 +6,6 @@ import { TransitionMotion, spring } from 'react-motion';
 import theme from './theme';
 import './global-styles';
 import Header from './containers/Header';
-import SearchSort from './containers/SearchSort';
 import Nags from './containers/Nags';
 import NagForm from './containers/NagForm';
 import { storageGet } from './utils/storage';
@@ -84,12 +83,7 @@ class App extends Component {
                     }}
                     key={key}
                   >
-                    {key === 'Index' && (
-                      <div>
-                        <SearchSort />
-                        <Nags />
-                      </div>
-                    )}
+                    {key === 'Index' && <Nags />}
                     {key === 'NagForm' && <NagForm />}
                   </AnimateChild>
                 ))}

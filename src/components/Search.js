@@ -22,6 +22,6 @@ const Search = styled.div`
 
 export default props => (
   <Search>
-    <Input type="search" small search placeholder="Search" {...props} />
+    <Input type="search" small placeholder="Search" {...props} />
   </Search>
 );

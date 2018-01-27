@@ -107,14 +107,14 @@ export default class NagForm extends Component {
     if (!title || !on) {
       this.setState({
         titleError: !title ? 'Nag title is required' : null,
-        onError: !on ? 'Nag on is required' : null
+        onError: !on ? 'Nag from is required' : null
       });
       return false;
     }
 
     if (on < roundedTimestamp()) {
       this.setState({
-        onError: 'Nag on should be in future'
+        onError: 'Nag from should be in future'
       });
       return false;
     }
@@ -136,7 +136,7 @@ export default class NagForm extends Component {
   };
 
   render() {
-    const { nagIndex, editNagId, editNag } = this.props;
+    const { nagIndex, editNagId } = this.props;
     const { title, on, repeats, titleError, onError } = this.state;
 
     return (
@@ -148,7 +148,7 @@ export default class NagForm extends Component {
             </Button>
           </BackLink>
           <Heading>
-            <H3>{!!editNagId ? `Edit ${editNag.title}` : 'Create new Nag'}</H3>
+            <H3>{!!editNagId ? `Edit nag` : 'Create a nag'}</H3>
           </Heading>
           <BackLink />
         </NagFormHeader>
@@ -160,7 +160,7 @@ export default class NagForm extends Component {
               type="text"
               name="title"
               id="nag_title"
-              label="What to Nag about?"
+              label="What to nag about?"
               error={titleError}
               onChange={this.handleInputChange}
             />
@@ -172,7 +172,7 @@ export default class NagForm extends Component {
                   id="nag_on"
                   {...props}
                   readOnly
-                  label="Nag on"
+                  label="Nag from"
                   name="on"
                   error={onError}
                 />
@@ -189,7 +189,7 @@ export default class NagForm extends Component {
             <Select
               name="repeats"
               id="nag_repeats"
-              label="Nag every"
+              label="Repeat every"
               value={repeats}
               onChange={this.handleInputChange}
             >
@@ -206,10 +206,10 @@ export default class NagForm extends Component {
           </Spacer>
           <ButtonSpacer>
             <Button block type="submit">
-              Start Nagging
+              {!!editNagId ? `Update Nag` : 'Start Nagging'}
             </Button>
           </ButtonSpacer>
-          <NagSuggest title="Or choose from nags below" />
+          {!editNagId && <NagSuggest />}
         </NagFormWrap>
       </div>
     );

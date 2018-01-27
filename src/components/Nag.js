@@ -22,6 +22,8 @@ const NagWrap = styled.div`
   position: relative;
   user-select: none;
   will-change: transform;
+  ${props =>
+    props.paused ? '' : `border-bottom: 3px solid ${props.theme.greyLightest}`};
 `;
 
 const NagHeading = styled.h3`
@@ -53,9 +55,9 @@ const NagStatus = styled.p`
 `;
 
 const NagProgress = styled.div`
-  border-top: 3px solid ${props => props.theme.mainLighten};
+  border-top: 3px solid #6e8ea1;
   border-radius: 0 0 3px 3px;
-  bottom: 0;
+  bottom: -3px;
   left: 0;
   position: absolute;
   transition: width 1s;
@@ -197,7 +199,7 @@ export default class Nag extends Component {
                       <NagStatus>Completed</NagStatus>
                     )}
                     {nag.status === 'LIVE' && (
-                      <NagProgress style={{ width: progressCheck(nag) }} />
+                      <NagProgress style={{ width: progressCheck(nag) }} type />
                     )}
                   </NagWrap>
                 )}
@@ -210,7 +212,7 @@ export default class Nag extends Component {
                   >
                     <Button
                       circle
-                      title={`Edit ${nag.title} Nag`}
+                      title={`Edit`}
                       onClick={() => nagEdit(nag.id)}
                     >
                       <Icon edit />
@@ -226,7 +228,7 @@ export default class Nag extends Component {
                   >
                     <Button
                       circle
-                      title={`Delete ${nag.title} Nag`}
+                      title={`Delete`}
                       onClick={() => nagDelete(nag.id)}
                     >
                       <Icon delete />
@@ -241,13 +243,13 @@ export default class Nag extends Component {
                     }}
                   >
                     {nag.status === 'COMPLETED' ? (
-                      <Button circle title={`Restart ${nag.title} Nag`}>
+                      <Button circle title={`Restart`}>
                         <Icon resume />
                       </Button>
                     ) : nag.status === 'PAUSED' ? (
                       <Button
                         circle
-                        title={`Resume ${nag.title} Nag`}
+                        title={`Resume`}
                         onClick={() => nagResume(nag.id)}
                       >
                         <Icon resume />
@@ -255,7 +257,7 @@ export default class Nag extends Component {
                     ) : (
                       <Button
                         circle
-                        title={`Pause ${nag.title} Nag`}
+                        title={`Pause`}
                         onClick={() => nagPause(nag.id)}
                       >
                         <Icon pause />

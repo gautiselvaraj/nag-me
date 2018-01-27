@@ -9,7 +9,6 @@ const SelectWrap = styled.div`
 
 const Select = styled.select`
   border: 1px solid ${props => props.theme.greyLighter};
-  border-radius: '5px';
   box-sizing: border-box;
   font-size: ${props => (props.small ? '.85rem' : '1rem')};
   height: ${props => (props.small ? '1.5rem' : '2rem')};

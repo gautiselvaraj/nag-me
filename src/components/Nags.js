@@ -6,6 +6,7 @@ import Nag from './Nag';
 import Button from './Button';
 import H3 from './H3';
 import NagSuggest from '../containers/NagSuggest';
+import SearchSort from '../containers/SearchSort';
 
 const NoNag = styled.div`
   margin-bottom: 20px;
@@ -89,43 +90,46 @@ export default class Nags extends Component {
       return (
         <NoNag>
           <H3>Nothing to nag about</H3>
-          <Button onClick={nagNew}>Start your first Nag</Button>
+          <Button onClick={nagNew}>Create your first Nag</Button>
           <NagSuggest />
         </NoNag>
       );
     }
 
     return (
-      <StaggeredMotion
-        defaultStyles={Array.from(Array(nags.length)).map(i => ({ t: 100 }))}
-        styles={this.getInterpolatedStyles}
-      >
-        {interpolatingStyles => (
-          <NagsUl>
-            {interpolatingStyles.map(
-              ({ t }, i) =>
-                !!nags[i] && (
-                  <NagsLi
-                    style={{
-                      WebkitTransform: `translateY(${t}px)`,
-                      transform: `translateY(${t}px)`
-                    }}
-                    key={nags[i].id}
-                  >
-                    <Nag
-                      nag={nags[i]}
-                      nagEdit={nagEdit}
-                      nagPause={nagPause}
-                      nagResume={nagResume}
-                      nagDelete={nagDelete}
-                      nagStatusUpdate={nagStatusUpdate}
-                    />
-                  </NagsLi>
-                )
-            )}
-          </NagsUl>
-        )}
-      </StaggeredMotion>
+      <div>
+        <SearchSort />
+        <StaggeredMotion
+          defaultStyles={Array.from(Array(nags.length)).map(i => ({ t: 100 }))}
+          styles={this.getInterpolatedStyles}
+        >
+          {interpolatingStyles => (
+            <NagsUl>
+              {interpolatingStyles.map(
+                ({ t }, i) =>
+                  !!nags[i] && (
+                    <NagsLi
+                      style={{
+                        WebkitTransform: `translateY(${t}px)`,
+                        transform: `translateY(${t}px)`
+                      }}
+                      key={nags[i].id}
+                    >
+                      <Nag
+                        nag={nags[i]}
+                        nagEdit={nagEdit}
+                        nagPause={nagPause}
+                        nagResume={nagResume}
+                        nagDelete={nagDelete}
+                        nagStatusUpdate={nagStatusUpdate}
+                      />
+                    </NagsLi>
+                  )
+              )}
+            </NagsUl>
+          )}
+        </StaggeredMotion>
+      </div>
     );
   }
 }

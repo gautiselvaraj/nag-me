@@ -15,7 +15,7 @@ const InputError = styled.div`
 
 const Input = styled.input`
   border: 1px solid ${props => (props.error ? 'red' : props.theme.greyLighter)};
-  border-radius: ${props => (props.search ? '1rem' : '5px')};
+  border-radius: 5px;
   box-sizing: border-box;
   font-size: ${props => (props.small ? '.85rem' : '1rem')};
   height: ${props => (props.small ? '1.5rem' : '2rem')};
