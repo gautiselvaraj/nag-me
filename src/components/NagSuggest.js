@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { StaggeredMotion, spring } from 'react-motion';
 import Button from './Button';
 import Icon from './Icon';
 import H5 from './H5';
@@ -49,36 +50,59 @@ const SuggestNagsButton = styled.div`
   top: 10px;
 `;
 
+const nagsSuggestSpring = { stiffness: 120, damping: 16 };
+
 export default class NagForm extends Component {
   static propTypes = {
-    title: PropTypes.string,
     nagCreate: PropTypes.func.isRequired
   };
 
   state = {
-    nags: [
+    initiated: false,
+    nagsSuggest: [
       {
-        title: 'Blink, relax your eyes',
-        repeats: '15 min'
-      },
-      {
-        title: 'Take a sip of water',
+        id: 1,
+        title: 'Drink water',
         repeats: '20 min'
       },
       {
+        id: 2,
+        title: 'Relax your eyes',
+        repeats: '30 min'
+      },
+      {
+        id: 3,
         title: 'Take a deep breath',
         repeats: '1 hour'
       },
       {
-        title: 'See a video and smile',
-        repeats: '2 hour'
+        id: 4,
+        title: 'Remember to smile',
+        repeats: '4 hour'
       },
       {
-        title: 'Take a walk',
-        repeats: '4 hour'
+        id: 5,
+        title: 'Go for a walk',
+        repeats: '8 hour'
       }
     ]
   };
+
+  getInterpolatedStyles = prevInterpolatedStyles => {
+    const endValue = prevInterpolatedStyles.map((_, i) => {
+      return i === 0
+        ? { t: spring(0, nagsSuggestSpring) }
+        : { t: spring(prevInterpolatedStyles[i - 1].t, nagsSuggestSpring) };
+    });
+    return endValue;
+  };
+
+  componentDidMount() {
+    this.timeoutTimer = setTimeout(
+      () => this.setState({ initiated: true }),
+      225
+    );
+  }
 
   handleNagCreate = (e, { title, repeats }) => {
     const on = nextNagTimestamp(roundedTimestamp(), repeats);
@@ -91,28 +115,49 @@ export default class NagForm extends Component {
   };
 
   render() {
+    const { initiated, nagsSuggest } = this.state;
+
+    if (!initiated) {
+      return null;
+    }
+
     return (
       <div>
         <SuggestNagsHeading>
-          <H5>{this.props.title || 'Or start with nags below'}</H5>
+          <H5>Or try the nags below</H5>
         </SuggestNagsHeading>
-        <SuggestNagsUl>
-          {this.state.nags.map(nag => (
-            <SuggestNagsLi key={nag.title}>
-              <H6>{nag.title}</H6>
-              <SuggestNagsRepeat>repeats every {nag.repeats}</SuggestNagsRepeat>
-              <SuggestNagsButton>
-                <Button
-                  circle
-                  title="Add this nag"
-                  onClick={e => this.handleNagCreate(e, nag)}
+        <StaggeredMotion
+          defaultStyles={nagsSuggest.map(i => ({ t: 100 }))}
+          styles={this.getInterpolatedStyles}
+        >
+          {interpolatingStyles => (
+            <SuggestNagsUl>
+              {interpolatingStyles.map(({ t }, i) => (
+                <SuggestNagsLi
+                  style={{
+                    WebkitTransform: `translateY(${t}px)`,
+                    transform: `translateY(${t}px)`
+                  }}
+                  key={nagsSuggest[i].id}
                 >
-                  <Icon inverse add />
-                </Button>
-              </SuggestNagsButton>
-            </SuggestNagsLi>
-          ))}
-        </SuggestNagsUl>
+                  <H6>{nagsSuggest[i].title}</H6>
+                  <SuggestNagsRepeat>
+                    repeats every {nagsSuggest[i].repeats}
+                  </SuggestNagsRepeat>
+                  <SuggestNagsButton>
+                    <Button
+                      circle
+                      title="Start this nag"
+                      onClick={e => this.handleNagCreate(e, nagsSuggest[i])}
+                    >
+                      <Icon inverse add />
+                    </Button>
+                  </SuggestNagsButton>
+                </SuggestNagsLi>
+              ))}
+            </SuggestNagsUl>
+          )}
+        </StaggeredMotion>
       </div>
     );
   }
