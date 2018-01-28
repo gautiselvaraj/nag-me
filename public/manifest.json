@@ -1,8 +1,10 @@
 {
   "name": "Nag Me",
-  "description": "Yet another Chrome extension that reminds you to do stuffs",
-  "version": "1.0",
+  "description": "Nag me notify users of routined tasks. Nag me notifications are soft (doesn't ring and also closes itself) so use it for low priority tasks only.",
+  "version": "1.0.0",
   "manifest_version": 2,
+  "homepage_url": "https://www.gauti.info/nag-me",
+  "author": "Gauti Selvaraj",
   "permissions": ["alarms", "notifications", "storage"],
   "background": {
     "scripts": ["background.js"],
