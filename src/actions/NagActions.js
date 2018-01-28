@@ -69,13 +69,12 @@ const dispatchNagResets = () => ({
   type: types.NAGS_RESET
 });
 
-const updateBackground = (nagId, state) =>
+const updateBackground = (nagId, state) => {
+  const nag = state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId);
   chrome.runtime.sendMessage({
-    nag: state
-      .getIn(['nag', 'list'])
-      .find(nag => nag.get('id') === nagId)
-      .toJS()
+    nag: nag ? nag.toJS() : nag
   });
+};
 
 export const nagIndex = noReset => (dispatch, getState) => {
   const state = getState();
