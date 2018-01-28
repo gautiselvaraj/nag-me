@@ -35,7 +35,7 @@ const AnimateChild = styled.div`
 
 const pagesSpring = { stiffness: 350, damping: 26 };
 
-class App extends Component {
+export class App extends Component {
   static propTypes = {
     nagInit: PropTypes.func.isRequired,
     activePage: PropTypes.string.isRequired

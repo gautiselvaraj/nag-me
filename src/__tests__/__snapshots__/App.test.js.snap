@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> match snapshot 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.div>
+    <Connect(Header) />
+    <TransitionMotion
+      didLeave={[Function]}
+      styles={
+        Array [
+          Object {
+            "key": "Index",
+            "style": Object {
+              "translateX": Object {
+                "damping": 26,
+                "precision": 0.01,
+                "stiffness": 350,
+                "val": 0,
+              },
+            },
+          },
+        ]
+      }
+      willEnter={[Function]}
+      willLeave={[Function]}
+    />
+  </styled.div>
+</ThemeProvider>
+`;
