@@ -19,7 +19,7 @@ const nagList = {
       firstNag: 1234567890,
       nextNag: 1234567890,
       repeats: '1 min',
-      status: 'PAUSED',
+      status: 'LIVE',
       createdAt: 1234567890
     },
     {
@@ -37,7 +37,7 @@ const nagList = {
       firstNag: 1234567892,
       nextNag: 1234567892,
       repeats: '4 hour',
-      status: 'PAUSED',
+      status: 'LIVE',
       createdAt: 1234567892
     }
   ]
@@ -53,8 +53,8 @@ describe('nag reducer', () => {
     expect(nagReducer(undefined, {}).toJS()).toEqual(initialState);
   });
 
-  describe('should handle NAG_INIT', () => {
-    it('without state passed', () => {
+  describe('NAG_INIT', () => {
+    it('should return initialState when no state is passed', () => {
       expect(
         nagReducer(undefined, {
           type: types.NAG_INIT,
@@ -63,7 +63,7 @@ describe('nag reducer', () => {
       ).toEqual(populatedState);
     });
 
-    it('with state passed', () => {
+    it('should return state with passed nag', () => {
       expect(
         nagReducer(initialState, {
           type: types.NAG_INIT,
@@ -73,26 +73,31 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_INDEX', () => {
-    it('with no search query and sort by set', () => {
+  describe('NAG_INDEX', () => {
+    it('should return grouped visible list when no query and sortBy set', () => {
       const returnedNagVisibleList = nagReducer(fromJS(populatedState), {
         type: types.NAG_INDEX
       }).toJS().visibleList;
-      expect(returnedNagVisibleList.PAUSED).toEqual(populatedState.list);
+      expect(returnedNagVisibleList.LIVE).toEqual(
+        populatedState.list.filter(n => n.status === 'LIVE')
+      );
+      expect(returnedNagVisibleList.PAUSED).toEqual(
+        populatedState.list.filter(n => n.status === 'PAUSED')
+      );
     });
 
     describe('search', () => {
-      it('with search query should return nags match the query', () => {
+      it('should return searched grouped visible list when query is set', () => {
         const stateWithQuery = Object.assign({}, populatedState, { query: 3 });
         const returnedNagVisibleList = nagReducer(fromJS(stateWithQuery), {
           type: types.NAG_INDEX
         }).toJS().visibleList;
-        expect(returnedNagVisibleList.PAUSED).toEqual(
+        expect(returnedNagVisibleList.LIVE).toEqual(
           nagList.list.filter(n => n.id === 3)
         );
       });
 
-      it('with search query that dont match should return no results', () => {
+      it('should return empty visible list when non matched query is set', () => {
         const stateWithQuery = Object.assign({}, populatedState, {
           query: 'No match'
         });
@@ -104,29 +109,35 @@ describe('nag reducer', () => {
     });
 
     describe('sort', () => {
-      it('with sort by latest is set should return nags with proper sort order', () => {
-        const stateWithSortBy = Object.assign({}, populatedState, {
-          sortBy: 'latest'
-        });
-        const returnedNagVisibleList = nagReducer(fromJS(stateWithSortBy), {
-          type: types.NAG_INDEX
-        }).toJS().visibleList;
-        expect(returnedNagVisibleList.PAUSED[0]).toEqual(nagList.list[2]);
-      });
+      it('should return sorted grouped visible list when sortBy is set', () => {
+        let returnedNagVisibleList = nagReducer(
+          fromJS(
+            Object.assign({}, populatedState, {
+              sortBy: 'latest'
+            })
+          ),
+          {
+            type: types.NAG_INDEX
+          }
+        ).toJS().visibleList;
+        expect(returnedNagVisibleList.LIVE[0]).toEqual(nagList.list[2]);
 
-      it('with sort by ZA is set should return nags with proper sort order', () => {
-        const stateWithSortBy = Object.assign({}, populatedState, {
-          sortBy: 'ZA'
-        });
-        const returnedNagVisibleList = nagReducer(fromJS(stateWithSortBy), {
-          type: types.NAG_INDEX
-        }).toJS().visibleList;
-        expect(returnedNagVisibleList.PAUSED[2]).toEqual(nagList.list[0]);
+        returnedNagVisibleList = nagReducer(
+          fromJS(
+            Object.assign({}, populatedState, {
+              sortBy: 'ZA'
+            })
+          ),
+          {
+            type: types.NAG_INDEX
+          }
+        ).toJS().visibleList;
+        expect(returnedNagVisibleList.LIVE[1]).toEqual(nagList.list[0]);
       });
     });
   });
 
-  describe('should handle NAG_NEW', () => {
+  describe('NAG_NEW', () => {
     it('should return state with editNagId null', () => {
       const stateWithEditNagIdSet = Object.assign({}, populatedState, {
         editNagId: 3
@@ -139,8 +150,8 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_CREATE', () => {
-    it('should add new nag to start of list', () => {
+  describe('NAG_CREATE', () => {
+    it('should return state with new nag added to start of nag list', () => {
       const newNag = { id: 4, title: 'Nag Title 4' };
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_CREATE,
@@ -151,8 +162,8 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_Edit', () => {
-    it('should return state with editNagId', () => {
+  describe('NAG_EDIT', () => {
+    it('should return state with passed editNagId', () => {
       expect(
         nagReducer(fromJS(populatedState), {
           type: types.NAG_EDIT,
@@ -162,8 +173,8 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_UPDATE', () => {
-    it('should update nag with passed attributes', () => {
+  describe('NAG_UPDATE', () => {
+    it('should return state with updated nag', () => {
       const updateNag = { id: 1, title: 'Updated Nag Title 1' };
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_UPDATE,
@@ -174,33 +185,28 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_PAUSE', () => {
-    it('should pause the passed nag', () => {
-      const stateWithSortBy = Object.assign({}, populatedState, {
-        list: nagList.list.map(n => Object.assign({}, n, { status: 'LIVE' }))
-      });
-      expect(stateWithSortBy.list[0].status).toEqual('LIVE');
+  describe('NAG_PAUSE', () => {
+    it('should return state with paused nag', () => {
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_PAUSE,
-        nagId: stateWithSortBy.list[0].id
+        nagId: populatedState.list[0].id
       }).toJS().list;
       expect(returnedNagList[0].status).toEqual('PAUSED');
     });
   });
 
-  describe('should handle NAG_RESUME', () => {
-    it('should pause the passed nag', () => {
-      expect(populatedState.list[0].status).toEqual('PAUSED');
+  describe('NAG_RESUME', () => {
+    it('should return state with resumed nag', () => {
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_RESUME,
-        nagId: populatedState.list[0].id
+        nagId: populatedState.list[1].id
       }).toJS().list;
       expect(returnedNagList[0].status).toEqual('LIVE');
     });
   });
 
-  describe('should handle NAG_DELETE', () => {
-    it('should delete the passed nag', () => {
+  describe('NAG_DELETE', () => {
+    it('should return state with nag deleted', () => {
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_DELETE,
         nagId: populatedState.list[0].id
@@ -210,19 +216,19 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAG_STATUS_UPDATE', () => {
-    it("should update nag's status with passed attributes", () => {
-      const statusUpdatedNag = { id: 1, status: 'LIVE' };
+  describe('NAG_STATUS_UPDATE', () => {
+    it("should return state with nag's status updated", () => {
+      const statusUpdatedNag = { id: 1, status: 'COMPLETED' };
       const returnedNagList = nagReducer(fromJS(populatedState), {
         type: types.NAG_STATUS_UPDATE,
         nag: statusUpdatedNag
       }).toJS().list;
-      expect(returnedNagList[0].status).toEqual('LIVE');
+      expect(returnedNagList[0].status).toEqual('COMPLETED');
     });
   });
 
-  describe('should handle NAGS_SEARCH', () => {
-    it('should update query in nag state', () => {
+  describe('NAGS_SEARCH', () => {
+    it('should return state with query', () => {
       expect(
         nagReducer(fromJS(populatedState), {
           type: types.NAGS_SEARCH,
@@ -232,8 +238,8 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAGS_SORT', () => {
-    it('should update sortBy in nag state', () => {
+  describe('NAGS_SORT', () => {
+    it('should return state with sortBy', () => {
       expect(
         nagReducer(fromJS(populatedState), {
           type: types.NAGS_SORT,
@@ -243,8 +249,8 @@ describe('nag reducer', () => {
     });
   });
 
-  describe('should handle NAGS_RESET', () => {
-    it('should reset query and sortBy in nag state', () => {
+  describe('NAGS_RESET', () => {
+    it('should return state with query and sortBy reset', () => {
       const stateWithSearchAndSortBy = Object.assign({}, populatedState, {
         query: 'search',
         sortBy: 'AZ'

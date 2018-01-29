@@ -7,21 +7,23 @@ describe('page reducer', () => {
     expect(pageReducer(undefined, {}).toJS()).toEqual({ activePage: 'Index' });
   });
 
-  it('should handle SWITCH_PAGE without state passed', () => {
-    expect(
-      pageReducer(undefined, {
-        type: types.SWITCH_PAGE,
-        activePage: 'Index'
-      }).toJS()
-    ).toEqual({ activePage: 'Index' });
-  });
+  describe('SWITCH_PAGE', () => {
+    it('should return initialState when no state is passed', () => {
+      expect(
+        pageReducer(undefined, {
+          type: types.SWITCH_PAGE,
+          activePage: 'Index'
+        }).toJS()
+      ).toEqual({ activePage: 'Index' });
+    });
 
-  it('should handle SWITCH_PAGE with state passed', () => {
-    expect(
-      pageReducer(Map({ activePage: 'NagForm' }), {
-        type: types.SWITCH_PAGE,
-        activePage: 'Index'
-      }).toJS()
-    ).toEqual({ activePage: 'Index' });
+    it('should return state with passed activePage', () => {
+      expect(
+        pageReducer(Map({ activePage: 'NagForm' }), {
+          type: types.SWITCH_PAGE,
+          activePage: 'Index'
+        }).toJS()
+      ).toEqual({ activePage: 'Index' });
+    });
   });
 });
