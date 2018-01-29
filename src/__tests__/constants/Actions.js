@@ -17,12 +17,12 @@ const constants = [
 ];
 
 describe('Constants', () => {
-  it('has all constants defined', () => {
+  it('should have defined constants', () => {
     expect(types).toBeDefined();
   });
 
   constants.forEach(c => {
-    it(`has ${c} defined and matches`, () => {
+    it(`should match ${c} constant`, () => {
       expect(types[c]).toBe(c);
     });
   });
