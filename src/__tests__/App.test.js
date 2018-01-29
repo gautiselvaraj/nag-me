@@ -4,11 +4,7 @@ import { App } from '../App';
 import 'jest-styled-components';
 
 describe('<App />', () => {
-  it('works', () => {
-    const wrapper = shallow(<App nagInit={jest.fn()} activePage="Index" />);
-  });
-
-  it('match snapshot', () => {
+  it('should match snapshot', () => {
     expect(
       shallow(<App nagInit={jest.fn()} activePage="Index" />)
     ).toMatchSnapshot();
