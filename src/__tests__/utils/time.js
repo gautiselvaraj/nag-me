@@ -10,43 +10,43 @@ import {
 } from '../../utils/time';
 
 describe('Time utils', () => {
-  let dateNowMock, dateNow;
+  let dateNow;
 
-  beforeEach(() => {
-    dateNowMock = jest.fn(() => 1517227842390);
+  beforeAll(() => {
     dateNow = window.Date.now;
-    window.Date.now = dateNowMock;
+    window.Date.now = jest.fn(() => 1517227842390);
   });
 
-  afterEach(() => {
+  afterAll(() => {
     window.Date.now = dateNow;
   });
 
-  it('should return rounded Timestamp when roundedTimestamp is called', () => {
+  it('should return rounded current Timestamp', () => {
     expect(roundedTimestamp()).toBe(1517227842000);
   });
 
-  it('should return humanize time when humanizeNextNag is called', () => {
+  it('should return humanize time', () => {
     expect(humanizeNextNag(60000)).toBe('1 minute');
     expect(humanizeNextNag(360000)).toBe('6 minutes');
     expect(humanizeNextNag(3600000)).toBe('~ 1 hour');
     expect(humanizeNextNag(7200000)).toBe('~ 2 hours');
   });
 
-  it('should return nag repeat text when nagRepeatText is called', () => {
+  it('should return nag repeat text', () => {
     expect(nagRepeatText('60 min')).toBe('60 minutes');
     expect(nagRepeatText('1 hour')).toBe('1 hour');
     expect(nagRepeatText('10 day')).toBe('10 days');
+    expect(nagRepeatText('3 year')).toBe('3 years');
   });
 
-  it('should return moment repeat character when repeatsToMomentChar is called', () => {
+  it('should return moment repeat character', () => {
     expect(repeatsToMomentChar('month')).toBe('M');
     expect(repeatsToMomentChar('day')).toBe('d');
     expect(repeatsToMomentChar('hour')).toBe('h');
     expect(repeatsToMomentChar('minute')).toBe('m');
   });
 
-  it('should return next nag when nextNagTimestamp is called with curernt next nag and repeats', () => {
+  it('should return next nag timestamp when called with current next nag and repeats', () => {
     expect(nextNagTimestamp(1517226842000, '1 min')).toBe(1517227862000);
     expect(nextNagTimestamp(1517226842000, '10 hour')).toBe(1517262842000);
     expect(nextNagTimestamp(1517226842000, '25 day')).toBe(1519386842000);
@@ -55,7 +55,7 @@ describe('Time utils', () => {
     expect(nextNagTimestamp(1517226842000, '4 year')).toBe(1643457242000);
   });
 
-  it('should return previous nag when previousNagTimestamp is called with next nag and repeats', () => {
+  it('should return previous nag timestamp when called with next nag and repeats', () => {
     expect(previousNagTimestamp(1517226842000, '1 min')).toBe(1517226782000);
     expect(previousNagTimestamp(1517226842000, '10 hour')).toBe(1517190842000);
     expect(previousNagTimestamp(1517226842000, '25 day')).toBe(1515066842000);
@@ -64,7 +64,7 @@ describe('Time utils', () => {
     expect(previousNagTimestamp(1517226842000, '4 year')).toBe(1390996442000);
   });
 
-  it('should return nag with updated status when setNagStatus is called', () => {
+  it('should return nag with updated status and nextNag', () => {
     let nag = {
       id: 1,
       title: 'Test Nag 1',
@@ -106,7 +106,7 @@ describe('Time utils', () => {
     expect(setNagStatus(nag).nextNag).toBe(1517327842000);
   });
 
-  it('should return nag with updated status when setNagStatus is called', () => {
+  it('should return nag progress percentage', () => {
     let nag = {
       id: 1,
       title: 'Test Nag 1',
