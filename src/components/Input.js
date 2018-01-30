@@ -7,7 +7,7 @@ const InputWrap = styled.div`
   flex-direction: ${props => (props.inline ? 'row' : 'column')};
 `;
 
-const InputError = styled.div`
+export const InputError = styled.div`
   color: red;
   font-size: 0.85rem;
   margin-top: 5px;
