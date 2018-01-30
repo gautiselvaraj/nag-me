@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<A /> should match snapshot and have correct element & color based on inverse prop 1`] = `
+.c0 {
+  color: #f6f6f6;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #dddddd;
+}
+
+<Component
+  href="https://www.gauti.info/nag-me"
+  inverse={true}
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.a
+    href="https://www.gauti.info/nag-me"
+    inverse={true}
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <a
+      className="c0"
+      href="https://www.gauti.info/nag-me"
+    >
+      Link
+    </a>
+  </styled.a>
+</Component>
+`;
+
+exports[`<A /> should match snapshot and have correct text, element & color 1`] = `
+.c0 {
+  color: #214154;
+  text-decoration: none;
+}
+
+.c0:hover {
+  color: #3B5B6E;
+}
+
+<Component
+  href="https://www.gauti.info/nag-me"
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.a
+    href="https://www.gauti.info/nag-me"
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <a
+      className="c0"
+      href="https://www.gauti.info/nag-me"
+    >
+      Link
+    </a>
+  </styled.a>
+</Component>
+`;

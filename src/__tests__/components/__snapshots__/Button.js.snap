@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should match snapshot and have correct element & background-color based on reset prop 1`] = `
+.c0 {
+  background-color: transparent;
+  border: 0;
+  color: #214154;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+}
+
+.c0:hover {
+  background-color: transparent;
+  color: #3B5B6E;
+}
+
+<Component
+  reset={true}
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.button
+    reset={true}
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <button
+      className="c0"
+    >
+      Button
+    </button>
+  </styled.button>
+</Component>
+`;
+
+exports[`<Button /> should match snapshot and have correct element & border-radius based on circle prop 1`] = `
+.c0 {
+  background-color: #214154;
+  border: 1px solid props => props.theme.mainDarken;
+  color: #f6f6f6;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  border-radius: 50%;
+  height: 2rem;
+  text-align: center;
+  width: 2rem;
+}
+
+.c0 i {
+  position: relative;
+  top: 2px;
+}
+
+.c0:hover {
+  background-color: #3B5B6E;
+  color: #f6f6f6;
+}
+
+<Component
+  circle={true}
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.button
+    circle={true}
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <button
+      className="c0"
+    >
+      Button
+    </button>
+  </styled.button>
+</Component>
+`;
+
+exports[`<Button /> should match snapshot and have correct element based on link prop 1`] = `
+.c0 {
+  background-color: #214154;
+  border: 1px solid props => props.theme.mainDarken;
+  color: #f6f6f6;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .75rem;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+.c0:hover {
+  background-color: #3B5B6E;
+  color: #f6f6f6;
+}
+
+<Component
+  href="https://www.gauti.info/nag-me"
+  link={true}
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.a
+    href="https://www.gauti.info/nag-me"
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <a
+      className="c0"
+      href="https://www.gauti.info/nag-me"
+    >
+      Link
+    </a>
+  </styled.a>
+</Component>
+`;
+
+exports[`<Button /> should match snapshot and have correct text, element & background-color 1`] = `
+.c0 {
+  background-color: #214154;
+  border: 1px solid props => props.theme.mainDarken;
+  color: #f6f6f6;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0 .75rem;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+.c0:hover {
+  background-color: #3B5B6E;
+  color: #f6f6f6;
+}
+
+<Component
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.button
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <button
+      className="c0"
+    >
+      Button
+    </button>
+  </styled.button>
+</Component>
+`;

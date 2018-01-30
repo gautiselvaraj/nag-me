@@ -7,4 +7,6 @@ const Heading = styled.h6`
   margin-bottom: 0.15rem;
 `;
 
-export default ({ children }) => <Heading>{children}</Heading>;
+export default ({ children, ...otherProps }) => (
+  <Heading {...otherProps}>{children}</Heading>
+);

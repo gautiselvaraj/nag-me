@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<H1 /> should match snapshot and have correct text, element & color 1`] = `
+.c0 {
+  color: #f6f6f6;
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+<Component
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.h1
+    theme={
+      Object {
+        "black": "#111111",
+        "grey": "#898989",
+        "greyDark": "#777777",
+        "greyDarker": "#595959",
+        "greyDarkest": "#222",
+        "greyLight": "#a5a5a5",
+        "greyLighter": "#dddddd",
+        "greyLightest": "#efefef",
+        "main": "#214154",
+        "mainDarken": "#08283B",
+        "mainLighten": "#3B5B6E",
+        "white": "#f6f6f6",
+      }
+    }
+  >
+    <h1
+      className="c0"
+    >
+      Heading 1
+    </h1>
+  </styled.h1>
+</Component>
+`;
