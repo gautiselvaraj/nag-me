@@ -32,21 +32,21 @@ const NagHeading = styled.h3`
   margin: 0;
 `;
 
-const NagTimer = styled.p`
+export const NagTimer = styled.p`
   color: ${props => props.theme.greyDarkest};
   font-size: 0.85rem;
   margin-bottom: 0;
   margin-top: 5px;
 `;
 
-const NagRepeat = styled.p`
+export const NagRepeat = styled.p`
   color: ${props => props.theme.greyLight};
   font-size: 0.75rem;
   margin-bottom: 0;
   margin-top: 5px;
 `;
 
-const NagStatus = styled.p`
+export const NagStatus = styled.p`
   color: ${props => props.theme.greyDarker};
   font-size: 0.85rem;
   font-weight: bold;
@@ -54,7 +54,7 @@ const NagStatus = styled.p`
   margin-top: 5px;
 `;
 
-const NagProgress = styled.div`
+export const NagProgress = styled.div`
   border-top: 3px solid #6e8ea1;
   border-radius: 0 0 3px 3px;
   bottom: -3px;
@@ -64,21 +64,21 @@ const NagProgress = styled.div`
   will-change: width;
 `;
 
-const NagEditLink = styled.div`
+export const NagEditLink = styled.div`
   position: absolute;
   right: -45px;
   top: 50%;
   will-change: transform;
 `;
 
-const NagDeleteLink = styled.div`
+export const NagDeleteLink = styled.div`
   position: absolute;
   right: -85px;
   top: 50%;
   will-change: transform;
 `;
 
-const NagStateLink = styled.div`
+export const NagStateLink = styled.div`
   position: absolute;
   right: -125px;
   top: 50%;
@@ -199,7 +199,7 @@ export default class Nag extends Component {
                       <NagStatus>Completed</NagStatus>
                     )}
                     {nag.status === 'LIVE' && (
-                      <NagProgress style={{ width: progressCheck(nag) }} type />
+                      <NagProgress style={{ width: progressCheck(nag) }} />
                     )}
                   </NagWrap>
                 )}
