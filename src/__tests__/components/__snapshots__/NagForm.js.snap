@@ -1,0 +1,1694 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NagForm /> should match snapshot and have correct elements and children 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  -webkit-flex: 0 0 25px;
+  -ms-flex: 0 0 25px;
+  flex: 0 0 25px;
+  height: 15px;
+  text-align: center;
+}
+
+.c2 {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+}
+
+.c2:hover {
+  background-color: transparent;
+}
+
+.c14 {
+  border: 1px solid props => props.theme.mainDarken;
+  cursor: pointer;
+  display: block;
+  padding: 0 .75rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+}
+
+.c3 {
+  font-family: icons;
+  font-size: 1rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c3:before {
+  content: "\\e900";
+}
+
+.c4 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.c5 {
+  font-size: 1.2rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.c6 {
+  padding: 0.5rem;
+}
+
+.c7 {
+  margin-bottom: 0.75rem;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c9 {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.c10 {
+  border: 1px solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  height: 2rem;
+  padding: 0 0.35rem;
+  width: 100%;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c12 {
+  border: 1px solid;
+  box-sizing: border-box;
+  font-size: 1rem;
+  height: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.c13 {
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <NagForm
+    nagCreate={[Function]}
+    nagIndex={[Function]}
+    nagUpdate={[Function]}
+  >
+    <div>
+      <styled.div>
+        <div
+          className="c0"
+        >
+          <styled.div>
+            <div
+              className="c1"
+            >
+              <Component
+                onClick={[Function]}
+                reset={true}
+                title="Back"
+              >
+                <styled.button
+                  onClick={[Function]}
+                  reset={true}
+                  title="Back"
+                >
+                  <button
+                    className="c2"
+                    onClick={[Function]}
+                    title="Back"
+                  >
+                    <Component
+                      back={true}
+                    >
+                      <styled.i
+                        back={true}
+                      >
+                        <i
+                          className="c3"
+                        />
+                      </styled.i>
+                    </Component>
+                  </button>
+                </styled.button>
+              </Component>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="c4"
+            >
+              <Component>
+                <styled.h3>
+                  <h3
+                    className="c5"
+                  >
+                    Create a nag
+                  </h3>
+                </styled.h3>
+              </Component>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="c1"
+            />
+          </styled.div>
+        </div>
+      </styled.div>
+      <styled.form
+        onSubmit={[Function]}
+      >
+        <form
+          className="c6"
+          onSubmit={[Function]}
+        >
+          <styled.div>
+            <div
+              className="c7"
+            >
+              <Component
+                autoFocus={true}
+                error={null}
+                id="nag_title"
+                label="What to nag about?"
+                name="title"
+                onChange={[Function]}
+                type="text"
+                value=""
+              >
+                <styled.div
+                  autoFocus={true}
+                  name="title"
+                  onChange={[Function]}
+                  type="text"
+                  value=""
+                >
+                  <div
+                    autoFocus={true}
+                    className="c8"
+                    name="title"
+                    onChange={[Function]}
+                    type="text"
+                    value=""
+                  >
+                    <Component
+                      autoFocus={true}
+                      htmlFor="nag_title"
+                      name="title"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    >
+                      <styled.label
+                        autoFocus={true}
+                        htmlFor="nag_title"
+                        name="title"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      >
+                        <label
+                          autoFocus={true}
+                          className="c9"
+                          htmlFor="nag_title"
+                          name="title"
+                          onChange={[Function]}
+                          type="text"
+                          value=""
+                        >
+                          What to nag about?
+                        </label>
+                      </styled.label>
+                    </Component>
+                    <styled.input
+                      autoFocus={true}
+                      error={null}
+                      id="nag_title"
+                      name="title"
+                      onChange={[Function]}
+                      type="text"
+                      value=""
+                    >
+                      <input
+                        autoFocus={true}
+                        className="c10"
+                        id="nag_title"
+                        name="title"
+                        onChange={[Function]}
+                        type="text"
+                        value=""
+                      />
+                    </styled.input>
+                  </div>
+                </styled.div>
+              </Component>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="c7"
+            >
+              <Component
+                className=""
+                closeOnSelect={false}
+                closeOnTab={true}
+                dateFormat="MMM Do, YYYY"
+                defaultValue=""
+                input={true}
+                inputProps={Object {}}
+                isValidDate={[Function]}
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                onViewModeChange={[Function]}
+                renderInput={[Function]}
+                strictParsing={true}
+                timeConstraints={Object {}}
+                timeFormat={true}
+                utc={false}
+                value=""
+              >
+                <div
+                  className="rdt"
+                >
+                  <div
+                    key="i"
+                  >
+                    <Component
+                      className="form-control"
+                      error={null}
+                      id="nag_on"
+                      label="Nag from"
+                      name="on"
+                      onChange={[Function]}
+                      onClick={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      readOnly={true}
+                      type="text"
+                      value=""
+                    >
+                      <styled.div
+                        className="form-control"
+                        name="on"
+                        onChange={[Function]}
+                        onClick={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        readOnly={true}
+                        type="text"
+                        value=""
+                      >
+                        <div
+                          className="form-control c8"
+                          name="on"
+                          onChange={[Function]}
+                          onClick={[Function]}
+                          onFocus={[Function]}
+                          onKeyDown={[Function]}
+                          readOnly={true}
+                          type="text"
+                          value=""
+                        >
+                          <Component
+                            className="form-control"
+                            htmlFor="nag_on"
+                            name="on"
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={true}
+                            type="text"
+                            value=""
+                          >
+                            <styled.label
+                              className="form-control"
+                              htmlFor="nag_on"
+                              name="on"
+                              onChange={[Function]}
+                              onClick={[Function]}
+                              onFocus={[Function]}
+                              onKeyDown={[Function]}
+                              readOnly={true}
+                              type="text"
+                              value=""
+                            >
+                              <label
+                                className="form-control c9"
+                                htmlFor="nag_on"
+                                name="on"
+                                onChange={[Function]}
+                                onClick={[Function]}
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                readOnly={true}
+                                type="text"
+                                value=""
+                              >
+                                Nag from
+                              </label>
+                            </styled.label>
+                          </Component>
+                          <styled.input
+                            className="form-control"
+                            error={null}
+                            id="nag_on"
+                            name="on"
+                            onChange={[Function]}
+                            onClick={[Function]}
+                            onFocus={[Function]}
+                            onKeyDown={[Function]}
+                            readOnly={true}
+                            type="text"
+                            value=""
+                          >
+                            <input
+                              className="form-control c10"
+                              id="nag_on"
+                              name="on"
+                              onChange={[Function]}
+                              onClick={[Function]}
+                              onFocus={[Function]}
+                              onKeyDown={[Function]}
+                              readOnly={true}
+                              type="text"
+                              value=""
+                            />
+                          </styled.input>
+                        </div>
+                      </styled.div>
+                    </Component>
+                  </div>
+                  <div
+                    className="rdtPicker"
+                    key="dt"
+                  >
+                    <Component
+                      onClickOutside={[Function]}
+                      view="days"
+                      viewProps={
+                        Object {
+                          "addTime": [Function],
+                          "dateFormat": "MMM Do, YYYY",
+                          "handleClickOutside": [Function],
+                          "isValidDate": [Function],
+                          "localMoment": [Function],
+                          "renderDay": undefined,
+                          "renderMonth": undefined,
+                          "renderYear": undefined,
+                          "selectedDate": undefined,
+                          "setDate": [Function],
+                          "setTime": [Function],
+                          "showView": [Function],
+                          "subtractTime": [Function],
+                          "timeConstraints": Object {},
+                          "timeFormat": "h:mm A",
+                          "updateOn": "days",
+                          "updateSelectedDate": [Function],
+                          "value": "",
+                          "viewDate": "2017-12-31T11:00:00.000Z",
+                        }
+                      }
+                    >
+                      <OnClickOutside(Component)
+                        addTime={[Function]}
+                        dateFormat="MMM Do, YYYY"
+                        eventTypes={
+                          Array [
+                            "mousedown",
+                            "touchstart",
+                          ]
+                        }
+                        excludeScrollbar={false}
+                        handleClickOutside={[Function]}
+                        isValidDate={[Function]}
+                        localMoment={[Function]}
+                        outsideClickIgnoreClass="ignore-react-onclickoutside"
+                        preventDefault={false}
+                        setDate={[Function]}
+                        setTime={[Function]}
+                        showView={[Function]}
+                        stopPropagation={false}
+                        subtractTime={[Function]}
+                        timeConstraints={Object {}}
+                        timeFormat="h:mm A"
+                        updateOn="days"
+                        updateSelectedDate={[Function]}
+                        value=""
+                        viewDate={"2017-12-31T11:00:00.000Z"}
+                      >
+                        <Component
+                          addTime={[Function]}
+                          dateFormat="MMM Do, YYYY"
+                          disableOnClickOutside={[Function]}
+                          enableOnClickOutside={[Function]}
+                          eventTypes={
+                            Array [
+                              "mousedown",
+                              "touchstart",
+                            ]
+                          }
+                          handleClickOutside={[Function]}
+                          isValidDate={[Function]}
+                          localMoment={[Function]}
+                          outsideClickIgnoreClass="ignore-react-onclickoutside"
+                          preventDefault={false}
+                          setDate={[Function]}
+                          setTime={[Function]}
+                          showView={[Function]}
+                          stopPropagation={false}
+                          subtractTime={[Function]}
+                          timeConstraints={Object {}}
+                          timeFormat="h:mm A"
+                          updateOn="days"
+                          updateSelectedDate={[Function]}
+                          value=""
+                          viewDate={"2017-12-31T11:00:00.000Z"}
+                        >
+                          <div
+                            className="rdtDays"
+                          >
+                            <table>
+                              <thead
+                                key="th"
+                              >
+                                <tr
+                                  key="h"
+                                >
+                                  <th
+                                    className="rdtPrev"
+                                    key="p"
+                                    onClick={[Function]}
+                                  >
+                                    <span>
+                                      ‹
+                                    </span>
+                                  </th>
+                                  <th
+                                    className="rdtSwitch"
+                                    colSpan={5}
+                                    data-value={0}
+                                    key="s"
+                                    onClick={[Function]}
+                                  >
+                                    January 2018
+                                  </th>
+                                  <th
+                                    className="rdtNext"
+                                    key="n"
+                                    onClick={[Function]}
+                                  >
+                                    <span>
+                                      ›
+                                    </span>
+                                  </th>
+                                </tr>
+                                <tr
+                                  key="d"
+                                >
+                                  <th
+                                    className="dow"
+                                    key="Su0"
+                                  >
+                                    Su
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="Mo1"
+                                  >
+                                    Mo
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="Tu2"
+                                  >
+                                    Tu
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="We3"
+                                  >
+                                    We
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="Th4"
+                                  >
+                                    Th
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="Fr5"
+                                  >
+                                    Fr
+                                  </th>
+                                  <th
+                                    className="dow"
+                                    key="Sa6"
+                                  >
+                                    Sa
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody
+                                key="tb"
+                              >
+                                <tr
+                                  key="1_6"
+                                >
+                                  <td
+                                    className="rdtDay rdtOld rdtDisabled"
+                                    data-value={31}
+                                    key="12_31"
+                                  >
+                                    31
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={1}
+                                    key="1_1"
+                                  >
+                                    1
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={2}
+                                    key="1_2"
+                                  >
+                                    2
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={3}
+                                    key="1_3"
+                                  >
+                                    3
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={4}
+                                    key="1_4"
+                                  >
+                                    4
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={5}
+                                    key="1_5"
+                                  >
+                                    5
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={6}
+                                    key="1_6"
+                                  >
+                                    6
+                                  </td>
+                                </tr>
+                                <tr
+                                  key="1_13"
+                                >
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={7}
+                                    key="1_7"
+                                  >
+                                    7
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={8}
+                                    key="1_8"
+                                  >
+                                    8
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={9}
+                                    key="1_9"
+                                  >
+                                    9
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={10}
+                                    key="1_10"
+                                  >
+                                    10
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={11}
+                                    key="1_11"
+                                  >
+                                    11
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={12}
+                                    key="1_12"
+                                  >
+                                    12
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={13}
+                                    key="1_13"
+                                  >
+                                    13
+                                  </td>
+                                </tr>
+                                <tr
+                                  key="1_20"
+                                >
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={14}
+                                    key="1_14"
+                                  >
+                                    14
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={15}
+                                    key="1_15"
+                                  >
+                                    15
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={16}
+                                    key="1_16"
+                                  >
+                                    16
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={17}
+                                    key="1_17"
+                                  >
+                                    17
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={18}
+                                    key="1_18"
+                                  >
+                                    18
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={19}
+                                    key="1_19"
+                                  >
+                                    19
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={20}
+                                    key="1_20"
+                                  >
+                                    20
+                                  </td>
+                                </tr>
+                                <tr
+                                  key="1_27"
+                                >
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={21}
+                                    key="1_21"
+                                  >
+                                    21
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={22}
+                                    key="1_22"
+                                  >
+                                    22
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={23}
+                                    key="1_23"
+                                  >
+                                    23
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={24}
+                                    key="1_24"
+                                  >
+                                    24
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={25}
+                                    key="1_25"
+                                  >
+                                    25
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={26}
+                                    key="1_26"
+                                  >
+                                    26
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={27}
+                                    key="1_27"
+                                  >
+                                    27
+                                  </td>
+                                </tr>
+                                <tr
+                                  key="2_3"
+                                >
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={28}
+                                    key="1_28"
+                                  >
+                                    28
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtDisabled"
+                                    data-value={29}
+                                    key="1_29"
+                                  >
+                                    29
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtToday"
+                                    data-value={30}
+                                    key="1_30"
+                                    onClick={[Function]}
+                                  >
+                                    30
+                                  </td>
+                                  <td
+                                    className="rdtDay"
+                                    data-value={31}
+                                    key="1_31"
+                                    onClick={[Function]}
+                                  >
+                                    31
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={1}
+                                    key="2_1"
+                                    onClick={[Function]}
+                                  >
+                                    1
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={2}
+                                    key="2_2"
+                                    onClick={[Function]}
+                                  >
+                                    2
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={3}
+                                    key="2_3"
+                                    onClick={[Function]}
+                                  >
+                                    3
+                                  </td>
+                                </tr>
+                                <tr
+                                  key="2_10"
+                                >
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={4}
+                                    key="2_4"
+                                    onClick={[Function]}
+                                  >
+                                    4
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={5}
+                                    key="2_5"
+                                    onClick={[Function]}
+                                  >
+                                    5
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={6}
+                                    key="2_6"
+                                    onClick={[Function]}
+                                  >
+                                    6
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={7}
+                                    key="2_7"
+                                    onClick={[Function]}
+                                  >
+                                    7
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={8}
+                                    key="2_8"
+                                    onClick={[Function]}
+                                  >
+                                    8
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={9}
+                                    key="2_9"
+                                    onClick={[Function]}
+                                  >
+                                    9
+                                  </td>
+                                  <td
+                                    className="rdtDay rdtNew"
+                                    data-value={10}
+                                    key="2_10"
+                                    onClick={[Function]}
+                                  >
+                                    10
+                                  </td>
+                                </tr>
+                              </tbody>
+                              <tfoot
+                                key="tf"
+                              >
+                                <tr>
+                                  <td
+                                    className="rdtTimeToggle"
+                                    colSpan={7}
+                                    onClick={[Function]}
+                                  >
+                                    12:00 AM
+                                  </td>
+                                </tr>
+                              </tfoot>
+                            </table>
+                          </div>
+                        </Component>
+                      </OnClickOutside(Component)>
+                    </Component>
+                  </div>
+                </div>
+              </Component>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="c7"
+            >
+              <Component
+                id="nag_repeats"
+                label="Repeat every"
+                name="repeats"
+                onChange={[Function]}
+                value=""
+              >
+                <styled.div
+                  name="repeats"
+                  onChange={[Function]}
+                  value=""
+                >
+                  <div
+                    className="c11"
+                    name="repeats"
+                    onChange={[Function]}
+                    value=""
+                  >
+                    <Component
+                      htmlFor="nag_repeats"
+                      name="repeats"
+                      onChange={[Function]}
+                      value=""
+                    >
+                      <styled.label
+                        htmlFor="nag_repeats"
+                        name="repeats"
+                        onChange={[Function]}
+                        value=""
+                      >
+                        <label
+                          className="c9"
+                          htmlFor="nag_repeats"
+                          name="repeats"
+                          onChange={[Function]}
+                          value=""
+                        >
+                          Repeat every
+                        </label>
+                      </styled.label>
+                    </Component>
+                    <styled.select
+                      id="nag_repeats"
+                      name="repeats"
+                      onChange={[Function]}
+                      value=""
+                    >
+                      <select
+                        className="c12"
+                        id="nag_repeats"
+                        name="repeats"
+                        onChange={[Function]}
+                        value=""
+                      >
+                        <option
+                          value=""
+                        />
+                        <option
+                          key="1 min"
+                          value="1 min"
+                        >
+                          1
+                           
+                          min
+                        </option>
+                        <option
+                          key="2 min"
+                          value="2 min"
+                        >
+                          2
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="3 min"
+                          value="3 min"
+                        >
+                          3
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="5 min"
+                          value="5 min"
+                        >
+                          5
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="10 min"
+                          value="10 min"
+                        >
+                          10
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="15 min"
+                          value="15 min"
+                        >
+                          15
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="20 min"
+                          value="20 min"
+                        >
+                          20
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="30 min"
+                          value="30 min"
+                        >
+                          30
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="45 min"
+                          value="45 min"
+                        >
+                          45
+                           
+                          min
+                          s
+                        </option>
+                        <option
+                          key="1 hour"
+                          value="1 hour"
+                        >
+                          1
+                           
+                          hour
+                        </option>
+                        <option
+                          key="2 hour"
+                          value="2 hour"
+                        >
+                          2
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="3 hour"
+                          value="3 hour"
+                        >
+                          3
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="4 hour"
+                          value="4 hour"
+                        >
+                          4
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="5 hour"
+                          value="5 hour"
+                        >
+                          5
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="6 hour"
+                          value="6 hour"
+                        >
+                          6
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="7 hour"
+                          value="7 hour"
+                        >
+                          7
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="8 hour"
+                          value="8 hour"
+                        >
+                          8
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="9 hour"
+                          value="9 hour"
+                        >
+                          9
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="10 hour"
+                          value="10 hour"
+                        >
+                          10
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="11 hour"
+                          value="11 hour"
+                        >
+                          11
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="12 hour"
+                          value="12 hour"
+                        >
+                          12
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="13 hour"
+                          value="13 hour"
+                        >
+                          13
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="14 hour"
+                          value="14 hour"
+                        >
+                          14
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="15 hour"
+                          value="15 hour"
+                        >
+                          15
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="16 hour"
+                          value="16 hour"
+                        >
+                          16
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="17 hour"
+                          value="17 hour"
+                        >
+                          17
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="18 hour"
+                          value="18 hour"
+                        >
+                          18
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="19 hour"
+                          value="19 hour"
+                        >
+                          19
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="20 hour"
+                          value="20 hour"
+                        >
+                          20
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="21 hour"
+                          value="21 hour"
+                        >
+                          21
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="22 hour"
+                          value="22 hour"
+                        >
+                          22
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="23 hour"
+                          value="23 hour"
+                        >
+                          23
+                           
+                          hour
+                          s
+                        </option>
+                        <option
+                          key="1 day"
+                          value="1 day"
+                        >
+                          1
+                           
+                          day
+                        </option>
+                        <option
+                          key="2 day"
+                          value="2 day"
+                        >
+                          2
+                           
+                          day
+                          s
+                        </option>
+                        <option
+                          key="3 day"
+                          value="3 day"
+                        >
+                          3
+                           
+                          day
+                          s
+                        </option>
+                        <option
+                          key="4 day"
+                          value="4 day"
+                        >
+                          4
+                           
+                          day
+                          s
+                        </option>
+                        <option
+                          key="5 day"
+                          value="5 day"
+                        >
+                          5
+                           
+                          day
+                          s
+                        </option>
+                        <option
+                          key="6 day"
+                          value="6 day"
+                        >
+                          6
+                           
+                          day
+                          s
+                        </option>
+                        <option
+                          key="1 week"
+                          value="1 week"
+                        >
+                          1
+                           
+                          week
+                        </option>
+                        <option
+                          key="2 week"
+                          value="2 week"
+                        >
+                          2
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="3 week"
+                          value="3 week"
+                        >
+                          3
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="4 week"
+                          value="4 week"
+                        >
+                          4
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="5 week"
+                          value="5 week"
+                        >
+                          5
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="6 week"
+                          value="6 week"
+                        >
+                          6
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="7 week"
+                          value="7 week"
+                        >
+                          7
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="8 week"
+                          value="8 week"
+                        >
+                          8
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="9 week"
+                          value="9 week"
+                        >
+                          9
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="10 week"
+                          value="10 week"
+                        >
+                          10
+                           
+                          week
+                          s
+                        </option>
+                        <option
+                          key="1 month"
+                          value="1 month"
+                        >
+                          1
+                           
+                          month
+                        </option>
+                        <option
+                          key="2 month"
+                          value="2 month"
+                        >
+                          2
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="3 month"
+                          value="3 month"
+                        >
+                          3
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="4 month"
+                          value="4 month"
+                        >
+                          4
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="5 month"
+                          value="5 month"
+                        >
+                          5
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="6 month"
+                          value="6 month"
+                        >
+                          6
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="7 month"
+                          value="7 month"
+                        >
+                          7
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="8 month"
+                          value="8 month"
+                        >
+                          8
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="9 month"
+                          value="9 month"
+                        >
+                          9
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="10 month"
+                          value="10 month"
+                        >
+                          10
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="11 month"
+                          value="11 month"
+                        >
+                          11
+                           
+                          month
+                          s
+                        </option>
+                        <option
+                          key="1 year"
+                          value="1 year"
+                        >
+                          1
+                           
+                          year
+                        </option>
+                        <option
+                          key="2 year"
+                          value="2 year"
+                        >
+                          2
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="3 year"
+                          value="3 year"
+                        >
+                          3
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="4 year"
+                          value="4 year"
+                        >
+                          4
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="5 year"
+                          value="5 year"
+                        >
+                          5
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="6 year"
+                          value="6 year"
+                        >
+                          6
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="7 year"
+                          value="7 year"
+                        >
+                          7
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="8 year"
+                          value="8 year"
+                        >
+                          8
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="9 year"
+                          value="9 year"
+                        >
+                          9
+                           
+                          year
+                          s
+                        </option>
+                        <option
+                          key="10 year"
+                          value="10 year"
+                        >
+                          10
+                           
+                          year
+                          s
+                        </option>
+                      </select>
+                    </styled.select>
+                  </div>
+                </styled.div>
+              </Component>
+            </div>
+          </styled.div>
+          <styled.div>
+            <div
+              className="c13"
+            >
+              <Component
+                block={true}
+                type="submit"
+              >
+                <styled.button
+                  block={true}
+                  type="submit"
+                >
+                  <button
+                    className="c14"
+                    type="submit"
+                  >
+                    Start Nagging
+                  </button>
+                </styled.button>
+              </Component>
+            </div>
+          </styled.div>
+          <Connect(NagForm)>
+            <NagForm
+              nagCreate={[Function]}
+            />
+          </Connect(NagForm)>
+        </form>
+      </styled.form>
+    </div>
+  </NagForm>
+</Provider>
+`;
