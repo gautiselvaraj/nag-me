@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> should match snapshot and have correct elements & styles 1`] = `
+.c0 {
+  position: relative;
+}
+
+.c0 input {
+  padding-left: 20px;
+}
+
+.c0:before {
+  content: '\\e986';
+  font-family: icons;
+  font-size: 0.5rem;
+  left: 7px;
+  position: absolute;
+  top: 7px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: .85rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  width: 100%;
+}
+
+<Component
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.div>
+    <div
+      className="c0"
+    >
+      <Component
+        placeholder="Search"
+        small={true}
+        theme={
+          Object {
+            "black": "#111111",
+            "grey": "#898989",
+            "greyDark": "#777777",
+            "greyDarker": "#595959",
+            "greyDarkest": "#222",
+            "greyLight": "#a5a5a5",
+            "greyLighter": "#dddddd",
+            "greyLightest": "#efefef",
+            "main": "#214154",
+            "mainDarken": "#08283B",
+            "mainLighten": "#3B5B6E",
+            "white": "#f6f6f6",
+          }
+        }
+        type="search"
+      >
+        <styled.div
+          placeholder="Search"
+          small={true}
+          theme={
+            Object {
+              "black": "#111111",
+              "grey": "#898989",
+              "greyDark": "#777777",
+              "greyDarker": "#595959",
+              "greyDarkest": "#222",
+              "greyLight": "#a5a5a5",
+              "greyLighter": "#dddddd",
+              "greyLightest": "#efefef",
+              "main": "#214154",
+              "mainDarken": "#08283B",
+              "mainLighten": "#3B5B6E",
+              "white": "#f6f6f6",
+            }
+          }
+          type="search"
+        >
+          <div
+            className="c1"
+            placeholder="Search"
+            type="search"
+          >
+            <styled.input
+              placeholder="Search"
+              small={true}
+              theme={
+                Object {
+                  "black": "#111111",
+                  "grey": "#898989",
+                  "greyDark": "#777777",
+                  "greyDarker": "#595959",
+                  "greyDarkest": "#222",
+                  "greyLight": "#a5a5a5",
+                  "greyLighter": "#dddddd",
+                  "greyLightest": "#efefef",
+                  "main": "#214154",
+                  "mainDarken": "#08283B",
+                  "mainLighten": "#3B5B6E",
+                  "white": "#f6f6f6",
+                }
+              }
+              type="search"
+            >
+              <input
+                className="c2"
+                placeholder="Search"
+                type="search"
+              />
+            </styled.input>
+          </div>
+        </styled.div>
+      </Component>
+    </div>
+  </styled.div>
+</Component>
+`;
