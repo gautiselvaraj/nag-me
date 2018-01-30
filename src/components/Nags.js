@@ -45,7 +45,8 @@ export default class Nags extends Component {
     nagEdit: PropTypes.func.isRequired,
     nagPause: PropTypes.func.isRequired,
     nagResume: PropTypes.func.isRequired,
-    nagDelete: PropTypes.func.isRequired
+    nagDelete: PropTypes.func.isRequired,
+    nagStatusUpdate: PropTypes.func.isRequired
   };
 
   state = { initiated: false };
