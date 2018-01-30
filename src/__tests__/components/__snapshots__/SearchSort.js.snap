@@ -1,0 +1,289 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchSort /> should match snapshot and have correct elements & styles 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-bottom: 1px solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c1 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c2 {
+  position: relative;
+}
+
+.c2 input {
+  padding-left: 20px;
+}
+
+.c2:before {
+  content: '\\e986';
+  font-family: icons;
+  font-size: 0.5rem;
+  left: 7px;
+  position: absolute;
+  top: 7px;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c4 {
+  border: 1px solid;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: .85rem;
+  height: 1.5rem;
+  padding: 0 0.35rem;
+  width: 100%;
+}
+
+.c5 {
+  margin-left: 5px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c7 {
+  font-size: .8rem;
+  line-height: 1.5rem;
+  margin-right: 5px;
+}
+
+.c8 {
+  border: 1px solid;
+  box-sizing: border-box;
+  font-size: .85rem;
+  height: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+<SearchSort
+  nagsSearch={[Function]}
+  nagsSort={[Function]}
+  query=""
+  theme={
+    Object {
+      "black": "#111111",
+      "grey": "#898989",
+      "greyDark": "#777777",
+      "greyDarker": "#595959",
+      "greyDarkest": "#222",
+      "greyLight": "#a5a5a5",
+      "greyLighter": "#dddddd",
+      "greyLightest": "#efefef",
+      "main": "#214154",
+      "mainDarken": "#08283B",
+      "mainLighten": "#3B5B6E",
+      "white": "#f6f6f6",
+    }
+  }
+>
+  <styled.div>
+    <div
+      className="c0"
+    >
+      <styled.div>
+        <div
+          className="c1"
+        >
+          <Component
+            name="query"
+            onChange={[Function]}
+            value=""
+          >
+            <styled.div>
+              <div
+                className="c2"
+              >
+                <Component
+                  name="query"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  small={true}
+                  type="search"
+                  value=""
+                >
+                  <styled.div
+                    name="query"
+                    onChange={[Function]}
+                    placeholder="Search"
+                    small={true}
+                    type="search"
+                    value=""
+                  >
+                    <div
+                      className="c3"
+                      name="query"
+                      onChange={[Function]}
+                      placeholder="Search"
+                      type="search"
+                      value=""
+                    >
+                      <styled.input
+                        name="query"
+                        onChange={[Function]}
+                        placeholder="Search"
+                        small={true}
+                        type="search"
+                        value=""
+                      >
+                        <input
+                          className="c4"
+                          name="query"
+                          onChange={[Function]}
+                          placeholder="Search"
+                          type="search"
+                          value=""
+                        />
+                      </styled.input>
+                    </div>
+                  </styled.div>
+                </Component>
+              </div>
+            </styled.div>
+          </Component>
+        </div>
+      </styled.div>
+      <styled.div>
+        <div
+          className="c5"
+        >
+          <Component
+            id="nags_sort"
+            inline={true}
+            label="Sort By"
+            name="sortBy"
+            onChange={[Function]}
+            small={true}
+            value=""
+          >
+            <styled.div
+              inline={true}
+              name="sortBy"
+              onChange={[Function]}
+              small={true}
+              value=""
+            >
+              <div
+                className="c6"
+                name="sortBy"
+                onChange={[Function]}
+                value=""
+              >
+                <Component
+                  htmlFor="nags_sort"
+                  inline={true}
+                  name="sortBy"
+                  onChange={[Function]}
+                  small={true}
+                  value=""
+                >
+                  <styled.label
+                    htmlFor="nags_sort"
+                    inline={true}
+                    name="sortBy"
+                    onChange={[Function]}
+                    small={true}
+                    value=""
+                  >
+                    <label
+                      className="c7"
+                      htmlFor="nags_sort"
+                      name="sortBy"
+                      onChange={[Function]}
+                      value=""
+                    >
+                      Sort By
+                    </label>
+                  </styled.label>
+                </Component>
+                <styled.select
+                  id="nags_sort"
+                  inline={true}
+                  name="sortBy"
+                  onChange={[Function]}
+                  small={true}
+                  value=""
+                >
+                  <select
+                    className="c8"
+                    id="nags_sort"
+                    name="sortBy"
+                    onChange={[Function]}
+                    value=""
+                  >
+                    <option
+                      value="nextNag"
+                    >
+                      Next Nag
+                    </option>
+                    <option
+                      value="lastNag"
+                    >
+                      Last Nag
+                    </option>
+                    <option
+                      value="AZ"
+                    >
+                      A-Z
+                    </option>
+                    <option
+                      value="ZA"
+                    >
+                      Z-A
+                    </option>
+                    <option
+                      value="latest"
+                    >
+                      Latest First
+                    </option>
+                    <option
+                      value="oldest"
+                    >
+                      Oldest First
+                    </option>
+                  </select>
+                </styled.select>
+              </div>
+            </styled.div>
+          </Component>
+        </div>
+      </styled.div>
+    </div>
+  </styled.div>
+</SearchSort>
+`;
