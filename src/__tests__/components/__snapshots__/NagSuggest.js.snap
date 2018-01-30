@@ -1,0 +1,523 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NagSuggest /> should match snapshot and have correct elements and children 1`] = `
+.c0 {
+  border-top: 1px solid;
+  margin-top: 20px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.c1 {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.c2 {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0.5rem 0.5rem 1rem;
+}
+
+.c3 {
+  border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.25);
+  margin-bottom: 0.5rem;
+  padding: 10px;
+  padding-right: 50px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+}
+
+.c3:last-child {
+  margin-bottom: 0;
+}
+
+.c4 {
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.c5 {
+  font-size: 0.8rem;
+  margin: 5px 0 0;
+}
+
+.c6 {
+  bottom: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.c7 {
+  border: 1px solid props => props.theme.mainDarken;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  line-height: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  border-radius: 50%;
+  height: 2rem;
+  text-align: center;
+  width: 2rem;
+}
+
+.c7 i {
+  position: relative;
+  top: 2px;
+}
+
+.c8 {
+  color: undefined;
+  font-family: icons;
+  font-size: 1rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c8:before {
+  content: "\\ea09";
+}
+
+<NagForm
+  nagCreate={[Function]}
+>
+  <div>
+    <styled.div>
+      <div
+        className="c0"
+      >
+        <Component>
+          <styled.h5>
+            <h5
+              className="c1"
+            >
+              Or try the nags below
+            </h5>
+          </styled.h5>
+        </Component>
+      </div>
+    </styled.div>
+    <StaggeredMotion
+      defaultStyles={
+        Array [
+          Object {
+            "t": 100,
+          },
+          Object {
+            "t": 100,
+          },
+          Object {
+            "t": 100,
+          },
+          Object {
+            "t": 100,
+          },
+          Object {
+            "t": 100,
+          },
+        ]
+      }
+      styles={[Function]}
+    >
+      <styled.ul>
+        <ul
+          className="c2"
+        >
+          <styled.li
+            key="1"
+            style={
+              Object {
+                "WebkitTransform": "translateY(100px)",
+                "transform": "translateY(100px)",
+              }
+            }
+          >
+            <li
+              className="c3"
+              style={
+                Object {
+                  "WebkitTransform": "translateY(100px)",
+                  "transform": "translateY(100px)",
+                }
+              }
+            >
+              <Component>
+                <styled.h6>
+                  <h6
+                    className="c4"
+                  >
+                    Drink water
+                  </h6>
+                </styled.h6>
+              </Component>
+              <styled.p>
+                <p
+                  className="c5"
+                >
+                  repeats every 
+                  20 min
+                </p>
+              </styled.p>
+              <styled.div>
+                <div
+                  className="c6"
+                >
+                  <Component
+                    circle={true}
+                    onClick={[Function]}
+                    title="Start this nag"
+                  >
+                    <styled.button
+                      circle={true}
+                      onClick={[Function]}
+                      title="Start this nag"
+                    >
+                      <button
+                        className="c7"
+                        onClick={[Function]}
+                        title="Start this nag"
+                      >
+                        <Component
+                          add={true}
+                          inverse={true}
+                        >
+                          <styled.i
+                            add={true}
+                            inverse={true}
+                          >
+                            <i
+                              className="c8"
+                            />
+                          </styled.i>
+                        </Component>
+                      </button>
+                    </styled.button>
+                  </Component>
+                </div>
+              </styled.div>
+            </li>
+          </styled.li>
+          <styled.li
+            key="2"
+            style={
+              Object {
+                "WebkitTransform": "translateY(100px)",
+                "transform": "translateY(100px)",
+              }
+            }
+          >
+            <li
+              className="c3"
+              style={
+                Object {
+                  "WebkitTransform": "translateY(100px)",
+                  "transform": "translateY(100px)",
+                }
+              }
+            >
+              <Component>
+                <styled.h6>
+                  <h6
+                    className="c4"
+                  >
+                    Relax your eyes
+                  </h6>
+                </styled.h6>
+              </Component>
+              <styled.p>
+                <p
+                  className="c5"
+                >
+                  repeats every 
+                  30 min
+                </p>
+              </styled.p>
+              <styled.div>
+                <div
+                  className="c6"
+                >
+                  <Component
+                    circle={true}
+                    onClick={[Function]}
+                    title="Start this nag"
+                  >
+                    <styled.button
+                      circle={true}
+                      onClick={[Function]}
+                      title="Start this nag"
+                    >
+                      <button
+                        className="c7"
+                        onClick={[Function]}
+                        title="Start this nag"
+                      >
+                        <Component
+                          add={true}
+                          inverse={true}
+                        >
+                          <styled.i
+                            add={true}
+                            inverse={true}
+                          >
+                            <i
+                              className="c8"
+                            />
+                          </styled.i>
+                        </Component>
+                      </button>
+                    </styled.button>
+                  </Component>
+                </div>
+              </styled.div>
+            </li>
+          </styled.li>
+          <styled.li
+            key="3"
+            style={
+              Object {
+                "WebkitTransform": "translateY(100px)",
+                "transform": "translateY(100px)",
+              }
+            }
+          >
+            <li
+              className="c3"
+              style={
+                Object {
+                  "WebkitTransform": "translateY(100px)",
+                  "transform": "translateY(100px)",
+                }
+              }
+            >
+              <Component>
+                <styled.h6>
+                  <h6
+                    className="c4"
+                  >
+                    Take a deep breath
+                  </h6>
+                </styled.h6>
+              </Component>
+              <styled.p>
+                <p
+                  className="c5"
+                >
+                  repeats every 
+                  1 hour
+                </p>
+              </styled.p>
+              <styled.div>
+                <div
+                  className="c6"
+                >
+                  <Component
+                    circle={true}
+                    onClick={[Function]}
+                    title="Start this nag"
+                  >
+                    <styled.button
+                      circle={true}
+                      onClick={[Function]}
+                      title="Start this nag"
+                    >
+                      <button
+                        className="c7"
+                        onClick={[Function]}
+                        title="Start this nag"
+                      >
+                        <Component
+                          add={true}
+                          inverse={true}
+                        >
+                          <styled.i
+                            add={true}
+                            inverse={true}
+                          >
+                            <i
+                              className="c8"
+                            />
+                          </styled.i>
+                        </Component>
+                      </button>
+                    </styled.button>
+                  </Component>
+                </div>
+              </styled.div>
+            </li>
+          </styled.li>
+          <styled.li
+            key="4"
+            style={
+              Object {
+                "WebkitTransform": "translateY(100px)",
+                "transform": "translateY(100px)",
+              }
+            }
+          >
+            <li
+              className="c3"
+              style={
+                Object {
+                  "WebkitTransform": "translateY(100px)",
+                  "transform": "translateY(100px)",
+                }
+              }
+            >
+              <Component>
+                <styled.h6>
+                  <h6
+                    className="c4"
+                  >
+                    Remember to smile
+                  </h6>
+                </styled.h6>
+              </Component>
+              <styled.p>
+                <p
+                  className="c5"
+                >
+                  repeats every 
+                  4 hour
+                </p>
+              </styled.p>
+              <styled.div>
+                <div
+                  className="c6"
+                >
+                  <Component
+                    circle={true}
+                    onClick={[Function]}
+                    title="Start this nag"
+                  >
+                    <styled.button
+                      circle={true}
+                      onClick={[Function]}
+                      title="Start this nag"
+                    >
+                      <button
+                        className="c7"
+                        onClick={[Function]}
+                        title="Start this nag"
+                      >
+                        <Component
+                          add={true}
+                          inverse={true}
+                        >
+                          <styled.i
+                            add={true}
+                            inverse={true}
+                          >
+                            <i
+                              className="c8"
+                            />
+                          </styled.i>
+                        </Component>
+                      </button>
+                    </styled.button>
+                  </Component>
+                </div>
+              </styled.div>
+            </li>
+          </styled.li>
+          <styled.li
+            key="5"
+            style={
+              Object {
+                "WebkitTransform": "translateY(100px)",
+                "transform": "translateY(100px)",
+              }
+            }
+          >
+            <li
+              className="c3"
+              style={
+                Object {
+                  "WebkitTransform": "translateY(100px)",
+                  "transform": "translateY(100px)",
+                }
+              }
+            >
+              <Component>
+                <styled.h6>
+                  <h6
+                    className="c4"
+                  >
+                    Go for a walk
+                  </h6>
+                </styled.h6>
+              </Component>
+              <styled.p>
+                <p
+                  className="c5"
+                >
+                  repeats every 
+                  8 hour
+                </p>
+              </styled.p>
+              <styled.div>
+                <div
+                  className="c6"
+                >
+                  <Component
+                    circle={true}
+                    onClick={[Function]}
+                    title="Start this nag"
+                  >
+                    <styled.button
+                      circle={true}
+                      onClick={[Function]}
+                      title="Start this nag"
+                    >
+                      <button
+                        className="c7"
+                        onClick={[Function]}
+                        title="Start this nag"
+                      >
+                        <Component
+                          add={true}
+                          inverse={true}
+                        >
+                          <styled.i
+                            add={true}
+                            inverse={true}
+                          >
+                            <i
+                              className="c8"
+                            />
+                          </styled.i>
+                        </Component>
+                      </button>
+                    </styled.button>
+                  </Component>
+                </div>
+              </styled.div>
+            </li>
+          </styled.li>
+        </ul>
+      </styled.ul>
+    </StaggeredMotion>
+  </div>
+</NagForm>
+`;
