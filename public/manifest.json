@@ -1,6 +1,6 @@
 {
   "name": "Nag Me",
-  "description": "Nag me notify users of routined tasks. Nag me notifications are soft (doesn't ring and also closes itself) so use it for low priority tasks only.",
+  "description": "Nag me notify users of low priority routined tasks.",
   "version": "1.0.0",
   "manifest_version": 2,
   "homepage_url": "https://www.gauti.info/nag-me",
