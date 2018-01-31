@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> should match snapshot and have correct elements and children 1`] = `
+exports[`<Header /> should match snapshot 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -87,123 +87,50 @@ exports[`<Header /> should match snapshot and have correct elements and children
   margin-bottom: 0;
 }
 
-<Header
-  nagIndex={[Function]}
-  nagNew={[Function]}
+<header
+  className="c0"
 >
-  <styled.header>
-    <header
-      className="c0"
+  <div
+    className="c1"
+  >
+    <a
+      className="c2"
+      href="https://www.gauti.info/nag-me"
+      target="_blank"
+      title="More information about Nag Me"
     >
-      <styled.div>
-        <div
-          className="c1"
-        >
-          <Component
-            href="https://www.gauti.info/nag-me"
-            target="_blank"
-            title="More information about Nag Me"
-          >
-            <styled.a
-              href="https://www.gauti.info/nag-me"
-              target="_blank"
-              title="More information about Nag Me"
-            >
-              <a
-                className="c2"
-                href="https://www.gauti.info/nag-me"
-                target="_blank"
-                title="More information about Nag Me"
-              >
-                <Component
-                  inverse={true}
-                  question={true}
-                >
-                  <styled.i
-                    inverse={true}
-                    question={true}
-                  >
-                    <i
-                      className="c3"
-                    />
-                  </styled.i>
-                </Component>
-              </a>
-            </styled.a>
-          </Component>
-        </div>
-      </styled.div>
-      <styled.div>
-        <div
-          className="c4"
-        >
-          <Component
-            onClick={[Function]}
-            reset={true}
-            title="Nags Index"
-          >
-            <styled.button
-              onClick={[Function]}
-              reset={true}
-              title="Nags Index"
-            >
-              <button
-                className="c5"
-                onClick={[Function]}
-                title="Nags Index"
-              >
-                <Component>
-                  <styled.h1>
-                    <h1
-                      className="c6"
-                    >
-                      Nag Me
-                    </h1>
-                  </styled.h1>
-                </Component>
-              </button>
-            </styled.button>
-          </Component>
-        </div>
-      </styled.div>
-      <styled.div>
-        <div
-          className="c1"
-        >
-          <Component
-            onClick={[Function]}
-            reset={true}
-            title="Create a nag"
-          >
-            <styled.button
-              onClick={[Function]}
-              reset={true}
-              title="Create a nag"
-            >
-              <button
-                className="c5"
-                onClick={[Function]}
-                title="Create a nag"
-              >
-                <Component
-                  add={true}
-                  inverse={true}
-                >
-                  <styled.i
-                    add={true}
-                    inverse={true}
-                  >
-                    <i
-                      className="c7"
-                    />
-                  </styled.i>
-                </Component>
-              </button>
-            </styled.button>
-          </Component>
-        </div>
-      </styled.div>
-    </header>
-  </styled.header>
-</Header>
+      <i
+        className="c3"
+      />
+    </a>
+  </div>
+  <div
+    className="c4"
+  >
+    <button
+      className="c5"
+      onClick={[Function]}
+      title="Nags Index"
+    >
+      <h1
+        className="c6"
+      >
+        Nag Me
+      </h1>
+    </button>
+  </div>
+  <div
+    className="c1"
+  >
+    <button
+      className="c5"
+      onClick={[Function]}
+      title="Create a nag"
+    >
+      <i
+        className="c7"
+      />
+    </button>
+  </div>
+</header>
 `;

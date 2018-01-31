@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Search /> should match snapshot and have correct elements & styles 1`] = `
+exports[`<Search /> should match snapshot 1`] = `
 .c0 {
   position: relative;
 }
@@ -38,106 +38,20 @@ exports[`<Search /> should match snapshot and have correct elements & styles 1`]
   width: 100%;
 }
 
-<Component
-  theme={
-    Object {
-      "black": "#111111",
-      "grey": "#898989",
-      "greyDark": "#777777",
-      "greyDarker": "#595959",
-      "greyDarkest": "#222",
-      "greyLight": "#a5a5a5",
-      "greyLighter": "#dddddd",
-      "greyLightest": "#efefef",
-      "main": "#214154",
-      "mainDarken": "#08283B",
-      "mainLighten": "#3B5B6E",
-      "white": "#f6f6f6",
-    }
-  }
+<div
+  className="c0"
 >
-  <styled.div>
-    <div
-      className="c0"
-    >
-      <Component
-        placeholder="Search"
-        small={true}
-        theme={
-          Object {
-            "black": "#111111",
-            "grey": "#898989",
-            "greyDark": "#777777",
-            "greyDarker": "#595959",
-            "greyDarkest": "#222",
-            "greyLight": "#a5a5a5",
-            "greyLighter": "#dddddd",
-            "greyLightest": "#efefef",
-            "main": "#214154",
-            "mainDarken": "#08283B",
-            "mainLighten": "#3B5B6E",
-            "white": "#f6f6f6",
-          }
-        }
-        type="search"
-      >
-        <styled.div
-          placeholder="Search"
-          small={true}
-          theme={
-            Object {
-              "black": "#111111",
-              "grey": "#898989",
-              "greyDark": "#777777",
-              "greyDarker": "#595959",
-              "greyDarkest": "#222",
-              "greyLight": "#a5a5a5",
-              "greyLighter": "#dddddd",
-              "greyLightest": "#efefef",
-              "main": "#214154",
-              "mainDarken": "#08283B",
-              "mainLighten": "#3B5B6E",
-              "white": "#f6f6f6",
-            }
-          }
-          type="search"
-        >
-          <div
-            className="c1"
-            placeholder="Search"
-            type="search"
-          >
-            <styled.input
-              placeholder="Search"
-              small={true}
-              theme={
-                Object {
-                  "black": "#111111",
-                  "grey": "#898989",
-                  "greyDark": "#777777",
-                  "greyDarker": "#595959",
-                  "greyDarkest": "#222",
-                  "greyLight": "#a5a5a5",
-                  "greyLighter": "#dddddd",
-                  "greyLightest": "#efefef",
-                  "main": "#214154",
-                  "mainDarken": "#08283B",
-                  "mainLighten": "#3B5B6E",
-                  "white": "#f6f6f6",
-                }
-              }
-              type="search"
-            >
-              <input
-                className="c2"
-                placeholder="Search"
-                type="search"
-              />
-            </styled.input>
-          </div>
-        </styled.div>
-      </Component>
-    </div>
-  </styled.div>
-</Component>
+  <div
+    className="c1"
+    placeholder="Search"
+    type="search"
+  >
+    <input
+      className="c2"
+      id={undefined}
+      placeholder="Search"
+      type="search"
+    />
+  </div>
+</div>
 `;

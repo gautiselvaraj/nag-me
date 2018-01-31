@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import moment from 'moment';
 import NagForm from '../../components/NagForm';
 import 'jest-styled-components';
@@ -35,7 +36,22 @@ describe('<NagForm />', () => {
     nagUpdate = jest.fn();
   });
 
-  it('should match snapshot and have correct elements and children', () => {
+  it('should match snapshot', () => {
+    const tree = renderer
+      .create(
+        <Provider store={mockStore()}>
+          <NagForm
+            nagIndex={nagIndex}
+            nagCreate={nagCreate}
+            nagUpdate={nagUpdate}
+          />
+        </Provider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should have correct elements and children', () => {
     const nagForm = mount(
       <Provider store={mockStore()}>
         <NagForm
@@ -45,7 +61,6 @@ describe('<NagForm />', () => {
         />
       </Provider>
     );
-    expect(nagForm).toMatchSnapshot();
     expect(nagForm.find('button[title="Back"]').length).toBe(1);
     expect(nagForm.find('h3').length).toBe(1);
     expect(nagForm.find('h3').text()).toBe('Create a nag');

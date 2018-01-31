@@ -1,6 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Icon /> should match snapshot and have correct element & color 1`] = `
+exports[`<Icon /> default icon should match snapshot 1`] = `
+.c0 {
+  font-family: icons;
+  font-size: 1rem;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.c0:before {
+  content: "\\e906";
+}
+
+<i
+  className="c0"
+/>
+`;
+
+exports[`<Icon /> inverse link should match snapshot 1`] = `
 .c0 {
   color: #f6f6f6;
   font-family: icons;
@@ -19,112 +42,7 @@ exports[`<Icon /> should match snapshot and have correct element & color 1`] = `
   content: "\\e906";
 }
 
-<Component
-  edit={true}
-  inverse={true}
-  theme={
-    Object {
-      "black": "#111111",
-      "grey": "#898989",
-      "greyDark": "#777777",
-      "greyDarker": "#595959",
-      "greyDarkest": "#222",
-      "greyLight": "#a5a5a5",
-      "greyLighter": "#dddddd",
-      "greyLightest": "#efefef",
-      "main": "#214154",
-      "mainDarken": "#08283B",
-      "mainLighten": "#3B5B6E",
-      "white": "#f6f6f6",
-    }
-  }
->
-  <styled.i
-    edit={true}
-    inverse={true}
-    theme={
-      Object {
-        "black": "#111111",
-        "grey": "#898989",
-        "greyDark": "#777777",
-        "greyDarker": "#595959",
-        "greyDarkest": "#222",
-        "greyLight": "#a5a5a5",
-        "greyLighter": "#dddddd",
-        "greyLightest": "#efefef",
-        "main": "#214154",
-        "mainDarken": "#08283B",
-        "mainLighten": "#3B5B6E",
-        "white": "#f6f6f6",
-      }
-    }
-  >
-    <i
-      className="c0"
-    />
-  </styled.i>
-</Component>
-`;
-
-exports[`<Icon /> should match snapshot and have correct element, content before, text & font-size 1`] = `
-.c0 {
-  font-family: icons;
-  font-size: 1rem;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  speak: none;
-  text-transform: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.c0:before {
-  content: "\\e906";
-}
-
-<Component
-  edit={true}
-  theme={
-    Object {
-      "black": "#111111",
-      "grey": "#898989",
-      "greyDark": "#777777",
-      "greyDarker": "#595959",
-      "greyDarkest": "#222",
-      "greyLight": "#a5a5a5",
-      "greyLighter": "#dddddd",
-      "greyLightest": "#efefef",
-      "main": "#214154",
-      "mainDarken": "#08283B",
-      "mainLighten": "#3B5B6E",
-      "white": "#f6f6f6",
-    }
-  }
->
-  <styled.i
-    edit={true}
-    theme={
-      Object {
-        "black": "#111111",
-        "grey": "#898989",
-        "greyDark": "#777777",
-        "greyDarker": "#595959",
-        "greyDarkest": "#222",
-        "greyLight": "#a5a5a5",
-        "greyLighter": "#dddddd",
-        "greyLightest": "#efefef",
-        "main": "#214154",
-        "mainDarken": "#08283B",
-        "mainLighten": "#3B5B6E",
-        "white": "#f6f6f6",
-      }
-    }
-  >
-    <i
-      className="c0"
-    />
-  </styled.i>
-</Component>
+<i
+  className="c0"
+/>
 `;

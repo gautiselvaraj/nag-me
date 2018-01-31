@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchSort /> should match snapshot and have correct elements & styles 1`] = `
+exports[`<SearchSort /> should match snapshot 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -91,199 +91,92 @@ exports[`<SearchSort /> should match snapshot and have correct elements & styles
   margin-bottom: 0;
 }
 
-<SearchSort
-  nagsSearch={[Function]}
-  nagsSort={[Function]}
-  query=""
-  theme={
-    Object {
-      "black": "#111111",
-      "grey": "#898989",
-      "greyDark": "#777777",
-      "greyDarker": "#595959",
-      "greyDarkest": "#222",
-      "greyLight": "#a5a5a5",
-      "greyLighter": "#dddddd",
-      "greyLightest": "#efefef",
-      "main": "#214154",
-      "mainDarken": "#08283B",
-      "mainLighten": "#3B5B6E",
-      "white": "#f6f6f6",
-    }
-  }
+<div
+  className="c0"
 >
-  <styled.div>
+  <div
+    className="c1"
+  >
     <div
-      className="c0"
+      className="c2"
     >
-      <styled.div>
-        <div
-          className="c1"
-        >
-          <Component
-            name="query"
-            onChange={[Function]}
-            value=""
-          >
-            <styled.div>
-              <div
-                className="c2"
-              >
-                <Component
-                  name="query"
-                  onChange={[Function]}
-                  placeholder="Search"
-                  small={true}
-                  type="search"
-                  value=""
-                >
-                  <styled.div
-                    name="query"
-                    onChange={[Function]}
-                    placeholder="Search"
-                    small={true}
-                    type="search"
-                    value=""
-                  >
-                    <div
-                      className="c3"
-                      name="query"
-                      onChange={[Function]}
-                      placeholder="Search"
-                      type="search"
-                      value=""
-                    >
-                      <styled.input
-                        name="query"
-                        onChange={[Function]}
-                        placeholder="Search"
-                        small={true}
-                        type="search"
-                        value=""
-                      >
-                        <input
-                          className="c4"
-                          name="query"
-                          onChange={[Function]}
-                          placeholder="Search"
-                          type="search"
-                          value=""
-                        />
-                      </styled.input>
-                    </div>
-                  </styled.div>
-                </Component>
-              </div>
-            </styled.div>
-          </Component>
-        </div>
-      </styled.div>
-      <styled.div>
-        <div
-          className="c5"
-        >
-          <Component
-            id="nags_sort"
-            inline={true}
-            label="Sort By"
-            name="sortBy"
-            onChange={[Function]}
-            small={true}
-            value=""
-          >
-            <styled.div
-              inline={true}
-              name="sortBy"
-              onChange={[Function]}
-              small={true}
-              value=""
-            >
-              <div
-                className="c6"
-                name="sortBy"
-                onChange={[Function]}
-                value=""
-              >
-                <Component
-                  htmlFor="nags_sort"
-                  inline={true}
-                  name="sortBy"
-                  onChange={[Function]}
-                  small={true}
-                  value=""
-                >
-                  <styled.label
-                    htmlFor="nags_sort"
-                    inline={true}
-                    name="sortBy"
-                    onChange={[Function]}
-                    small={true}
-                    value=""
-                  >
-                    <label
-                      className="c7"
-                      htmlFor="nags_sort"
-                      name="sortBy"
-                      onChange={[Function]}
-                      value=""
-                    >
-                      Sort By
-                    </label>
-                  </styled.label>
-                </Component>
-                <styled.select
-                  id="nags_sort"
-                  inline={true}
-                  name="sortBy"
-                  onChange={[Function]}
-                  small={true}
-                  value=""
-                >
-                  <select
-                    className="c8"
-                    id="nags_sort"
-                    name="sortBy"
-                    onChange={[Function]}
-                    value=""
-                  >
-                    <option
-                      value="nextNag"
-                    >
-                      Next Nag
-                    </option>
-                    <option
-                      value="lastNag"
-                    >
-                      Last Nag
-                    </option>
-                    <option
-                      value="AZ"
-                    >
-                      A-Z
-                    </option>
-                    <option
-                      value="ZA"
-                    >
-                      Z-A
-                    </option>
-                    <option
-                      value="latest"
-                    >
-                      Latest First
-                    </option>
-                    <option
-                      value="oldest"
-                    >
-                      Oldest First
-                    </option>
-                  </select>
-                </styled.select>
-              </div>
-            </styled.div>
-          </Component>
-        </div>
-      </styled.div>
+      <div
+        className="c3"
+        name="query"
+        onChange={[Function]}
+        placeholder="Search"
+        type="search"
+        value=""
+      >
+        <input
+          className="c4"
+          id={undefined}
+          name="query"
+          onChange={[Function]}
+          placeholder="Search"
+          type="search"
+          value=""
+        />
+      </div>
     </div>
-  </styled.div>
-</SearchSort>
+  </div>
+  <div
+    className="c5"
+  >
+    <div
+      className="c6"
+      name="sortBy"
+      onChange={[Function]}
+      value=""
+    >
+      <label
+        className="c7"
+        htmlFor="nags_sort"
+        name="sortBy"
+        onChange={[Function]}
+        value=""
+      >
+        Sort By
+      </label>
+      <select
+        className="c8"
+        id="nags_sort"
+        name="sortBy"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          value="nextNag"
+        >
+          Next Nag
+        </option>
+        <option
+          value="lastNag"
+        >
+          Last Nag
+        </option>
+        <option
+          value="AZ"
+        >
+          A-Z
+        </option>
+        <option
+          value="ZA"
+        >
+          Z-A
+        </option>
+        <option
+          value="latest"
+        >
+          Latest First
+        </option>
+        <option
+          value="oldest"
+        >
+          Oldest First
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
 `;

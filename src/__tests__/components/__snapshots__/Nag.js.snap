@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Nag /> should match snapshot and have correct elements and children 1`] = `
+exports[`<Nag /> should match snapshot 1`] = `
 .c0 {
   background-color: #ffffff;
   border-radius: 4px;
@@ -140,271 +140,112 @@ exports[`<Nag /> should match snapshot and have correct elements and children 1`
   will-change: transform;
 }
 
-<Nag
-  nag={
-    Object {
-      "createdAt": 1234567890,
-      "firstNag": 1234567890,
-      "id": 1,
-      "nextNag": 1234567890,
-      "repeats": "1 min",
-      "status": "LIVE",
-      "title": "Test Nag 1",
-    }
-  }
-  nagDelete={[Function]}
-  nagEdit={[Function]}
-  nagPause={[Function]}
-  nagResume={[Function]}
-  nagStatusUpdate={[Function]}
+<div
+  onClick={[Function]}
 >
-  <StaggeredMotion
-    defaultStyles={
-      Array [
-        Object {
-          "t": 0,
-        },
-        Object {
-          "t": 0,
-        },
-        Object {
-          "t": 0,
-        },
-        Object {
-          "t": 0,
-        },
-      ]
-    }
-    styles={[Function]}
-  >
+  <div>
     <div
-      onClick={[Function]}
+      className="c0"
+      style={
+        Object {
+          "WebkitTransform": "translateX(0px)",
+          "transform": "translateX(0px)",
+        }
+      }
     >
-      <div
-        key="0"
+      <h3
+        className="c1"
       >
-        <styled.div
-          completed={false}
-          paused={false}
-          style={
-            Object {
-              "WebkitTransform": "translateX(0px)",
-              "transform": "translateX(0px)",
-            }
-          }
+        Test Nag 1
+      </h3>
+      <div>
+        <p
+          className="c2"
         >
-          <div
-            className="c0"
-            style={
-              Object {
-                "WebkitTransform": "translateX(0px)",
-                "transform": "translateX(0px)",
-              }
-            }
-          >
-            <styled.h3>
-              <h3
-                className="c1"
-              >
-                Test Nag 1
-              </h3>
-            </styled.h3>
-            <div>
-              <styled.p>
-                <p
-                  className="c2"
-                >
-                  in 
-                  48 years
-                </p>
-              </styled.p>
-              <styled.p>
-                <p
-                  className="c3"
-                >
-                  <span>
-                    and repeat every 
-                    1 minute
-                  </span>
-                </p>
-              </styled.p>
-            </div>
-            <styled.div
-              style={
-                Object {
-                  "width": "2526655556.85%",
-                }
-              }
-            >
-              <div
-                className="c4"
-                style={
-                  Object {
-                    "width": "2526655556.85%",
-                  }
-                }
-              />
-            </styled.div>
-          </div>
-        </styled.div>
+          in 
+          48 years
+        </p>
+        <p
+          className="c3"
+        >
+          <span>
+            and repeat every 
+            1 minute
+          </span>
+        </p>
       </div>
       <div
-        key="1"
-      >
-        <styled.div
-          style={
-            Object {
-              "WebkitTransform": "translate(0px, -50%)",
-              "transform": "translate(0px, -50%)",
-            }
+        className="c4"
+        style={
+          Object {
+            "width": "2526655556.85%",
           }
-        >
-          <div
-            className="c5"
-            style={
-              Object {
-                "WebkitTransform": "translate(0px, -50%)",
-                "transform": "translate(0px, -50%)",
-              }
-            }
-          >
-            <Component
-              circle={true}
-              onClick={[Function]}
-              title="Edit"
-            >
-              <styled.button
-                circle={true}
-                onClick={[Function]}
-                title="Edit"
-              >
-                <button
-                  className="c6"
-                  onClick={[Function]}
-                  title="Edit"
-                >
-                  <Component
-                    edit={true}
-                  >
-                    <styled.i
-                      edit={true}
-                    >
-                      <i
-                        className="c7"
-                      />
-                    </styled.i>
-                  </Component>
-                </button>
-              </styled.button>
-            </Component>
-          </div>
-        </styled.div>
-      </div>
-      <div
-        key="2"
-      >
-        <styled.div
-          style={
-            Object {
-              "WebkitTransform": "translate(0px, -50%)",
-              "transform": "translate(0px, -50%)",
-            }
-          }
-        >
-          <div
-            className="c8"
-            style={
-              Object {
-                "WebkitTransform": "translate(0px, -50%)",
-                "transform": "translate(0px, -50%)",
-              }
-            }
-          >
-            <Component
-              circle={true}
-              onClick={[Function]}
-              title="Delete"
-            >
-              <styled.button
-                circle={true}
-                onClick={[Function]}
-                title="Delete"
-              >
-                <button
-                  className="c6"
-                  onClick={[Function]}
-                  title="Delete"
-                >
-                  <Component
-                    delete={true}
-                  >
-                    <styled.i
-                      delete={true}
-                    >
-                      <i
-                        className="c9"
-                      />
-                    </styled.i>
-                  </Component>
-                </button>
-              </styled.button>
-            </Component>
-          </div>
-        </styled.div>
-      </div>
-      <div
-        key="3"
-      >
-        <styled.div
-          style={
-            Object {
-              "WebkitTransform": "translate(0px, -50%)",
-              "transform": "translate(0px, -50%)",
-            }
-          }
-        >
-          <div
-            className="c10"
-            style={
-              Object {
-                "WebkitTransform": "translate(0px, -50%)",
-                "transform": "translate(0px, -50%)",
-              }
-            }
-          >
-            <Component
-              circle={true}
-              onClick={[Function]}
-              title="Pause"
-            >
-              <styled.button
-                circle={true}
-                onClick={[Function]}
-                title="Pause"
-              >
-                <button
-                  className="c6"
-                  onClick={[Function]}
-                  title="Pause"
-                >
-                  <Component
-                    pause={true}
-                  >
-                    <styled.i
-                      pause={true}
-                    >
-                      <i
-                        className="c11"
-                      />
-                    </styled.i>
-                  </Component>
-                </button>
-              </styled.button>
-            </Component>
-          </div>
-        </styled.div>
-      </div>
+        }
+      />
     </div>
-  </StaggeredMotion>
-</Nag>
+  </div>
+  <div>
+    <div
+      className="c5"
+      style={
+        Object {
+          "WebkitTransform": "translate(0px, -50%)",
+          "transform": "translate(0px, -50%)",
+        }
+      }
+    >
+      <button
+        className="c6"
+        onClick={[Function]}
+        title="Edit"
+      >
+        <i
+          className="c7"
+        />
+      </button>
+    </div>
+  </div>
+  <div>
+    <div
+      className="c8"
+      style={
+        Object {
+          "WebkitTransform": "translate(0px, -50%)",
+          "transform": "translate(0px, -50%)",
+        }
+      }
+    >
+      <button
+        className="c6"
+        onClick={[Function]}
+        title="Delete"
+      >
+        <i
+          className="c9"
+        />
+      </button>
+    </div>
+  </div>
+  <div>
+    <div
+      className="c10"
+      style={
+        Object {
+          "WebkitTransform": "translate(0px, -50%)",
+          "transform": "translate(0px, -50%)",
+        }
+      }
+    >
+      <button
+        className="c6"
+        onClick={[Function]}
+        title="Pause"
+      >
+        <i
+          className="c11"
+        />
+      </button>
+    </div>
+  </div>
+</div>
 `;

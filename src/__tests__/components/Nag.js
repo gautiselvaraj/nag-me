@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import Nag, {
   NagTimer,
   NagRepeat,
@@ -18,7 +19,6 @@ describe('<Nag />', () => {
     nagDelete,
     nagStatusUpdate,
     nagObject,
-    nag,
     dateNow;
 
   beforeAll(() => {
@@ -45,7 +45,26 @@ describe('<Nag />', () => {
       status: 'LIVE',
       createdAt: 1234567890
     };
-    nag = mount(
+  });
+
+  it('should match snapshot', () => {
+    const tree = renderer
+      .create(
+        <Nag
+          nag={nagObject}
+          nagEdit={nagEdit}
+          nagPause={nagPause}
+          nagResume={nagResume}
+          nagDelete={nagDelete}
+          nagStatusUpdate={nagStatusUpdate}
+        />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should have correct elements and children', () => {
+    const nag = mount(
       <Nag
         nag={nagObject}
         nagEdit={nagEdit}
@@ -55,10 +74,6 @@ describe('<Nag />', () => {
         nagStatusUpdate={nagStatusUpdate}
       />
     );
-  });
-
-  it('should match snapshot and have correct elements and children', () => {
-    expect(nag).toMatchSnapshot();
     expect(nag.find('h3').length).toBe(1);
     expect(nag.find('h3').text()).toBe('Test Nag 1');
     expect(nag.find(NagTimer).length).toBe(1);
@@ -73,6 +88,16 @@ describe('<Nag />', () => {
   });
 
   it('should call nagEdit', () => {
+    const nag = mount(
+      <Nag
+        nag={nagObject}
+        nagEdit={nagEdit}
+        nagPause={nagPause}
+        nagResume={nagResume}
+        nagDelete={nagDelete}
+        nagStatusUpdate={nagStatusUpdate}
+      />
+    );
     nag
       .find(NagEditLink)
       .find('button')
@@ -81,6 +106,16 @@ describe('<Nag />', () => {
   });
 
   it('should call nagPause', () => {
+    const nag = mount(
+      <Nag
+        nag={nagObject}
+        nagEdit={nagEdit}
+        nagPause={nagPause}
+        nagResume={nagResume}
+        nagDelete={nagDelete}
+        nagStatusUpdate={nagStatusUpdate}
+      />
+    );
     nag
       .find(NagStateLink)
       .find('button')
@@ -89,6 +124,16 @@ describe('<Nag />', () => {
   });
 
   it('should call nagDelete', () => {
+    const nag = mount(
+      <Nag
+        nag={nagObject}
+        nagEdit={nagEdit}
+        nagPause={nagPause}
+        nagResume={nagResume}
+        nagDelete={nagDelete}
+        nagStatusUpdate={nagStatusUpdate}
+      />
+    );
     nag
       .find(NagDeleteLink)
       .find('button')
@@ -97,7 +142,7 @@ describe('<Nag />', () => {
   });
 
   it('should call nagResume if status is paused', () => {
-    nag = mount(
+    const nag = mount(
       <Nag
         nag={Object.assign({}, nagObject, { status: 'PAUSED' })}
         nagEdit={nagEdit}

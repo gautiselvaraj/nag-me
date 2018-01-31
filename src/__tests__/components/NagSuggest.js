@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import { fromJS } from 'immutable';
 import NagSuggest from '../../components/NagSuggest';
 import 'jest-styled-components';
@@ -20,10 +21,13 @@ describe('<NagSuggest />', () => {
     window.setTimeout = originalSetTimeout;
   });
 
-  it('should match snapshot and have correct elements and children', () => {
-    const nagSuggest = mount(<NagSuggest nagCreate={nagCreate} />);
+  it('should match snapshot', () => {
+    const tree = renderer.create(<NagSuggest nagCreate={nagCreate} />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-    expect(nagSuggest).toMatchSnapshot();
+  it('should have correct elements and children', () => {
+    const nagSuggest = mount(<NagSuggest nagCreate={nagCreate} />);
     expect(nagSuggest.find('h5').text()).toBe('Or try the nags below');
     expect(nagSuggest.find('li').length).toBe(5);
     nagSuggest

@@ -40,7 +40,9 @@ exports[`<App /> should match snapshot 1`] = `
       }
       willEnter={[Function]}
       willLeave={[Function]}
-    />
+    >
+      [Function]
+    </TransitionMotion>
   </styled.div>
 </ThemeProvider>
 `;

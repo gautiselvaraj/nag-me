@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import SearchSort from '../../components/SearchSort';
 import theme from '../../theme';
 import 'jest-styled-components';
@@ -12,8 +13,22 @@ describe('<SearchSort />', () => {
     nagsSort = jest.fn();
   });
 
-  it('should match snapshot and have correct elements & styles', () => {
-    let searchSort = mount(
+  it('should match snapshot', () => {
+    const tree = renderer
+      .create(
+        <SearchSort
+          query=""
+          nagsSearch={nagsSearch}
+          nagsSort={nagsSort}
+          theme={theme}
+        />
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should have correct elements & styles', () => {
+    const searchSort = mount(
       <SearchSort
         query=""
         nagsSearch={nagsSearch}
@@ -21,8 +36,6 @@ describe('<SearchSort />', () => {
         theme={theme}
       />
     );
-    expect(searchSort).toMatchSnapshot();
-
     const searchInput = searchSort.find('input[placeholder="Search"]');
     expect(searchInput.length).toBe(1);
     searchInput.simulate('change', { target: { value: 'Search Query' } });
