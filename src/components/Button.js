@@ -27,7 +27,7 @@ const Button = styled.button`
   background-color: ${props =>
     props.reset ? 'transparent' : props.theme.main};
   border: ${props =>
-    props.reset ? '0' : `1px solid ${props => props.theme.mainDarken}`};
+    props.reset ? '0' : `1px solid ${props.theme.mainDarken}`};
   color: ${props => (props.reset ? props.theme.main : props.theme.white)};
   cursor: pointer;
   display: ${props => (props.block ? 'block' : 'inline-block')};

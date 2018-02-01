@@ -18,7 +18,7 @@ exports[`<Nags /> empty nag list should match snapshot 1`] = `
 }
 
 .c2 {
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid undefined;
   cursor: pointer;
   display: inline-block;
   padding: 0 .75rem;
@@ -34,7 +34,7 @@ exports[`<Nags /> empty nag list should match snapshot 1`] = `
 }
 
 .c10 {
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid undefined;
   cursor: pointer;
   display: inline-block;
   padding: 0;
@@ -336,7 +336,7 @@ exports[`<Nags /> empty nag list should match snapshot 1`] = `
 
 exports[`<Nags /> populated nag list should match snapshot 1`] = `
 .c17 {
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid undefined;
   cursor: pointer;
   display: inline-block;
   padding: 0;

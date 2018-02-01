@@ -58,7 +58,7 @@ exports[`<NagSuggest /> should match snapshot 1`] = `
 }
 
 .c7 {
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid undefined;
   cursor: pointer;
   display: inline-block;
   padding: 0;

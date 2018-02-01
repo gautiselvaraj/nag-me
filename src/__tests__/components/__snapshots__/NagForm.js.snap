@@ -39,7 +39,7 @@ exports[`<NagForm /> should match snapshot 1`] = `
 }
 
 .c14 {
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid undefined;
   cursor: pointer;
   display: block;
   padding: 0 .75rem;

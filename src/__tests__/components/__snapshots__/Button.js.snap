@@ -3,7 +3,7 @@
 exports[`<Button /> circle button should match snapshot 1`] = `
 .c0 {
   background-color: #214154;
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid #08283B;
   color: #f6f6f6;
   cursor: pointer;
   display: inline-block;
@@ -43,7 +43,7 @@ exports[`<Button /> circle button should match snapshot 1`] = `
 exports[`<Button /> default button should match snapshot 1`] = `
 .c0 {
   background-color: #214154;
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid #08283B;
   color: #f6f6f6;
   cursor: pointer;
   display: inline-block;
@@ -74,7 +74,7 @@ exports[`<Button /> default button should match snapshot 1`] = `
 exports[`<Button /> link button should match snapshot 1`] = `
 .c0 {
   background-color: #214154;
-  border: 1px solid props => props.theme.mainDarken;
+  border: 1px solid #08283B;
   color: #f6f6f6;
   cursor: pointer;
   display: inline-block;
