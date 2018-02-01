@@ -50,8 +50,8 @@ describe('Time utils', () => {
     expect(nextNagTimestamp(1517226842000, '1 min')).toBe(1517227862000);
     expect(nextNagTimestamp(1517226842000, '10 hour')).toBe(1517262842000);
     expect(nextNagTimestamp(1517226842000, '25 day')).toBe(1519386842000);
+    expect(nextNagTimestamp(1517226842000, '3 week')).toBe(1519041242000);
     expect(nextNagTimestamp(1517226842000, '2 month')).toBe(1522324442000);
-    expect(nextNagTimestamp(1517226842000, '10 week')).toBe(1523278442000);
     expect(nextNagTimestamp(1517226842000, '4 year')).toBe(1643457242000);
   });
 
@@ -59,8 +59,8 @@ describe('Time utils', () => {
     expect(previousNagTimestamp(1517226842000, '1 min')).toBe(1517226782000);
     expect(previousNagTimestamp(1517226842000, '10 hour')).toBe(1517190842000);
     expect(previousNagTimestamp(1517226842000, '25 day')).toBe(1515066842000);
+    expect(previousNagTimestamp(1517226842000, '3 week')).toBe(1515412442000);
     expect(previousNagTimestamp(1517226842000, '2 month')).toBe(1511956442000);
-    expect(previousNagTimestamp(1517226842000, '10 week')).toBe(1511178842000);
     expect(previousNagTimestamp(1517226842000, '4 year')).toBe(1390996442000);
   });
 
@@ -88,11 +88,11 @@ describe('Time utils', () => {
     nag.repeats = '25 day';
     expect(setNagStatus(nag).nextNag).toBe(1519386842000);
 
+    nag.repeats = '3 week';
+    expect(setNagStatus(nag).nextNag).toBe(1519041242000);
+
     nag.repeats = '2 month';
     expect(setNagStatus(nag).nextNag).toBe(1522324442000);
-
-    nag.repeats = '10 week';
-    expect(setNagStatus(nag).nextNag).toBe(1523278442000);
 
     nag.repeats = '10 year';
     expect(setNagStatus(nag).nextNag).toBe(1832759642000);
