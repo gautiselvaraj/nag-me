@@ -1,4 +1,4 @@
-# [Nag Me](https://www.gauti.info/nag-me)
+# [Nag Me](https://www.gauti.info/nag-me) [![Coverage Status](https://coveralls.io/repos/github/gautiselvaraj/nag-me/badge.svg?branch=master)](https://coveralls.io/github/gautiselvaraj/nag-me?branch=master)
 
 #### Google Chrome extension to nag users
 Nag me notify users of routined tasks. Nag me notifications are soft (doesn't ring and also closes itself) so use it for low priority tasks only. I use Nag Me extension to notify me to drink water, to take a walk, to relax my eyes and so on while I'm on my computer. I needed something to remind me of these routined task but I don't want to set a repeat alarm because alarm rings and also excepts me to snooze or turn it off each time. All I wanted is something which will remind me softly without any sound and also closes itself without my intervention. Browser notification seems to be an ideal match so I created Nag Me.
