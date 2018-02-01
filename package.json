@@ -32,9 +32,11 @@
     "start": "node scripts/background-watch.js & node scripts/watch.js",
     "build": "react-scripts build && NODE_ENV=production node scripts/background-watch.js",
     "test": "react-scripts test --env=jsdom",
+    "test:cover": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest-styled-components": "^4.10.0",
