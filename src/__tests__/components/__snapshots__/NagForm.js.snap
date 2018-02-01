@@ -277,10 +277,10 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   <th
                     className="rdtSwitch"
                     colSpan={5}
-                    data-value={0}
+                    data-value={9}
                     onClick={[Function]}
                   >
-                    January 2018
+                    October 2016
                   </th>
                   <th
                     className="rdtNext"
@@ -333,9 +333,39 @@ exports[`<NagForm /> should match snapshot 1`] = `
                 <tr>
                   <td
                     className="rdtDay rdtOld rdtDisabled"
-                    data-value={31}
+                    data-value={25}
                   >
-                    31
+                    25
+                  </td>
+                  <td
+                    className="rdtDay rdtOld rdtDisabled"
+                    data-value={26}
+                  >
+                    26
+                  </td>
+                  <td
+                    className="rdtDay rdtOld rdtDisabled"
+                    data-value={27}
+                  >
+                    27
+                  </td>
+                  <td
+                    className="rdtDay rdtOld rdtDisabled"
+                    data-value={28}
+                  >
+                    28
+                  </td>
+                  <td
+                    className="rdtDay rdtOld rdtDisabled"
+                    data-value={29}
+                  >
+                    29
+                  </td>
+                  <td
+                    className="rdtDay rdtOld rdtDisabled"
+                    data-value={30}
+                  >
+                    30
                   </td>
                   <td
                     className="rdtDay rdtDisabled"
@@ -343,6 +373,8 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     1
                   </td>
+                </tr>
+                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={2}
@@ -373,8 +405,6 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     6
                   </td>
-                </tr>
-                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={7}
@@ -387,6 +417,8 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     8
                   </td>
+                </tr>
+                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={9}
@@ -394,7 +426,7 @@ exports[`<NagForm /> should match snapshot 1`] = `
                     9
                   </td>
                   <td
-                    className="rdtDay rdtDisabled"
+                    className="rdtDay rdtToday rdtDisabled"
                     data-value={10}
                   >
                     10
@@ -417,8 +449,6 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     13
                   </td>
-                </tr>
-                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={14}
@@ -431,6 +461,8 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     15
                   </td>
+                </tr>
+                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={16}
@@ -461,8 +493,6 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     20
                   </td>
-                </tr>
-                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={21}
@@ -475,6 +505,8 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     22
                   </td>
+                </tr>
+                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={23}
@@ -505,8 +537,6 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     27
                   </td>
-                </tr>
-                <tr>
                   <td
                     className="rdtDay rdtDisabled"
                     data-value={28}
@@ -519,8 +549,10 @@ exports[`<NagForm /> should match snapshot 1`] = `
                   >
                     29
                   </td>
+                </tr>
+                <tr>
                   <td
-                    className="rdtDay rdtToday rdtDisabled"
+                    className="rdtDay rdtDisabled"
                     data-value={30}
                   >
                     30
@@ -532,76 +564,34 @@ exports[`<NagForm /> should match snapshot 1`] = `
                     31
                   </td>
                   <td
-                    className="rdtDay rdtNew"
+                    className="rdtDay rdtNew rdtDisabled"
                     data-value={1}
-                    onClick={[Function]}
                   >
                     1
                   </td>
                   <td
-                    className="rdtDay rdtNew"
+                    className="rdtDay rdtNew rdtDisabled"
                     data-value={2}
-                    onClick={[Function]}
                   >
                     2
                   </td>
                   <td
-                    className="rdtDay rdtNew"
+                    className="rdtDay rdtNew rdtDisabled"
                     data-value={3}
-                    onClick={[Function]}
                   >
                     3
                   </td>
-                </tr>
-                <tr>
                   <td
-                    className="rdtDay rdtNew"
+                    className="rdtDay rdtNew rdtDisabled"
                     data-value={4}
-                    onClick={[Function]}
                   >
                     4
                   </td>
                   <td
-                    className="rdtDay rdtNew"
+                    className="rdtDay rdtNew rdtDisabled"
                     data-value={5}
-                    onClick={[Function]}
                   >
                     5
-                  </td>
-                  <td
-                    className="rdtDay rdtNew"
-                    data-value={6}
-                    onClick={[Function]}
-                  >
-                    6
-                  </td>
-                  <td
-                    className="rdtDay rdtNew"
-                    data-value={7}
-                    onClick={[Function]}
-                  >
-                    7
-                  </td>
-                  <td
-                    className="rdtDay rdtNew"
-                    data-value={8}
-                    onClick={[Function]}
-                  >
-                    8
-                  </td>
-                  <td
-                    className="rdtDay rdtNew"
-                    data-value={9}
-                    onClick={[Function]}
-                  >
-                    9
-                  </td>
-                  <td
-                    className="rdtDay rdtNew"
-                    data-value={10}
-                    onClick={[Function]}
-                  >
-                    10
                   </td>
                 </tr>
               </tbody>

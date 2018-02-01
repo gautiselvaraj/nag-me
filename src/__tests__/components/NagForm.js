@@ -2,6 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import moment from 'moment';
+import MockDate from 'mockdate';
 import NagForm from '../../components/NagForm';
 import 'jest-styled-components';
 import configureMockStore from 'redux-mock-store';
@@ -10,7 +11,7 @@ import { Provider } from 'react-redux';
 const mockStore = configureMockStore([]);
 
 describe('<NagForm />', () => {
-  let nagIndex, nagPause, nagCreate, nagUpdate, dateNow;
+  let nagIndex, nagPause, nagCreate, nagUpdate;
   const nagObject = {
     id: 1,
     title: 'Test Nag 1',
@@ -22,12 +23,11 @@ describe('<NagForm />', () => {
   };
 
   beforeAll(() => {
-    dateNow = window.Date.now;
-    window.Date.now = jest.fn(() => 1517227842390);
+    MockDate.set('10/10/2016');
   });
 
   afterAll(() => {
-    window.Date.now = dateNow;
+    MockDate.reset();
   });
 
   beforeEach(() => {
