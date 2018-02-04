@@ -26,14 +26,14 @@ Start the server
 
 Let browsers know where your extension is
 - Chrome
-  1. Visit [chrome://extensions/](chrome://extensions/) in your Google Chrome browser
+  1. Visit `chrome://extensions/` in your Google Chrome browser
   2. Enable `Developer mode` by ticking the checkbox in the upper-right corner
   3. Click on the `Load unpacked extension...` button and select the build folder
 - Firefox
-  1. Visit [about:debugging](about:debugging) in your Firefox browser
+  1. Visit `about:debugging` in your Firefox browser
   2. Click on the `Load Temporary Add-on` button and choose the `manifest.json` file from build folder
 - Opera
-  1. Visit [opera:extensions](opera:extensions) in your Opera browser
+  1. Visit `opera:extensions` in your Opera browser
   2. Click on the `Developer Mode` button
   3. Click on the `Load unpacked extension...` button and select the build folder
 
