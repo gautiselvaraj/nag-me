@@ -5,17 +5,20 @@ describe('Storage utils', () => {
 
   beforeEach(() => {
     storageSetMock = jest.fn();
-    storageGetMock = jest.fn((label, callback) => {
-      setTimeout(() => callback({ [label[0]]: '"Value"' }));
-    });
+    storageGetMock = jest.fn(
+      label =>
+        new Promise((resolve, reject) => {
+          setTimeout(resolve, 0, { [label[0]]: '"Value"' });
+        })
+    );
 
-    window.chrome.storage.sync = {
+    window.browser.storage.sync = {
       set: storageSetMock,
       get: storageGetMock
     };
   });
 
-  it('should call chrome storage sync set', () => {
+  it('should call browser storage sync set', () => {
     const label = 'Label';
     const value = 'Value';
     storageSet(label, value);
@@ -25,7 +28,7 @@ describe('Storage utils', () => {
     });
   });
 
-  it('should call chrome storage sync get', done => {
+  it('should call browser storage sync get', done => {
     const label = 'Label';
     function callback(value) {
       expect(value).toBe('Value');

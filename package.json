@@ -2,6 +2,7 @@
   "name": "nag-me",
   "version": "0.1.0",
   "private": true,
+  "author": "Gauti Selvaraj <me@gauti.info> (https://www.gauti.info/)",
   "dependencies": {
     "humanize-duration": "^3.12.0",
     "immutable": "^3.8.2",

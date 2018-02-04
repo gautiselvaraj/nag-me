@@ -23,13 +23,13 @@ const setNagAlarm = nag => {
 // Set Initial Alarms
 setAllAlarms();
 
-chrome.alarms.onAlarm.addListener(alarm => {
+browser.alarms.onAlarm.addListener(alarm => {
   storageGet('nag', nagList => {
     let nagAlarmed = nagList.list.find(
       nag => nag.id === parseInt(alarm.name, 10)
     );
 
-    chrome.notifications.create({
+    browser.notifications.create({
       type: 'basic',
       iconUrl: 'icon128.png',
       title: 'Nagging You!',
@@ -52,7 +52,7 @@ chrome.alarms.onAlarm.addListener(alarm => {
   });
 });
 
-chrome.runtime.onMessage.addListener(request => {
+browser.runtime.onMessage.addListener(request => {
   if (request.nagDeleted) {
     const nagId = request.nagId;
     storageGet('nag', nagList => {

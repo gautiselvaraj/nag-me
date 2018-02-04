@@ -4,8 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 // Configure Enzyme and react 16adaptor
 Enzyme.configure({ adapter: new Adapter() });
 
-// Chrome extension API mocks
-window.chrome = {
+// browser extension API mocks
+window.browser = {
   alarms: {
     create: jest.fn(),
     clear: jest.fn(),

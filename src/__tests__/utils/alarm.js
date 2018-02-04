@@ -13,32 +13,32 @@ describe('Alarm utils', () => {
     clear = jest.fn();
     clearAll = jest.fn();
 
-    window.chrome.alarms = {
+    window.browser.alarms = {
       create,
       clear,
       clearAll
     };
   });
 
-  it('should call chrome alarm setAlarm', () => {
+  it('should call browser alarm setAlarm', () => {
     const alarmName = 'Alarm 1';
     setAlarm(alarmName, 1234567890);
     expect(create.mock.calls.length).toBe(1);
     expect(create.mock.calls[0][0]).toBe(alarmName);
   });
 
-  it('should call chrome alarm clear', () => {
+  it('should call browser alarm clear', () => {
     clearAlarm(1);
     expect(clear.mock.calls.length).toBe(1);
     expect(clear.mock.calls[0][0]).toBe('1');
   });
 
-  it('should call chrome alarm clearAll', () => {
+  it('should call browser alarm clearAll', () => {
     clearAllAlarms();
     expect(clearAll.mock.calls.length).toBe(1);
   });
 
-  it('should call chrome alarm clearAll and set alarms for all nags passed', () => {
+  it('should call browser alarm clearAll and set alarms for all nags passed', () => {
     const nagList = [
       {
         id: 1,

@@ -1,4 +1,4 @@
-/*global chrome*/
+/*global browser*/
 
 import * as types from '../constants/Actions';
 import { switchPage } from './PageActions';
@@ -71,7 +71,7 @@ const dispatchNagResets = () => ({
 
 const updateBackground = (nagId, state) => {
   const nag = state.getIn(['nag', 'list']).find(nag => nag.get('id') === nagId);
-  chrome.runtime.sendMessage({
+  browser.runtime.sendMessage({
     nag: nag ? nag.toJS() : nag
   });
 };
@@ -176,7 +176,7 @@ export const nagResume = nagId => (dispatch, getState) => {
 export const nagDelete = nagId => (dispatch, getState) => {
   dispatch(dispatchNagDelete(nagId));
   dispatch(nagIndex(true));
-  chrome.runtime.sendMessage({ nagDeleted: true, nagId });
+  browser.runtime.sendMessage({ nagDeleted: true, nagId });
 };
 
 export const nagsSearch = query => dispatch => {

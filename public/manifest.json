@@ -1,13 +1,16 @@
 {
   "name": "Nag Me",
   "description": "Nag me notify users of low priority routined tasks.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "manifest_version": 2,
   "homepage_url": "https://www.gauti.info/nag-me",
-  "author": "Gauti Selvaraj",
+  "author": "Gauti Selvaraj <me@gauti.info> (https://www.gauti.info/)",
   "permissions": ["alarms", "notifications", "storage"],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": [
+      "browser-polyfill.min.js",
+      "background.js"
+    ],
     "persistent": false
   },
   "browser_action": {

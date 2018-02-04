@@ -1,18 +1,18 @@
-/*global chrome*/
+/*global browser*/
 
 import { roundedTimestamp } from '../utils/time';
 
 export const setAlarm = (nagId, timestamp) => {
   const delayInMinutes = Math.ceil((timestamp - roundedTimestamp()) / 60000);
-  chrome.alarms.create(nagId.toString(), { delayInMinutes });
+  browser.alarms.create(nagId.toString(), { delayInMinutes });
 };
 
 export const clearAlarm = nagId => {
-  chrome.alarms.clear(nagId.toString());
+  browser.alarms.clear(nagId.toString());
 };
 
 export const clearAllAlarms = () => {
-  chrome.alarms.clearAll();
+  browser.alarms.clearAll();
 };
 
 export const clearAndSetAllAlarms = nagList => {

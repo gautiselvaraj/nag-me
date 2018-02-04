@@ -1,11 +1,11 @@
-/*global chrome*/
+/*global browser*/
 
 export const storageSet = (label, value) => {
-  chrome.storage.sync.set({ [label]: JSON.stringify(value) });
+  browser.storage.sync.set({ [label]: JSON.stringify(value) });
 };
 
 export const storageGet = (label, callback) =>
-  chrome.storage.sync.get([label], item => {
+  browser.storage.sync.get([label]).then(item => {
     const nagsFromStorage = item[label];
     if (nagsFromStorage) {
       return callback(JSON.parse(nagsFromStorage));
