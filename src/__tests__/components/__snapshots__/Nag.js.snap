@@ -58,6 +58,7 @@ exports[`<Nag /> should match snapshot 1`] = `
   box-sizing: border-box;
   font-size: 0.85rem;
   line-height: 2rem;
+  -webkit-text-decoration: none;
   text-decoration: none;
   text-transform: uppercase;
   -webkit-transition-duration: 0.5s;

@@ -22,6 +22,7 @@ exports[`<Header /> should match snapshot 1`] = `
 }
 
 .c2 {
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 

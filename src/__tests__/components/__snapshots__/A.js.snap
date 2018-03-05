@@ -3,6 +3,7 @@
 exports[`<A /> default link should match snapshot 1`] = `
 .c0 {
   color: #214154;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
@@ -21,6 +22,7 @@ exports[`<A /> default link should match snapshot 1`] = `
 exports[`<A /> inverse link should match snapshot 1`] = `
 .c0 {
   color: #f6f6f6;
+  -webkit-text-decoration: none;
   text-decoration: none;
 }
 
