@@ -1,11 +1,11 @@
-# [Nag Me](https://www.gauti.info/nag-me)
+# Nag Me
 [![Coverage Status](https://coveralls.io/repos/github/gautiselvaraj/nag-me/badge.svg?branch=master)](https://coveralls.io/github/gautiselvaraj/nag-me?branch=master)
 [![Build Status](https://travis-ci.org/gautiselvaraj/nag-me.svg?branch=master)](https://travis-ci.org/gautiselvaraj/nag-me)
 
 #### Browser extension to nag users
 Nag me notify users of routined tasks. Nag me notifications are soft (doesn't ring and also closes itself) so use it for low priority tasks only. I use Nag Me extension to notify me to drink water, to take a walk, to relax my eyes and so on while I'm on my computer. I needed something to remind me of these routined task but I don't want to set a repeat alarm because alarm rings and also excepts me to snooze or turn it off each time. All I wanted is something which will remind me softly without any sound and also closes itself without my intervention. Browser notification seems to be an ideal match so I created Nag Me.
 
-Nag me uses WebExtensions API with Mozilla's [webextension-polyfill](https://github.com/mozilla/webextension-polyfill) so it works in Google Chrome, Firefox and Opera browsers.
+Nag me uses WebExtensions API with Mozilla's [webextension-polyfill](https://github.com/mozilla/webextension-polyfill) so it works in [Google Chrome](https://chrome.google.com/webstore/detail/nag-me/jhppmbkjpboolciccfleojhinfjjdfmd), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/nag-me/) and [Opera](https://addons.opera.com/en/extensions/details/nag-me/) browsers.
 
 ## Built With
 [Create React App](https://github.com/facebookincubator/create-react-app) but made some changes to CRA scripts because
