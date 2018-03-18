@@ -1,6 +1,6 @@
 {
   "name": "Nag Me",
-  "description": "Nag me notify users of low priority routined tasks.",
+  "description": "Browser extension to nag users",
   "version": "1.1.1",
   "manifest_version": 2,
   "homepage_url": "https://www.gauti.info/nag-me",

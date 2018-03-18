@@ -3,14 +3,17 @@
 [![Build Status](https://travis-ci.org/gautiselvaraj/nag-me.svg?branch=master)](https://travis-ci.org/gautiselvaraj/nag-me)
 
 #### Browser extension to nag users
-Nag me notify users of routined tasks. Nag me notifications are soft (doesn't ring and also closes itself) so use it for low priority tasks only. I use Nag Me extension to notify me to drink water, to take a walk, to relax my eyes and so on while I'm on my computer. I needed something to remind me of these routined task but I don't want to set a repeat alarm because alarm rings and also excepts me to snooze or turn it off each time. All I wanted is something which will remind me softly without any sound and also closes itself without my intervention. Browser notification seems to be an ideal match so I created Nag Me.
-
-Nag me uses WebExtensions API with Mozilla's [webextension-polyfill](https://github.com/mozilla/webextension-polyfill) so it works in [Google Chrome](https://chrome.google.com/webstore/detail/nag-me/jhppmbkjpboolciccfleojhinfjjdfmd), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/nag-me/) and [Opera](https://addons.opera.com/en/extensions/details/nag-me/) browsers.
+Nag me notifies users of routine tasks. Nag me notifications are soft (doesn't ring and auto closes) so use it for low priority tasks only. Some use cases of Nag Me are to notify to drink water, to take a walk, to relax your eyes and so on while you are on your computer. Nag Me works in [Google Chrome](https://chrome.google.com/webstore/detail/nag-me/jhppmbkjpboolciccfleojhinfjjdfmd), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/nag-me/), and [Opera](https://addons.opera.com/en/extensions/details/nag-me/).
 
 ## Built With
-[Create React App](https://github.com/facebookincubator/create-react-app) but made some changes to CRA scripts because
-1. During development, browsers watches a folder and reload the extension when a file is changed in that folder. CRA in development doesn't actually create files in build folder so I needed to do modifications to CRA script to create actual files in build folder so Google Chrome can reload the extension every time we make changes.
-2. Also Nag me needed 2 files `background.js` and `index.js`. `background.js` will run all the time while `index.js` will run only when extension is opened. So I have to run both CRA script (to create `index.js`) and also a custom script (to create `background.js`) in parallel.
+- React [(Create React App)](https://github.com/facebookincubator/create-react-app) but made some changes to CRA scripts because
+  1. During development, browsers watches a folder and reload the extension when a file is changed in that folder. CRA in development doesn't actually create files in build folder so I needed to do modifications to CRA script to create actual files in build folder so Google Chrome can reload the extension every time we make changes.
+  2. Also Nag me needed 2 files `background.js` and `index.js`. `background.js` will run all the time while `index.js` will run only when extension is opened. So I have to run both CRA script (to create `index.js`) and also a custom script (to create `background.js`) in parallel.
+- Jest
+- Redux
+- Immutable.js
+- React-Motion
+- styled-components
 
 ## Getting Started
 Clone this repo
@@ -41,6 +44,9 @@ Let browsers know where your extension is
 
 ## Build
 Run `yarn build` to build the extension.
+
+## Test
+Run `yarn test` to run tests.
 
 ## Author
 **[Gauti Selvaraj](https://www.gauti.info)**
